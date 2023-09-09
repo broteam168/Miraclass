@@ -25,6 +25,7 @@ namespace Miraclass.Views
                 String[] remember = Miraclass.Properties.Settings.Default.userRemember.Split('|');
                 txtUser.Text = remember[0];
                 txtPass.Text = remember[1];
+                checkEdit1.Checked = true;
             }
         }
 
@@ -47,7 +48,7 @@ namespace Miraclass.Views
                 return;
             }    
             S_User currentUser = cls.getUser(txtUser.Text,txtPass.Text);
-            if(currentUser == null)
+            if (currentUser == null)
             {
                 MessageBox.Show("Login failed please check again!");
             }
@@ -55,7 +56,7 @@ namespace Miraclass.Views
             {
                 //MessageBox.Show("Login Success!");
 
-                if(isRemember)
+                if (isRemember)
                 {
                     Miraclass.Properties.Settings.Default.userRemember = txtUser.Text + "|" + txtPass.Text;
                     Miraclass.Properties.Settings.Default.Save();
@@ -65,12 +66,14 @@ namespace Miraclass.Views
                     Miraclass.Properties.Settings.Default.userRemember = "";
                     Miraclass.Properties.Settings.Default.Save();
                 }
-                if(currentUser.isTeacher)
+                if (currentUser.isTeacher)
                 {
-                    TeacherDashboard frm = new TeacherDashboard(); 
-                    frm.ShowDialog();
                     this.Hide();
+                    TeacherDashboard frm = new TeacherDashboard(currentUser);
+                    frm.ShowDialog();
+
                 }
+            
             }
         }
         bool isRemember = false;

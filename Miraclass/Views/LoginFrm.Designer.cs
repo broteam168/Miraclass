@@ -36,6 +36,7 @@ namespace Miraclass.Views
             this.lbVersion = new DevExpress.XtraEditors.LabelControl();
             this.lb_title1 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.lbPass = new DevExpress.XtraEditors.LabelControl();
             this.lbUser = new DevExpress.XtraEditors.LabelControl();
             this.txtUser = new DevExpress.XtraEditors.TextEdit();
@@ -45,16 +46,15 @@ namespace Miraclass.Views
             this.cmdExit = new DevExpress.XtraEditors.SimpleButton();
             this.cmdConfig = new DevExpress.XtraEditors.SimpleButton();
             this.cmdLogin = new DevExpress.XtraEditors.SimpleButton();
-            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUser.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -127,6 +127,19 @@ namespace Miraclass.Views
             this.panelControl2.Size = new System.Drawing.Size(603, 233);
             this.panelControl2.TabIndex = 2;
             // 
+            // checkEdit1
+            // 
+            this.checkEdit1.Location = new System.Drawing.Point(75, 194);
+            this.checkEdit1.Name = "checkEdit1";
+            this.checkEdit1.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkEdit1.Properties.Appearance.ForeColor = System.Drawing.Color.DarkCyan;
+            this.checkEdit1.Properties.Appearance.Options.UseFont = true;
+            this.checkEdit1.Properties.Appearance.Options.UseForeColor = true;
+            this.checkEdit1.Properties.Caption = "Remember me?";
+            this.checkEdit1.Size = new System.Drawing.Size(152, 24);
+            this.checkEdit1.TabIndex = 5;
+            this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
+            // 
             // lbPass
             // 
             this.lbPass.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -158,7 +171,7 @@ namespace Miraclass.Views
             this.txtUser.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUser.Properties.Appearance.Options.UseFont = true;
             this.txtUser.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.txtUser.Size = new System.Drawing.Size(451, 32);
+            this.txtUser.Size = new System.Drawing.Size(451, 42);
             this.txtUser.TabIndex = 2;
             // 
             // txtPass
@@ -242,19 +255,6 @@ namespace Miraclass.Views
             this.cmdLogin.Text = "Login";
             this.cmdLogin.Click += new System.EventHandler(this.cmdLogin_Click);
             // 
-            // checkEdit1
-            // 
-            this.checkEdit1.Location = new System.Drawing.Point(75, 194);
-            this.checkEdit1.Name = "checkEdit1";
-            this.checkEdit1.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkEdit1.Properties.Appearance.ForeColor = System.Drawing.Color.DarkCyan;
-            this.checkEdit1.Properties.Appearance.Options.UseFont = true;
-            this.checkEdit1.Properties.Appearance.Options.UseForeColor = true;
-            this.checkEdit1.Properties.Caption = "Remember me?";
-            this.checkEdit1.Size = new System.Drawing.Size(152, 24);
-            this.checkEdit1.TabIndex = 5;
-            this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
-            // 
             // LoginFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -273,12 +273,12 @@ namespace Miraclass.Views
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUser.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
