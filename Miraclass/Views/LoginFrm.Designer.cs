@@ -34,7 +34,7 @@ namespace Miraclass.Views
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.lb_title1 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -57,7 +57,7 @@ namespace Miraclass.Views
             // 
             // groupControl1
             // 
-            this.groupControl1.Appearance.BackColor = System.Drawing.Color.DodgerBlue;
+            this.groupControl1.Appearance.BackColor = System.Drawing.Color.CornflowerBlue;
             this.groupControl1.Appearance.Options.UseBackColor = true;
             this.groupControl1.AppearanceCaption.BackColor = System.Drawing.Color.Yellow;
             this.groupControl1.AppearanceCaption.BorderColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Question;
@@ -66,7 +66,7 @@ namespace Miraclass.Views
             this.groupControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.groupControl1.Controls.Add(this.labelControl5);
             this.groupControl1.Controls.Add(this.labelControl4);
-            this.groupControl1.Controls.Add(this.labelControl1);
+            this.groupControl1.Controls.Add(this.lb_title1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
@@ -79,7 +79,7 @@ namespace Miraclass.Views
             this.labelControl5.Appearance.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(466, 12);
+            this.labelControl5.Location = new System.Drawing.Point(457, 12);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(134, 62);
             this.labelControl5.TabIndex = 5;
@@ -97,17 +97,17 @@ namespace Miraclass.Views
             this.labelControl4.TabIndex = 5;
             this.labelControl4.Text = "Ver 1.0.0";
             // 
-            // labelControl1
+            // lb_title1
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.White;
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(12, 12);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(138, 37);
-            this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Miraclass";
+            this.lb_title1.Appearance.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_title1.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lb_title1.Appearance.Options.UseFont = true;
+            this.lb_title1.Appearance.Options.UseForeColor = true;
+            this.lb_title1.Location = new System.Drawing.Point(12, 12);
+            this.lb_title1.Name = "lb_title1";
+            this.lb_title1.Size = new System.Drawing.Size(138, 37);
+            this.lb_title1.TabIndex = 0;
+            this.lb_title1.Text = "Miraclass";
             // 
             // panelControl2
             // 
@@ -211,6 +211,7 @@ namespace Miraclass.Views
             this.simpleButton3.Size = new System.Drawing.Size(134, 42);
             this.simpleButton3.TabIndex = 2;
             this.simpleButton3.Text = "Exit";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // simpleButton2
             // 
@@ -268,7 +269,7 @@ namespace Miraclass.Views
         #endregion
 
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl lb_title1;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.TextEdit textEdit2;
         private DevExpress.XtraEditors.PanelControl panelControl1;

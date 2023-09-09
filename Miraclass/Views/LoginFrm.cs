@@ -22,5 +22,10 @@ namespace Miraclass.Views
         {
 
         }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
