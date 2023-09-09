@@ -33,5 +33,17 @@ namespace Miraclass.Properties {
                 return ((string)(this["MiraclassConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string connect {
+            get {
+                return ((string)(this["connect"]));
+            }
+            set {
+                this["connect"] = value;
+            }
+        }
     }
 }

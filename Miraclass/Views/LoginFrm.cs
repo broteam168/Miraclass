@@ -18,14 +18,10 @@ namespace Miraclass.Views
             InitializeComponent();
         }
 
-        private void labelControl3_Click(object sender, EventArgs e)
+        private void cmdConfig_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void simpleButton3_Click(object sender, EventArgs e)
-        {
-
+            ConfigFrm frm = new ConfigFrm();
+            frm.ShowDialog();
         }
     }
 }

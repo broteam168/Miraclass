@@ -10,5 +10,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=DESKTOP-KLLGML0\SQLEXPRESS;Initial Catalog=Miraclass;Persist Security Info=True;User ID=sa;Password=123456</Value>
     </Setting>
+    <Setting Name="connect" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

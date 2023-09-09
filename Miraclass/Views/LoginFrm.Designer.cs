@@ -43,7 +43,7 @@ namespace Miraclass.Views
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.cmdConfig = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -134,7 +134,6 @@ namespace Miraclass.Views
             this.labelControl3.Size = new System.Drawing.Size(96, 26);
             this.labelControl3.TabIndex = 4;
             this.labelControl3.Text = "Password:";
-            this.labelControl3.Click += new System.EventHandler(this.labelControl3_Click);
             // 
             // labelControl2
             // 
@@ -180,7 +179,7 @@ namespace Miraclass.Views
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.simpleButton3);
-            this.panelControl1.Controls.Add(this.simpleButton2);
+            this.panelControl1.Controls.Add(this.cmdConfig);
             this.panelControl1.Controls.Add(this.simpleButton1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl1.Location = new System.Drawing.Point(0, 317);
@@ -211,19 +210,19 @@ namespace Miraclass.Views
             this.simpleButton3.Size = new System.Drawing.Size(134, 42);
             this.simpleButton3.TabIndex = 2;
             this.simpleButton3.Text = "Exit";
-            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
-            // simpleButton2
+            // cmdConfig
             // 
-            this.simpleButton2.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Success;
-            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton2.Appearance.Options.UseBackColor = true;
-            this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.Location = new System.Drawing.Point(236, 18);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(134, 42);
-            this.simpleButton2.TabIndex = 1;
-            this.simpleButton2.Text = "Config";
+            this.cmdConfig.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Success;
+            this.cmdConfig.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdConfig.Appearance.Options.UseBackColor = true;
+            this.cmdConfig.Appearance.Options.UseFont = true;
+            this.cmdConfig.Location = new System.Drawing.Point(236, 18);
+            this.cmdConfig.Name = "cmdConfig";
+            this.cmdConfig.Size = new System.Drawing.Size(134, 42);
+            this.cmdConfig.TabIndex = 1;
+            this.cmdConfig.Text = "Config";
+            this.cmdConfig.Click += new System.EventHandler(this.cmdConfig_Click);
             // 
             // simpleButton1
             // 
@@ -281,6 +280,6 @@ namespace Miraclass.Views
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton cmdConfig;
     }
 }
