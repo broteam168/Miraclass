@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,13 +9,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Miraclass
+namespace Miraclass.Views
 {
-    public partial class Form1 : Form
+    public partial class LoginFrm : DevExpress.XtraEditors.XtraForm
     {
-        public Form1()
+        public LoginFrm()
         {
             InitializeComponent();
+        }
+
+        private void labelControl3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
