@@ -33,12 +33,6 @@ namespace Miraclass.Models
     partial void InsertS_User(S_User instance);
     partial void UpdateS_User(S_User instance);
     partial void DeleteS_User(S_User instance);
-    partial void InsertS_Menu(S_Menu instance);
-    partial void UpdateS_Menu(S_Menu instance);
-    partial void DeleteS_Menu(S_Menu instance);
-    partial void InsertS_Group(S_Group instance);
-    partial void UpdateS_Group(S_Group instance);
-    partial void DeleteS_Group(S_Group instance);
     #endregion
 		
 		public MiraclassDataContext() : 
@@ -78,22 +72,6 @@ namespace Miraclass.Models
 				return this.GetTable<S_User>();
 			}
 		}
-		
-		public System.Data.Linq.Table<S_Menu> S_Menus
-		{
-			get
-			{
-				return this.GetTable<S_Menu>();
-			}
-		}
-		
-		public System.Data.Linq.Table<S_Group> S_Groups
-		{
-			get
-			{
-				return this.GetTable<S_Group>();
-			}
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.S_User")]
@@ -118,7 +96,7 @@ namespace Miraclass.Models
 		
 		private string _Phone;
 		
-		private EntitySet<S_Group> _S_Groups;
+		private bool _isTeacher;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -140,11 +118,12 @@ namespace Miraclass.Models
     partial void OnisActiveChanged();
     partial void OnPhoneChanging(string value);
     partial void OnPhoneChanged();
+    partial void OnisTeacherChanging(bool value);
+    partial void OnisTeacherChanged();
     #endregion
 		
 		public S_User()
 		{
-			this._S_Groups = new EntitySet<S_Group>(new Action<S_Group>(this.attach_S_Groups), new Action<S_Group>(this.detach_S_Groups));
 			OnCreated();
 		}
 		
@@ -308,360 +287,22 @@ namespace Miraclass.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="S_User_S_Group", Storage="_S_Groups", ThisKey="userGroup", OtherKey="GroupId")]
-		public EntitySet<S_Group> S_Groups
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isTeacher", DbType="Bit NOT NULL")]
+		public bool isTeacher
 		{
 			get
 			{
-				return this._S_Groups;
+				return this._isTeacher;
 			}
 			set
 			{
-				this._S_Groups.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_S_Groups(S_Group entity)
-		{
-			this.SendPropertyChanging();
-			entity.S_User = this;
-		}
-		
-		private void detach_S_Groups(S_Group entity)
-		{
-			this.SendPropertyChanging();
-			entity.S_User = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.S_Menu")]
-	public partial class S_Menu : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MenuId;
-		
-		private int _MenuLevel;
-		
-		private string _MenuName;
-		
-		private string _MenuButton;
-		
-		private System.Nullable<int> _MenuOrder;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMenuIdChanging(int value);
-    partial void OnMenuIdChanged();
-    partial void OnMenuLevelChanging(int value);
-    partial void OnMenuLevelChanged();
-    partial void OnMenuNameChanging(string value);
-    partial void OnMenuNameChanged();
-    partial void OnMenuButtonChanging(string value);
-    partial void OnMenuButtonChanged();
-    partial void OnMenuOrderChanging(System.Nullable<int> value);
-    partial void OnMenuOrderChanged();
-    #endregion
-		
-		public S_Menu()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MenuId
-		{
-			get
-			{
-				return this._MenuId;
-			}
-			set
-			{
-				if ((this._MenuId != value))
+				if ((this._isTeacher != value))
 				{
-					this.OnMenuIdChanging(value);
+					this.OnisTeacherChanging(value);
 					this.SendPropertyChanging();
-					this._MenuId = value;
-					this.SendPropertyChanged("MenuId");
-					this.OnMenuIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuLevel", DbType="Int NOT NULL")]
-		public int MenuLevel
-		{
-			get
-			{
-				return this._MenuLevel;
-			}
-			set
-			{
-				if ((this._MenuLevel != value))
-				{
-					this.OnMenuLevelChanging(value);
-					this.SendPropertyChanging();
-					this._MenuLevel = value;
-					this.SendPropertyChanged("MenuLevel");
-					this.OnMenuLevelChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string MenuName
-		{
-			get
-			{
-				return this._MenuName;
-			}
-			set
-			{
-				if ((this._MenuName != value))
-				{
-					this.OnMenuNameChanging(value);
-					this.SendPropertyChanging();
-					this._MenuName = value;
-					this.SendPropertyChanged("MenuName");
-					this.OnMenuNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuButton", DbType="NVarChar(50)")]
-		public string MenuButton
-		{
-			get
-			{
-				return this._MenuButton;
-			}
-			set
-			{
-				if ((this._MenuButton != value))
-				{
-					this.OnMenuButtonChanging(value);
-					this.SendPropertyChanging();
-					this._MenuButton = value;
-					this.SendPropertyChanged("MenuButton");
-					this.OnMenuButtonChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuOrder", DbType="Int")]
-		public System.Nullable<int> MenuOrder
-		{
-			get
-			{
-				return this._MenuOrder;
-			}
-			set
-			{
-				if ((this._MenuOrder != value))
-				{
-					this.OnMenuOrderChanging(value);
-					this.SendPropertyChanging();
-					this._MenuOrder = value;
-					this.SendPropertyChanged("MenuOrder");
-					this.OnMenuOrderChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.S_Group")]
-	public partial class S_Group : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _GroupId;
-		
-		private string _GroupName;
-		
-		private string _GroupDesc;
-		
-		private int _GroupLevel;
-		
-		private EntityRef<S_User> _S_User;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnGroupIdChanging(int value);
-    partial void OnGroupIdChanged();
-    partial void OnGroupNameChanging(string value);
-    partial void OnGroupNameChanged();
-    partial void OnGroupDescChanging(string value);
-    partial void OnGroupDescChanged();
-    partial void OnGroupLevelChanging(int value);
-    partial void OnGroupLevelChanged();
-    #endregion
-		
-		public S_Group()
-		{
-			this._S_User = default(EntityRef<S_User>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int GroupId
-		{
-			get
-			{
-				return this._GroupId;
-			}
-			set
-			{
-				if ((this._GroupId != value))
-				{
-					if (this._S_User.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnGroupIdChanging(value);
-					this.SendPropertyChanging();
-					this._GroupId = value;
-					this.SendPropertyChanged("GroupId");
-					this.OnGroupIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string GroupName
-		{
-			get
-			{
-				return this._GroupName;
-			}
-			set
-			{
-				if ((this._GroupName != value))
-				{
-					this.OnGroupNameChanging(value);
-					this.SendPropertyChanging();
-					this._GroupName = value;
-					this.SendPropertyChanged("GroupName");
-					this.OnGroupNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupDesc", DbType="NVarChar(50)")]
-		public string GroupDesc
-		{
-			get
-			{
-				return this._GroupDesc;
-			}
-			set
-			{
-				if ((this._GroupDesc != value))
-				{
-					this.OnGroupDescChanging(value);
-					this.SendPropertyChanging();
-					this._GroupDesc = value;
-					this.SendPropertyChanged("GroupDesc");
-					this.OnGroupDescChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupLevel", DbType="Int NOT NULL")]
-		public int GroupLevel
-		{
-			get
-			{
-				return this._GroupLevel;
-			}
-			set
-			{
-				if ((this._GroupLevel != value))
-				{
-					this.OnGroupLevelChanging(value);
-					this.SendPropertyChanging();
-					this._GroupLevel = value;
-					this.SendPropertyChanged("GroupLevel");
-					this.OnGroupLevelChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="S_User_S_Group", Storage="_S_User", ThisKey="GroupId", OtherKey="userGroup", IsForeignKey=true)]
-		public S_User S_User
-		{
-			get
-			{
-				return this._S_User.Entity;
-			}
-			set
-			{
-				S_User previousValue = this._S_User.Entity;
-				if (((previousValue != value) 
-							|| (this._S_User.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._S_User.Entity = null;
-						previousValue.S_Groups.Remove(this);
-					}
-					this._S_User.Entity = value;
-					if ((value != null))
-					{
-						value.S_Groups.Add(this);
-						this._GroupId = value.userGroup;
-					}
-					else
-					{
-						this._GroupId = default(int);
-					}
-					this.SendPropertyChanged("S_User");
+					this._isTeacher = value;
+					this.SendPropertyChanged("isTeacher");
+					this.OnisTeacherChanged();
 				}
 			}
 		}

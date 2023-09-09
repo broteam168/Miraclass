@@ -1,4 +1,6 @@
 ﻿using DevExpress.XtraEditors;
+using Miraclass.Controllers;
+using Miraclass.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,15 +15,68 @@ namespace Miraclass.Views
 {
     public partial class LoginFrm : DevExpress.XtraEditors.XtraForm
     {
+        LoginController cls; 
         public LoginFrm()
         {
             InitializeComponent();
+            cls = new LoginController();
+            if (!Miraclass.Properties.Settings.Default.userRemember.Equals(""))
+            {
+                String[] remember = Miraclass.Properties.Settings.Default.userRemember.Split('|');
+                txtUser.Text = remember[0];
+                txtPass.Text = remember[1];
+            }
         }
 
         private void cmdConfig_Click(object sender, EventArgs e)
         {
             ConfigFrm frm = new ConfigFrm();
             frm.ShowDialog();
+        }
+
+        private void cmdExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void cmdLogin_Click(object sender, EventArgs e)
+        {
+            if(txtUser.Text.Equals("") || txtPass.Text.Equals(""))
+            {
+                MessageBox.Show("Please enter all fields!", "Notification");
+                return;
+            }    
+            S_User currentUser = cls.getUser(txtUser.Text,txtPass.Text);
+            if(currentUser == null)
+            {
+                MessageBox.Show("Login failed please check again!");
+            }
+            else
+            {
+                //MessageBox.Show("Login Success!");
+
+                if(isRemember)
+                {
+                    Miraclass.Properties.Settings.Default.userRemember = txtUser.Text + "|" + txtPass.Text;
+                    Miraclass.Properties.Settings.Default.Save();
+                }
+                else
+                {
+                    Miraclass.Properties.Settings.Default.userRemember = "";
+                    Miraclass.Properties.Settings.Default.Save();
+                }
+                if(currentUser.isTeacher)
+                {
+                    TeacherDashboard frm = new TeacherDashboard(); 
+                    frm.ShowDialog();
+                    this.Hide();
+                }
+            }
+        }
+        bool isRemember = false;
+        private void checkEdit1_CheckedChanged(object sender, EventArgs e)
+        {
+            isRemember = checkEdit1.Checked;
         }
     }
 }

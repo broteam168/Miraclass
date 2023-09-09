@@ -32,27 +32,29 @@ namespace Miraclass.Views
         private void InitializeComponent()
         {
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.lbteam = new DevExpress.XtraEditors.LabelControl();
+            this.lbVersion = new DevExpress.XtraEditors.LabelControl();
             this.lb_title1 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.lbPass = new DevExpress.XtraEditors.LabelControl();
+            this.lbUser = new DevExpress.XtraEditors.LabelControl();
+            this.txtUser = new DevExpress.XtraEditors.TextEdit();
+            this.txtPass = new DevExpress.XtraEditors.TextEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.cmdExit = new DevExpress.XtraEditors.SimpleButton();
             this.cmdConfig = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.cmdLogin = new DevExpress.XtraEditors.SimpleButton();
+            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUser.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -64,8 +66,8 @@ namespace Miraclass.Views
             this.groupControl1.AppearanceCaption.Options.UseBackColor = true;
             this.groupControl1.AppearanceCaption.Options.UseBorderColor = true;
             this.groupControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.groupControl1.Controls.Add(this.labelControl5);
-            this.groupControl1.Controls.Add(this.labelControl4);
+            this.groupControl1.Controls.Add(this.lbteam);
+            this.groupControl1.Controls.Add(this.lbVersion);
             this.groupControl1.Controls.Add(this.lb_title1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
@@ -73,29 +75,29 @@ namespace Miraclass.Views
             this.groupControl1.Size = new System.Drawing.Size(603, 84);
             this.groupControl1.TabIndex = 0;
             // 
-            // labelControl5
+            // lbteam
             // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Location = new System.Drawing.Point(457, 12);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(134, 62);
-            this.labelControl5.TabIndex = 5;
-            this.labelControl5.Text = "Miraculous\r\n          team";
+            this.lbteam.Appearance.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbteam.Appearance.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lbteam.Appearance.Options.UseFont = true;
+            this.lbteam.Appearance.Options.UseForeColor = true;
+            this.lbteam.Location = new System.Drawing.Point(457, 12);
+            this.lbteam.Name = "lbteam";
+            this.lbteam.Size = new System.Drawing.Size(134, 62);
+            this.lbteam.TabIndex = 5;
+            this.lbteam.Text = "Miraculous\r\n          team";
             // 
-            // labelControl4
+            // lbVersion
             // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.White;
-            this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(18, 61);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(60, 17);
-            this.labelControl4.TabIndex = 5;
-            this.labelControl4.Text = "Ver 1.0.0";
+            this.lbVersion.Appearance.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbVersion.Appearance.ForeColor = System.Drawing.Color.White;
+            this.lbVersion.Appearance.Options.UseFont = true;
+            this.lbVersion.Appearance.Options.UseForeColor = true;
+            this.lbVersion.Location = new System.Drawing.Point(18, 61);
+            this.lbVersion.Name = "lbVersion";
+            this.lbVersion.Size = new System.Drawing.Size(60, 17);
+            this.lbVersion.TabIndex = 5;
+            this.lbVersion.Text = "Ver 1.0.0";
             // 
             // lb_title1
             // 
@@ -114,61 +116,63 @@ namespace Miraclass.Views
             this.panelControl2.Appearance.BackColor = System.Drawing.Color.White;
             this.panelControl2.Appearance.Options.UseBackColor = true;
             this.panelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.panelControl2.Controls.Add(this.labelControl3);
-            this.panelControl2.Controls.Add(this.labelControl2);
-            this.panelControl2.Controls.Add(this.textEdit1);
-            this.panelControl2.Controls.Add(this.textEdit2);
+            this.panelControl2.Controls.Add(this.checkEdit1);
+            this.panelControl2.Controls.Add(this.lbPass);
+            this.panelControl2.Controls.Add(this.lbUser);
+            this.panelControl2.Controls.Add(this.txtUser);
+            this.panelControl2.Controls.Add(this.txtPass);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(0, 84);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(603, 233);
             this.panelControl2.TabIndex = 2;
             // 
-            // labelControl3
+            // lbPass
             // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.LineVisible = true;
-            this.labelControl3.Location = new System.Drawing.Point(76, 127);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(96, 26);
-            this.labelControl3.TabIndex = 4;
-            this.labelControl3.Text = "Password:";
+            this.lbPass.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPass.Appearance.Options.UseFont = true;
+            this.lbPass.LineVisible = true;
+            this.lbPass.Location = new System.Drawing.Point(76, 103);
+            this.lbPass.Name = "lbPass";
+            this.lbPass.Size = new System.Drawing.Size(96, 26);
+            this.lbPass.TabIndex = 4;
+            this.lbPass.Text = "Password:";
             // 
-            // labelControl2
+            // lbUser
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.LineVisible = true;
-            this.labelControl2.Location = new System.Drawing.Point(76, 17);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(104, 26);
-            this.labelControl2.TabIndex = 3;
-            this.labelControl2.Text = "Username: ";
+            this.lbUser.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUser.Appearance.Options.UseFont = true;
+            this.lbUser.LineVisible = true;
+            this.lbUser.Location = new System.Drawing.Point(76, 17);
+            this.lbUser.Name = "lbUser";
+            this.lbUser.Size = new System.Drawing.Size(104, 26);
+            this.lbUser.TabIndex = 3;
+            this.lbUser.Text = "Username: ";
             // 
-            // textEdit1
+            // txtUser
             // 
-            this.textEdit1.Location = new System.Drawing.Point(76, 51);
-            this.textEdit1.Margin = new System.Windows.Forms.Padding(5);
-            this.textEdit1.MinimumSize = new System.Drawing.Size(0, 42);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textEdit1.Properties.Appearance.Options.UseFont = true;
-            this.textEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.textEdit1.Size = new System.Drawing.Size(451, 32);
-            this.textEdit1.TabIndex = 2;
+            this.txtUser.Location = new System.Drawing.Point(76, 51);
+            this.txtUser.Margin = new System.Windows.Forms.Padding(5);
+            this.txtUser.MinimumSize = new System.Drawing.Size(0, 42);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUser.Properties.Appearance.Options.UseFont = true;
+            this.txtUser.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.txtUser.Size = new System.Drawing.Size(451, 32);
+            this.txtUser.TabIndex = 2;
             // 
-            // textEdit2
+            // txtPass
             // 
-            this.textEdit2.Location = new System.Drawing.Point(76, 161);
-            this.textEdit2.Margin = new System.Windows.Forms.Padding(5);
-            this.textEdit2.MinimumSize = new System.Drawing.Size(0, 42);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textEdit2.Properties.Appearance.Options.UseFont = true;
-            this.textEdit2.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.textEdit2.Size = new System.Drawing.Size(451, 32);
-            this.textEdit2.TabIndex = 1;
+            this.txtPass.Location = new System.Drawing.Point(76, 137);
+            this.txtPass.Margin = new System.Windows.Forms.Padding(5);
+            this.txtPass.MinimumSize = new System.Drawing.Size(0, 42);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPass.Properties.Appearance.Options.UseFont = true;
+            this.txtPass.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
+            this.txtPass.Properties.PasswordChar = '*';
+            this.txtPass.Size = new System.Drawing.Size(451, 42);
+            this.txtPass.TabIndex = 1;
             // 
             // panelControl1
             // 
@@ -178,9 +182,9 @@ namespace Miraclass.Views
             this.panelControl1.Appearance.Options.UseBorderColor = true;
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl1.Controls.Add(this.labelControl6);
-            this.panelControl1.Controls.Add(this.simpleButton3);
+            this.panelControl1.Controls.Add(this.cmdExit);
             this.panelControl1.Controls.Add(this.cmdConfig);
-            this.panelControl1.Controls.Add(this.simpleButton1);
+            this.panelControl1.Controls.Add(this.cmdLogin);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl1.Location = new System.Drawing.Point(0, 317);
             this.panelControl1.Name = "panelControl1";
@@ -199,17 +203,18 @@ namespace Miraclass.Views
             this.labelControl6.TabIndex = 6;
             this.labelControl6.Text = "@coding inspiration";
             // 
-            // simpleButton3
+            // cmdExit
             // 
-            this.simpleButton3.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Danger;
-            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton3.Appearance.Options.UseBackColor = true;
-            this.simpleButton3.Appearance.Options.UseFont = true;
-            this.simpleButton3.Location = new System.Drawing.Point(393, 18);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(134, 42);
-            this.simpleButton3.TabIndex = 2;
-            this.simpleButton3.Text = "Exit";
+            this.cmdExit.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Danger;
+            this.cmdExit.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdExit.Appearance.Options.UseBackColor = true;
+            this.cmdExit.Appearance.Options.UseFont = true;
+            this.cmdExit.Location = new System.Drawing.Point(393, 18);
+            this.cmdExit.Name = "cmdExit";
+            this.cmdExit.Size = new System.Drawing.Size(134, 42);
+            this.cmdExit.TabIndex = 2;
+            this.cmdExit.Text = "Exit";
+            this.cmdExit.Click += new System.EventHandler(this.cmdExit_Click);
             // 
             // cmdConfig
             // 
@@ -224,17 +229,31 @@ namespace Miraclass.Views
             this.cmdConfig.Text = "Config";
             this.cmdConfig.Click += new System.EventHandler(this.cmdConfig_Click);
             // 
-            // simpleButton1
+            // cmdLogin
             // 
-            this.simpleButton1.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Primary;
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton1.Appearance.Options.UseBackColor = true;
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(76, 18);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(134, 42);
-            this.simpleButton1.TabIndex = 0;
-            this.simpleButton1.Text = "Login";
+            this.cmdLogin.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Primary;
+            this.cmdLogin.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdLogin.Appearance.Options.UseBackColor = true;
+            this.cmdLogin.Appearance.Options.UseFont = true;
+            this.cmdLogin.Location = new System.Drawing.Point(76, 18);
+            this.cmdLogin.Name = "cmdLogin";
+            this.cmdLogin.Size = new System.Drawing.Size(134, 42);
+            this.cmdLogin.TabIndex = 0;
+            this.cmdLogin.Text = "Login";
+            this.cmdLogin.Click += new System.EventHandler(this.cmdLogin_Click);
+            // 
+            // checkEdit1
+            // 
+            this.checkEdit1.Location = new System.Drawing.Point(75, 194);
+            this.checkEdit1.Name = "checkEdit1";
+            this.checkEdit1.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkEdit1.Properties.Appearance.ForeColor = System.Drawing.Color.DarkCyan;
+            this.checkEdit1.Properties.Appearance.Options.UseFont = true;
+            this.checkEdit1.Properties.Appearance.Options.UseForeColor = true;
+            this.checkEdit1.Properties.Caption = "Remember me?";
+            this.checkEdit1.Size = new System.Drawing.Size(152, 24);
+            this.checkEdit1.TabIndex = 5;
+            this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
             // 
             // LoginFrm
             // 
@@ -254,11 +273,12 @@ namespace Miraclass.Views
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUser.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -270,16 +290,17 @@ namespace Miraclass.Views
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.LabelControl lb_title1;
         private DevExpress.XtraEditors.PanelControl panelControl2;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
+        private DevExpress.XtraEditors.TextEdit txtPass;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.TextEdit txtUser;
+        private DevExpress.XtraEditors.SimpleButton cmdLogin;
+        private DevExpress.XtraEditors.LabelControl lbPass;
+        private DevExpress.XtraEditors.LabelControl lbUser;
+        private DevExpress.XtraEditors.LabelControl lbteam;
+        private DevExpress.XtraEditors.LabelControl lbVersion;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton cmdExit;
         private DevExpress.XtraEditors.SimpleButton cmdConfig;
+        private DevExpress.XtraEditors.CheckEdit checkEdit1;
     }
 }

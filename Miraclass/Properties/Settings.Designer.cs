@@ -45,5 +45,17 @@ namespace Miraclass.Properties {
                 this["connect"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string userRemember {
+            get {
+                return ((string)(this["userRemember"]));
+            }
+            set {
+                this["userRemember"] = value;
+            }
+        }
     }
 }

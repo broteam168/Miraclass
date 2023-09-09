@@ -2,8 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Miraclass.Controllers
 {
@@ -17,7 +20,27 @@ namespace Miraclass.Controllers
         }
         public S_User getUser(string username, string password)
         {
-            return db.S_Users.Where(p => p.userName.Equals(username) && p.userPassword.Equals(password)).SingleOrDefault();
+            Console.WriteLine((EncodeMD5(password) ).ToString());
+            return db.S_Users.Where(p => p.userName.Equals(username.Trim()) &&p.userPassword.Equals(EncodeMD5(password).Trim())).SingleOrDefault();
+        }
+        private string EncodeMD5(string pass)
+        {
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            byte[] bs=   System.Text.Encoding.UTF8.GetBytes(pass);
+
+            bs = md5.ComputeHash(bs);
+
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            foreach (byte b in bs)
+            {
+                sb.Append(b.ToString("x1").ToLower());
+
+            }
+
+            pass = sb.ToString();
+
+            return pass;
+
         }
     }
 }

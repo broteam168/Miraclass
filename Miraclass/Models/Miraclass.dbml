@@ -10,25 +10,7 @@
       <Column Name="LastLogin" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="isActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="S_User_S_Group" Member="S_Groups" ThisKey="userGroup" OtherKey="GroupId" Type="S_Group" />
-    </Type>
-  </Table>
-  <Table Name="dbo.S_Menu" Member="S_Menus">
-    <Type Name="S_Menu">
-      <Column Name="MenuId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="MenuLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="MenuName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="MenuButton" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MenuOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.S_Group" Member="S_Groups">
-    <Type Name="S_Group">
-      <Column Name="GroupId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="GroupName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="GroupDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="GroupLevel" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="S_User_S_Group" Member="S_User" ThisKey="GroupId" OtherKey="userGroup" Type="S_User" IsForeignKey="true" />
+      <Column Name="isTeacher" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>
