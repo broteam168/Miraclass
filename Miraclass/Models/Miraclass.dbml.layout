@@ -2,11 +2,37 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Miraclass">
   <DataContextMoniker Name="/MiraclassDataContext" />
   <nestedChildShapes>
-    <classShape Id="2f3cdb64-84ce-4d73-b4a7-df395167505a" absoluteBounds="1.375, 1.5, 2, 2.5401025390625">
+    <classShape Id="2f3cdb64-84ce-4d73-b4a7-df395167505a" absoluteBounds="4.125, 3, 2, 2.5401025390625">
       <DataClassMoniker Name="/MiraclassDataContext/S_User" />
       <nestedChildShapes>
-        <elementListCompartment Id="b58923ff-a418-45ac-b03a-9dc448bd0f6e" absoluteBounds="1.3899999999999997, 1.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="b58923ff-a418-45ac-b03a-9dc448bd0f6e" absoluteBounds="4.14, 3.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="fb3a296a-ac25-418c-be11-370e3f559b63" absoluteBounds="4.125, 0.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/MiraclassDataContext/P_Room" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4a8a6fb2-c724-468f-87df-59034954fe9f" absoluteBounds="4.14, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6999c282-3409-4616-b0ce-a37da3d827f5" absoluteBounds="8.375, 0.875, 2, 1.3862939453125">
+      <DataClassMoniker Name="/MiraclassDataContext/P_Attendance" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a870e1e0-c5ab-479e-ad5c-47431a47bd94" absoluteBounds="8.39, 1.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.125 : 1.56814697265625); (8.375 : 1.56814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MiraclassDataContext/P_Room/P_Room_P_Attendance" />
+      <nodes>
+        <classShapeMoniker Id="fb3a296a-ac25-418c-be11-370e3f559b63" />
+        <classShapeMoniker Id="6999c282-3409-4616-b0ce-a37da3d827f5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.125 : 4.27005126953125); (9.375 : 4.27005126953125); (9.375 : 2.2612939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MiraclassDataContext/S_User/S_User_P_Attendance" />
+      <nodes>
+        <classShapeMoniker Id="2f3cdb64-84ce-4d73-b4a7-df395167505a" />
+        <classShapeMoniker Id="6999c282-3409-4616-b0ce-a37da3d827f5" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

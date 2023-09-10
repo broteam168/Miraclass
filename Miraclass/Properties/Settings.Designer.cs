@@ -57,5 +57,16 @@ namespace Miraclass.Properties {
                 this["userRemember"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-KLLGML0\\SQLEXPRESS;Initial Catalog=Miraclass;Persist Security" +
+            " Info=True;User ID=sa")]
+        public string MiraclassConnectionString1 {
+            get {
+                return ((string)(this["MiraclassConnectionString1"]));
+            }
+        }
     }
 }

@@ -36,16 +36,27 @@ namespace Miraclass.Views
                 frm.MdiParent = this;
                 frm.Show();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                
+                MessageBox.Show("errror"+ex.Message);
             }
         }
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
-            AddRoom frm = new AddRoom();
+            RoomFrm frm = new RoomFrm(this._currentUser);
+            loadForm(frm);
+        }
+
+        private void TeacherDashboard_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            AddRoomFrm frm = new AddRoomFrm(this._currentUser);
             loadForm(frm);
         }
     }
