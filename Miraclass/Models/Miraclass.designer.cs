@@ -33,16 +33,25 @@ namespace Miraclass.Models
     partial void InsertS_User(S_User instance);
     partial void UpdateS_User(S_User instance);
     partial void DeleteS_User(S_User instance);
-    partial void InsertP_Room(P_Room instance);
-    partial void UpdateP_Room(P_Room instance);
-    partial void DeleteP_Room(P_Room instance);
     partial void InsertP_Attendance(P_Attendance instance);
     partial void UpdateP_Attendance(P_Attendance instance);
     partial void DeleteP_Attendance(P_Attendance instance);
+    partial void InsertP_Room(P_Room instance);
+    partial void UpdateP_Room(P_Room instance);
+    partial void DeleteP_Room(P_Room instance);
+    partial void InsertP_Present(P_Present instance);
+    partial void UpdateP_Present(P_Present instance);
+    partial void DeleteP_Present(P_Present instance);
+    partial void InsertP_data(P_data instance);
+    partial void UpdateP_data(P_data instance);
+    partial void DeleteP_data(P_data instance);
+    partial void InsertP_linkPresent(P_linkPresent instance);
+    partial void UpdateP_linkPresent(P_linkPresent instance);
+    partial void DeleteP_linkPresent(P_linkPresent instance);
     #endregion
 		
 		public MiraclassDataContext() : 
-				base(global::Miraclass.Properties.Settings.Default.MiraclassConnectionString1, mappingSource)
+				base(global::Miraclass.Properties.Settings.Default.MiraclassConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -79,6 +88,14 @@ namespace Miraclass.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<P_Attendance> P_Attendances
+		{
+			get
+			{
+				return this.GetTable<P_Attendance>();
+			}
+		}
+		
 		public System.Data.Linq.Table<P_Room> P_Rooms
 		{
 			get
@@ -87,11 +104,27 @@ namespace Miraclass.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<P_Attendance> P_Attendances
+		public System.Data.Linq.Table<P_Present> P_Presents
 		{
 			get
 			{
-				return this.GetTable<P_Attendance>();
+				return this.GetTable<P_Present>();
+			}
+		}
+		
+		public System.Data.Linq.Table<P_data> P_datas
+		{
+			get
+			{
+				return this.GetTable<P_data>();
+			}
+		}
+		
+		public System.Data.Linq.Table<P_linkPresent> P_linkPresents
+		{
+			get
+			{
+				return this.GetTable<P_linkPresent>();
 			}
 		}
 	}
@@ -122,6 +155,8 @@ namespace Miraclass.Models
 		
 		private EntitySet<P_Attendance> _P_Attendances;
 		
+		private EntitySet<P_Present> _P_Presents;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -149,6 +184,7 @@ namespace Miraclass.Models
 		public S_User()
 		{
 			this._P_Attendances = new EntitySet<P_Attendance>(new Action<P_Attendance>(this.attach_P_Attendances), new Action<P_Attendance>(this.detach_P_Attendances));
+			this._P_Presents = new EntitySet<P_Present>(new Action<P_Present>(this.attach_P_Presents), new Action<P_Present>(this.detach_P_Presents));
 			OnCreated();
 		}
 		
@@ -345,6 +381,19 @@ namespace Miraclass.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="S_User_P_Present", Storage="_P_Presents", ThisKey="userId", OtherKey="ownerId")]
+		public EntitySet<P_Present> P_Presents
+		{
+			get
+			{
+				return this._P_Presents;
+			}
+			set
+			{
+				this._P_Presents.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -376,6 +425,210 @@ namespace Miraclass.Models
 			this.SendPropertyChanging();
 			entity.S_User = null;
 		}
+		
+		private void attach_P_Presents(P_Present entity)
+		{
+			this.SendPropertyChanging();
+			entity.S_User = this;
+		}
+		
+		private void detach_P_Presents(P_Present entity)
+		{
+			this.SendPropertyChanging();
+			entity.S_User = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.P_Attendance")]
+	public partial class P_Attendance : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _userId;
+		
+		private int _roomId;
+		
+		private EntityRef<S_User> _S_User;
+		
+		private EntityRef<P_Room> _P_Room;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnuserIdChanging(int value);
+    partial void OnuserIdChanged();
+    partial void OnroomIdChanging(int value);
+    partial void OnroomIdChanged();
+    #endregion
+		
+		public P_Attendance()
+		{
+			this._S_User = default(EntityRef<S_User>);
+			this._P_Room = default(EntityRef<P_Room>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userId", DbType="Int NOT NULL")]
+		public int userId
+		{
+			get
+			{
+				return this._userId;
+			}
+			set
+			{
+				if ((this._userId != value))
+				{
+					if (this._S_User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnuserIdChanging(value);
+					this.SendPropertyChanging();
+					this._userId = value;
+					this.SendPropertyChanged("userId");
+					this.OnuserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_roomId", DbType="Int NOT NULL")]
+		public int roomId
+		{
+			get
+			{
+				return this._roomId;
+			}
+			set
+			{
+				if ((this._roomId != value))
+				{
+					if (this._P_Room.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnroomIdChanging(value);
+					this.SendPropertyChanging();
+					this._roomId = value;
+					this.SendPropertyChanged("roomId");
+					this.OnroomIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="S_User_P_Attendance", Storage="_S_User", ThisKey="userId", OtherKey="userId", IsForeignKey=true)]
+		public S_User S_User
+		{
+			get
+			{
+				return this._S_User.Entity;
+			}
+			set
+			{
+				S_User previousValue = this._S_User.Entity;
+				if (((previousValue != value) 
+							|| (this._S_User.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._S_User.Entity = null;
+						previousValue.P_Attendances.Remove(this);
+					}
+					this._S_User.Entity = value;
+					if ((value != null))
+					{
+						value.P_Attendances.Add(this);
+						this._userId = value.userId;
+					}
+					else
+					{
+						this._userId = default(int);
+					}
+					this.SendPropertyChanged("S_User");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="P_Room_P_Attendance", Storage="_P_Room", ThisKey="roomId", OtherKey="id", IsForeignKey=true)]
+		public P_Room P_Room
+		{
+			get
+			{
+				return this._P_Room.Entity;
+			}
+			set
+			{
+				P_Room previousValue = this._P_Room.Entity;
+				if (((previousValue != value) 
+							|| (this._P_Room.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._P_Room.Entity = null;
+						previousValue.P_Attendances.Remove(this);
+					}
+					this._P_Room.Entity = value;
+					if ((value != null))
+					{
+						value.P_Attendances.Add(this);
+						this._roomId = value.id;
+					}
+					else
+					{
+						this._roomId = default(int);
+					}
+					this.SendPropertyChanged("P_Room");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.P_Room")]
@@ -396,7 +649,11 @@ namespace Miraclass.Models
 		
 		private int _hostId;
 		
+		private string _password;
+		
 		private EntitySet<P_Attendance> _P_Attendances;
+		
+		private EntitySet<P_linkPresent> _P_linkPresents;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -414,11 +671,14 @@ namespace Miraclass.Models
     partial void OnstatusChanged();
     partial void OnhostIdChanging(int value);
     partial void OnhostIdChanged();
+    partial void OnpasswordChanging(string value);
+    partial void OnpasswordChanged();
     #endregion
 		
 		public P_Room()
 		{
 			this._P_Attendances = new EntitySet<P_Attendance>(new Action<P_Attendance>(this.attach_P_Attendances), new Action<P_Attendance>(this.detach_P_Attendances));
+			this._P_linkPresents = new EntitySet<P_linkPresent>(new Action<P_linkPresent>(this.attach_P_linkPresents), new Action<P_linkPresent>(this.detach_P_linkPresents));
 			OnCreated();
 		}
 		
@@ -542,6 +802,26 @@ namespace Miraclass.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="NVarChar(50)")]
+		public string password
+		{
+			get
+			{
+				return this._password;
+			}
+			set
+			{
+				if ((this._password != value))
+				{
+					this.OnpasswordChanging(value);
+					this.SendPropertyChanging();
+					this._password = value;
+					this.SendPropertyChanged("password");
+					this.OnpasswordChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="P_Room_P_Attendance", Storage="_P_Attendances", ThisKey="id", OtherKey="roomId")]
 		public EntitySet<P_Attendance> P_Attendances
 		{
@@ -552,6 +832,19 @@ namespace Miraclass.Models
 			set
 			{
 				this._P_Attendances.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="P_Room_P_linkPresent", Storage="_P_linkPresents", ThisKey="id", OtherKey="roomId")]
+		public EntitySet<P_linkPresent> P_linkPresents
+		{
+			get
+			{
+				return this._P_linkPresents;
+			}
+			set
+			{
+				this._P_linkPresents.Assign(value);
 			}
 		}
 		
@@ -586,23 +879,45 @@ namespace Miraclass.Models
 			this.SendPropertyChanging();
 			entity.P_Room = null;
 		}
+		
+		private void attach_P_linkPresents(P_linkPresent entity)
+		{
+			this.SendPropertyChanging();
+			entity.P_Room = this;
+		}
+		
+		private void detach_P_linkPresents(P_linkPresent entity)
+		{
+			this.SendPropertyChanging();
+			entity.P_Room = null;
+		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.P_Attendance")]
-	public partial class P_Attendance : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.P_Present")]
+	public partial class P_Present : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _id;
 		
-		private int _userId;
+		private string _name;
 		
-		private int _roomId;
+		private string _description;
 		
-		private EntityRef<P_Room> _P_Room;
+		private System.Nullable<int> _roomid;
+		
+		private bool _status;
+		
+		private System.Nullable<int> _cateId;
+		
+		private int _ownerId;
+		
+		private EntitySet<P_linkPresent> _P_linkPresents;
 		
 		private EntityRef<S_User> _S_User;
+		
+		private EntityRef<P_data> _P_data;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -610,20 +925,323 @@ namespace Miraclass.Models
     partial void OnCreated();
     partial void OnidChanging(int value);
     partial void OnidChanged();
-    partial void OnuserIdChanging(int value);
-    partial void OnuserIdChanged();
-    partial void OnroomIdChanging(int value);
-    partial void OnroomIdChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OndescriptionChanging(string value);
+    partial void OndescriptionChanged();
+    partial void OnroomidChanging(System.Nullable<int> value);
+    partial void OnroomidChanged();
+    partial void OnstatusChanging(bool value);
+    partial void OnstatusChanged();
+    partial void OncateIdChanging(System.Nullable<int> value);
+    partial void OncateIdChanged();
+    partial void OnownerIdChanging(int value);
+    partial void OnownerIdChanged();
     #endregion
 		
-		public P_Attendance()
+		public P_Present()
 		{
-			this._P_Room = default(EntityRef<P_Room>);
+			this._P_linkPresents = new EntitySet<P_linkPresent>(new Action<P_linkPresent>(this.attach_P_linkPresents), new Action<P_linkPresent>(this.detach_P_linkPresents));
 			this._S_User = default(EntityRef<S_User>);
+			this._P_data = default(EntityRef<P_data>);
 			OnCreated();
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					if (this._P_data.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_description", DbType="NVarChar(50)")]
+		public string description
+		{
+			get
+			{
+				return this._description;
+			}
+			set
+			{
+				if ((this._description != value))
+				{
+					this.OndescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._description = value;
+					this.SendPropertyChanged("description");
+					this.OndescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_roomid", DbType="Int")]
+		public System.Nullable<int> roomid
+		{
+			get
+			{
+				return this._roomid;
+			}
+			set
+			{
+				if ((this._roomid != value))
+				{
+					this.OnroomidChanging(value);
+					this.SendPropertyChanging();
+					this._roomid = value;
+					this.SendPropertyChanged("roomid");
+					this.OnroomidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="Bit NOT NULL")]
+		public bool status
+		{
+			get
+			{
+				return this._status;
+			}
+			set
+			{
+				if ((this._status != value))
+				{
+					this.OnstatusChanging(value);
+					this.SendPropertyChanging();
+					this._status = value;
+					this.SendPropertyChanged("status");
+					this.OnstatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cateId", DbType="Int")]
+		public System.Nullable<int> cateId
+		{
+			get
+			{
+				return this._cateId;
+			}
+			set
+			{
+				if ((this._cateId != value))
+				{
+					this.OncateIdChanging(value);
+					this.SendPropertyChanging();
+					this._cateId = value;
+					this.SendPropertyChanged("cateId");
+					this.OncateIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ownerId", DbType="Int NOT NULL")]
+		public int ownerId
+		{
+			get
+			{
+				return this._ownerId;
+			}
+			set
+			{
+				if ((this._ownerId != value))
+				{
+					if (this._S_User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnownerIdChanging(value);
+					this.SendPropertyChanging();
+					this._ownerId = value;
+					this.SendPropertyChanged("ownerId");
+					this.OnownerIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="P_Present_P_linkPresent", Storage="_P_linkPresents", ThisKey="id", OtherKey="presentId")]
+		public EntitySet<P_linkPresent> P_linkPresents
+		{
+			get
+			{
+				return this._P_linkPresents;
+			}
+			set
+			{
+				this._P_linkPresents.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="S_User_P_Present", Storage="_S_User", ThisKey="ownerId", OtherKey="userId", IsForeignKey=true)]
+		public S_User S_User
+		{
+			get
+			{
+				return this._S_User.Entity;
+			}
+			set
+			{
+				S_User previousValue = this._S_User.Entity;
+				if (((previousValue != value) 
+							|| (this._S_User.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._S_User.Entity = null;
+						previousValue.P_Presents.Remove(this);
+					}
+					this._S_User.Entity = value;
+					if ((value != null))
+					{
+						value.P_Presents.Add(this);
+						this._ownerId = value.userId;
+					}
+					else
+					{
+						this._ownerId = default(int);
+					}
+					this.SendPropertyChanged("S_User");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="P_data_P_Present", Storage="_P_data", ThisKey="id", OtherKey="id", IsForeignKey=true)]
+		public P_data P_data
+		{
+			get
+			{
+				return this._P_data.Entity;
+			}
+			set
+			{
+				P_data previousValue = this._P_data.Entity;
+				if (((previousValue != value) 
+							|| (this._P_data.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._P_data.Entity = null;
+						previousValue.P_Presents = null;
+					}
+					this._P_data.Entity = value;
+					if ((value != null))
+					{
+						value.P_Presents = this;
+						this._id = value.id;
+					}
+					else
+					{
+						this._id = default(int);
+					}
+					this.SendPropertyChanged("P_data");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_P_linkPresents(P_linkPresent entity)
+		{
+			this.SendPropertyChanging();
+			entity.P_Present = this;
+		}
+		
+		private void detach_P_linkPresents(P_linkPresent entity)
+		{
+			this.SendPropertyChanging();
+			entity.P_Present = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.P_data")]
+	public partial class P_data : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private System.Data.Linq.Binary _data;
+		
+		private int _tempId;
+		
+		private EntityRef<P_Present> _P_Presents;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OndataChanging(System.Data.Linq.Binary value);
+    partial void OndataChanged();
+    partial void OntempIdChanging(int value);
+    partial void OntempIdChanged();
+    #endregion
+		
+		public P_data()
+		{
+			this._P_Presents = default(EntityRef<P_Present>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="Int NOT NULL")]
 		public int id
 		{
 			get
@@ -643,26 +1261,147 @@ namespace Miraclass.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userId", DbType="Int NOT NULL")]
-		public int userId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_data", DbType="VarBinary(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary data
 		{
 			get
 			{
-				return this._userId;
+				return this._data;
 			}
 			set
 			{
-				if ((this._userId != value))
+				if ((this._data != value))
 				{
-					if (this._S_User.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnuserIdChanging(value);
+					this.OndataChanging(value);
 					this.SendPropertyChanging();
-					this._userId = value;
-					this.SendPropertyChanged("userId");
-					this.OnuserIdChanged();
+					this._data = value;
+					this.SendPropertyChanged("data");
+					this.OndataChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tempId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int tempId
+		{
+			get
+			{
+				return this._tempId;
+			}
+			set
+			{
+				if ((this._tempId != value))
+				{
+					this.OntempIdChanging(value);
+					this.SendPropertyChanging();
+					this._tempId = value;
+					this.SendPropertyChanged("tempId");
+					this.OntempIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="P_data_P_Present", Storage="_P_Presents", ThisKey="id", OtherKey="id", IsUnique=true, IsForeignKey=false)]
+		public P_Present P_Presents
+		{
+			get
+			{
+				return this._P_Presents.Entity;
+			}
+			set
+			{
+				P_Present previousValue = this._P_Presents.Entity;
+				if (((previousValue != value) 
+							|| (this._P_Presents.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._P_Presents.Entity = null;
+						previousValue.P_data = null;
+					}
+					this._P_Presents.Entity = value;
+					if ((value != null))
+					{
+						value.P_data = this;
+					}
+					this.SendPropertyChanged("P_Presents");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.P_linkPresent")]
+	public partial class P_linkPresent : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _roomId;
+		
+		private int _presentId;
+		
+		private EntityRef<P_Present> _P_Present;
+		
+		private EntityRef<P_Room> _P_Room;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnroomIdChanging(int value);
+    partial void OnroomIdChanged();
+    partial void OnpresentIdChanging(int value);
+    partial void OnpresentIdChanged();
+    #endregion
+		
+		public P_linkPresent()
+		{
+			this._P_Present = default(EntityRef<P_Present>);
+			this._P_Room = default(EntityRef<P_Room>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
 				}
 			}
 		}
@@ -691,7 +1430,65 @@ namespace Miraclass.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="P_Room_P_Attendance", Storage="_P_Room", ThisKey="roomId", OtherKey="id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_presentId", DbType="Int NOT NULL")]
+		public int presentId
+		{
+			get
+			{
+				return this._presentId;
+			}
+			set
+			{
+				if ((this._presentId != value))
+				{
+					if (this._P_Present.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnpresentIdChanging(value);
+					this.SendPropertyChanging();
+					this._presentId = value;
+					this.SendPropertyChanged("presentId");
+					this.OnpresentIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="P_Present_P_linkPresent", Storage="_P_Present", ThisKey="presentId", OtherKey="id", IsForeignKey=true)]
+		public P_Present P_Present
+		{
+			get
+			{
+				return this._P_Present.Entity;
+			}
+			set
+			{
+				P_Present previousValue = this._P_Present.Entity;
+				if (((previousValue != value) 
+							|| (this._P_Present.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._P_Present.Entity = null;
+						previousValue.P_linkPresents.Remove(this);
+					}
+					this._P_Present.Entity = value;
+					if ((value != null))
+					{
+						value.P_linkPresents.Add(this);
+						this._presentId = value.id;
+					}
+					else
+					{
+						this._presentId = default(int);
+					}
+					this.SendPropertyChanged("P_Present");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="P_Room_P_linkPresent", Storage="_P_Room", ThisKey="roomId", OtherKey="id", IsForeignKey=true)]
 		public P_Room P_Room
 		{
 			get
@@ -708,12 +1505,12 @@ namespace Miraclass.Models
 					if ((previousValue != null))
 					{
 						this._P_Room.Entity = null;
-						previousValue.P_Attendances.Remove(this);
+						previousValue.P_linkPresents.Remove(this);
 					}
 					this._P_Room.Entity = value;
 					if ((value != null))
 					{
-						value.P_Attendances.Add(this);
+						value.P_linkPresents.Add(this);
 						this._roomId = value.id;
 					}
 					else
@@ -721,40 +1518,6 @@ namespace Miraclass.Models
 						this._roomId = default(int);
 					}
 					this.SendPropertyChanged("P_Room");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="S_User_P_Attendance", Storage="_S_User", ThisKey="userId", OtherKey="userId", IsForeignKey=true)]
-		public S_User S_User
-		{
-			get
-			{
-				return this._S_User.Entity;
-			}
-			set
-			{
-				S_User previousValue = this._S_User.Entity;
-				if (((previousValue != value) 
-							|| (this._S_User.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._S_User.Entity = null;
-						previousValue.P_Attendances.Remove(this);
-					}
-					this._S_User.Entity = value;
-					if ((value != null))
-					{
-						value.P_Attendances.Add(this);
-						this._userId = value.userId;
-					}
-					else
-					{
-						this._userId = default(int);
-					}
-					this.SendPropertyChanged("S_User");
 				}
 			}
 		}

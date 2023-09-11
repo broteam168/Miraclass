@@ -1,6 +1,6 @@
 ﻿namespace Miraclass.Views
 {
-    partial class AddRoomFrm
+    partial class AddPresentFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddRoomFrm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddPresentFrm));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.cmdRefresh = new DevExpress.XtraEditors.SimpleButton();
             this.lb_title1 = new DevExpress.XtraEditors.LabelControl();
             this.cmdDelete = new DevExpress.XtraEditors.SimpleButton();
             this.cmdAdd = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.gridParticipation = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.cellId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cellUserId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cellRoomId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cbAdd = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.gridLookUpEdit1 = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.name = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.content = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.description = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.roomId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.status = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CateId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ownerId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lbName = new DevExpress.XtraEditors.LabelControl();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.gridRoom = new DevExpress.XtraGrid.GridControl();
@@ -57,10 +63,12 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridParticipation)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbAdd.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
+            this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRoom)).BeginInit();
@@ -139,8 +147,7 @@
             this.panelControl2.Appearance.BackColor = System.Drawing.Color.Yellow;
             this.panelControl2.Appearance.Options.UseBackColor = true;
             this.panelControl2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panelControl2.Controls.Add(this.gridParticipation);
-            this.panelControl2.Controls.Add(this.cbAdd);
+            this.panelControl2.Controls.Add(this.gridLookUpEdit1);
             this.panelControl2.Controls.Add(this.panelControl4);
             this.panelControl2.Controls.Add(this.lbName);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Right;
@@ -149,79 +156,139 @@
             this.panelControl2.Size = new System.Drawing.Size(529, 698);
             this.panelControl2.TabIndex = 1;
             // 
-            // gridParticipation
+            // gridLookUpEdit1
             // 
-            this.gridParticipation.Location = new System.Drawing.Point(2, 6);
-            this.gridParticipation.MainView = this.gridView2;
-            this.gridParticipation.Name = "gridParticipation";
-            this.gridParticipation.Size = new System.Drawing.Size(522, 334);
-            this.gridParticipation.TabIndex = 9;
-            this.gridParticipation.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
-            // 
-            // gridView2
-            // 
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.cellId,
-            this.cellUserId,
-            this.cellRoomId});
-            this.gridView2.GridControl = this.gridParticipation;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView2_RowClick);
-            this.gridView2.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView2_RowCellClick);
-            this.gridView2.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView2_FocusedRowChanged);
-            // 
-            // cellId
-            // 
-            this.cellId.Caption = "ID";
-            this.cellId.FieldName = "id";
-            this.cellId.MinWidth = 25;
-            this.cellId.Name = "cellId";
-            this.cellId.Visible = true;
-            this.cellId.VisibleIndex = 0;
-            this.cellId.Width = 94;
-            // 
-            // cellUserId
-            // 
-            this.cellUserId.Caption = "User Id";
-            this.cellUserId.FieldName = "userId";
-            this.cellUserId.MinWidth = 25;
-            this.cellUserId.Name = "cellUserId";
-            this.cellUserId.Visible = true;
-            this.cellUserId.VisibleIndex = 1;
-            this.cellUserId.Width = 94;
-            // 
-            // cellRoomId
-            // 
-            this.cellRoomId.Caption = "Room id";
-            this.cellRoomId.FieldName = "roomId";
-            this.cellRoomId.MinWidth = 25;
-            this.cellRoomId.Name = "cellRoomId";
-            this.cellRoomId.Visible = true;
-            this.cellRoomId.VisibleIndex = 2;
-            this.cellRoomId.Width = 94;
-            // 
-            // cbAdd
-            // 
-            this.cbAdd.Location = new System.Drawing.Point(51, 439);
-            this.cbAdd.Name = "cbAdd";
-            this.cbAdd.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbAdd.Properties.Appearance.Options.UseFont = true;
-            this.cbAdd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.gridLookUpEdit1.Location = new System.Drawing.Point(51, 458);
+            this.gridLookUpEdit1.Name = "gridLookUpEdit1";
+            this.gridLookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbAdd.Size = new System.Drawing.Size(458, 28);
-            this.cbAdd.TabIndex = 9;
+            this.gridLookUpEdit1.Properties.PopupView = this.gridLookUpEdit1View;
+            this.gridLookUpEdit1.Size = new System.Drawing.Size(452, 22);
+            this.gridLookUpEdit1.TabIndex = 11;
+            // 
+            // gridLookUpEdit1View
+            // 
+            this.gridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridLookUpEdit1View.Name = "gridLookUpEdit1View";
+            this.gridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
             // panelControl4
             // 
             this.panelControl4.Appearance.BackColor = System.Drawing.Color.White;
             this.panelControl4.Appearance.Options.UseBackColor = true;
             this.panelControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl4.Controls.Add(this.gridControl1);
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl4.Location = new System.Drawing.Point(2, 2);
             this.panelControl4.Name = "panelControl4";
             this.panelControl4.Size = new System.Drawing.Size(525, 308);
             this.panelControl4.TabIndex = 8;
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
+            this.gridControl1.MainView = this.gridView2;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(525, 308);
+            this.gridControl1.TabIndex = 2;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.id,
+            this.name,
+            this.content,
+            this.description,
+            this.roomId,
+            this.status,
+            this.CateId,
+            this.ownerId});
+            this.gridView2.GridControl = this.gridControl1;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView2_FocusedRowChanged);
+            // 
+            // id
+            // 
+            this.id.Caption = "Id";
+            this.id.CustomizationCaption = "Id";
+            this.id.FieldName = "id";
+            this.id.MinWidth = 25;
+            this.id.Name = "id";
+            this.id.Visible = true;
+            this.id.VisibleIndex = 0;
+            this.id.Width = 94;
+            // 
+            // name
+            // 
+            this.name.Caption = "Name";
+            this.name.FieldName = "name";
+            this.name.MinWidth = 25;
+            this.name.Name = "name";
+            this.name.Visible = true;
+            this.name.VisibleIndex = 1;
+            this.name.Width = 94;
+            // 
+            // content
+            // 
+            this.content.Caption = "Content";
+            this.content.FieldName = "content";
+            this.content.MinWidth = 25;
+            this.content.Name = "content";
+            this.content.Width = 94;
+            // 
+            // description
+            // 
+            this.description.Caption = "Description";
+            this.description.FieldName = "description";
+            this.description.MinWidth = 25;
+            this.description.Name = "description";
+            this.description.Visible = true;
+            this.description.VisibleIndex = 2;
+            this.description.Width = 94;
+            // 
+            // roomId
+            // 
+            this.roomId.Caption = "room ID";
+            this.roomId.FieldName = "roomId";
+            this.roomId.MinWidth = 25;
+            this.roomId.Name = "roomId";
+            this.roomId.Visible = true;
+            this.roomId.VisibleIndex = 3;
+            this.roomId.Width = 94;
+            // 
+            // status
+            // 
+            this.status.Caption = "status";
+            this.status.FieldName = "status";
+            this.status.MinWidth = 25;
+            this.status.Name = "status";
+            this.status.Visible = true;
+            this.status.VisibleIndex = 4;
+            this.status.Width = 94;
+            // 
+            // CateId
+            // 
+            this.CateId.Caption = "Category Id";
+            this.CateId.FieldName = "cateId";
+            this.CateId.MinWidth = 25;
+            this.CateId.Name = "CateId";
+            this.CateId.Visible = true;
+            this.CateId.VisibleIndex = 5;
+            this.CateId.Width = 94;
+            // 
+            // ownerId
+            // 
+            this.ownerId.Caption = "ownerId";
+            this.ownerId.FieldName = "ownerId";
+            this.ownerId.MinWidth = 25;
+            this.ownerId.Name = "ownerId";
+            this.ownerId.Visible = true;
+            this.ownerId.VisibleIndex = 6;
+            this.ownerId.Width = 94;
             // 
             // lbName
             // 
@@ -340,7 +407,7 @@
             this.password.VisibleIndex = 6;
             this.password.Width = 94;
             // 
-            // AddRoomFrm
+            // AddPresentFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -348,7 +415,7 @@
             this.Controls.Add(this.panelControl3);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
-            this.Name = "AddRoomFrm";
+            this.Name = "AddPresentFrm";
             this.Text = "Add room";
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
@@ -356,10 +423,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridParticipation)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbAdd.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
+            this.panelControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridRoom)).EndInit();
@@ -373,26 +442,32 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.PanelControl panelControl3;
-        private DevExpress.XtraGrid.GridControl gridRoom;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.LabelControl lbName;
         private DevExpress.XtraEditors.SimpleButton cmdDelete;
         private DevExpress.XtraEditors.SimpleButton cmdAdd;
         private DevExpress.XtraEditors.LabelControl lb_title1;
+        private DevExpress.XtraEditors.SimpleButton cmdRefresh;
+        private DevExpress.XtraEditors.PanelControl panelControl4;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn id;
+        private DevExpress.XtraGrid.Columns.GridColumn name;
+        private DevExpress.XtraGrid.Columns.GridColumn content;
+        private DevExpress.XtraGrid.Columns.GridColumn description;
+        private DevExpress.XtraGrid.Columns.GridColumn roomId;
+        private DevExpress.XtraGrid.Columns.GridColumn status;
+        private DevExpress.XtraGrid.Columns.GridColumn CateId;
+        private DevExpress.XtraGrid.Columns.GridColumn ownerId;
+        private DevExpress.XtraGrid.GridControl gridRoom;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn cell_id;
         private DevExpress.XtraGrid.Columns.GridColumn cell_name;
         private DevExpress.XtraGrid.Columns.GridColumn cell_desc;
         private DevExpress.XtraGrid.Columns.GridColumn cell_date;
         private DevExpress.XtraGrid.Columns.GridColumn cell_status;
         private DevExpress.XtraGrid.Columns.GridColumn cell_host;
-        private DevExpress.XtraEditors.SimpleButton cmdRefresh;
-        private DevExpress.XtraEditors.PanelControl panelControl4;
-        private DevExpress.XtraGrid.GridControl gridParticipation;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private DevExpress.XtraEditors.ComboBoxEdit cbAdd;
-        private DevExpress.XtraGrid.Columns.GridColumn cellId;
-        private DevExpress.XtraGrid.Columns.GridColumn cellUserId;
-        private DevExpress.XtraGrid.Columns.GridColumn cellRoomId;
         private DevExpress.XtraGrid.Columns.GridColumn password;
+        private DevExpress.XtraEditors.GridLookUpEdit gridLookUpEdit1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridLookUpEdit1View;
     }
 }

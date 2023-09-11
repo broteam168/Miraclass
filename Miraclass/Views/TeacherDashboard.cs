@@ -59,5 +59,18 @@ namespace Miraclass.Views
             AddRoomFrm frm = new AddRoomFrm(this._currentUser);
             loadForm(frm);
         }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            PresentManagerFrm frm = new PresentManagerFrm(this._currentUser);
+            loadForm(frm);
+        }
+
+        private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            AddPresentFrm frm = new AddPresentFrm(this._currentUser);
+            loadForm(frm);
+        }
     }
 }

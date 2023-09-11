@@ -34,13 +34,16 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManagerMain = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManagerMain)).BeginInit();
             this.SuspendLayout();
@@ -54,10 +57,12 @@
             this.ribbon.SearchEditItem,
             this.barButtonItem1,
             this.skinRibbonGalleryBarItem1,
-            this.barButtonItem2});
+            this.barButtonItem2,
+            this.barButtonItem3,
+            this.barButtonItem4});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.ribbon.MaxItemId = 4;
+            this.ribbon.MaxItemId = 6;
             this.ribbon.Name = "ribbon";
             this.ribbon.OptionsMenuMinWidth = 519;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -68,7 +73,7 @@
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "Create room";
+            this.barButtonItem1.Caption = "Room manager";
             this.barButtonItem1.Hint = "Create a room to start presenting something";
             this.barButtonItem1.Id = 1;
             this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
@@ -93,10 +98,20 @@
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Present";
+            this.barButtonItem3.Id = 4;
+            this.barButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
+            this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup4});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Room";
             // 
@@ -105,7 +120,14 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem1);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem2);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Present";
+            this.ribbonPageGroup1.Text = "Room";
+            // 
+            // ribbonPageGroup4
+            // 
+            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem3);
+            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem4);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            this.ribbonPageGroup4.Text = "Present";
             // 
             // ribbonPage2
             // 
@@ -136,6 +158,15 @@
             // xtraTabbedMdiManagerMain
             // 
             this.xtraTabbedMdiManagerMain.MdiParent = this;
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "Add present to room";
+            this.barButtonItem4.Id = 5;
+            this.barButtonItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.Image")));
+            this.barButtonItem4.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.LargeImage")));
+            this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
             // TeacherDashboard
             // 
@@ -176,5 +207,8 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManagerMain;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
     }
 }

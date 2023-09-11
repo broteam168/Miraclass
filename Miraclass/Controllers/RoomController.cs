@@ -29,13 +29,14 @@ namespace Miraclass.Controllers
         }
         public void UpdateRoom(P_Room _obj)
         {
-            MessageBox.Show(_obj.id.ToString());
+            //MessageBox.Show(_obj.id.ToString());
             P_Room tmp = db.P_Rooms.Where(p=>p.id == _obj.id).FirstOrDefault();
             if (tmp != null)
             {
                 tmp.RoomName = _obj.RoomName; 
                 tmp.RoomDesc = _obj.RoomDesc;
                 tmp.status = _obj.status;
+                tmp.password = _obj.password;
                 db.SubmitChanges();
             }
         }

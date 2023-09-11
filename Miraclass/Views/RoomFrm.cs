@@ -24,6 +24,11 @@ namespace Miraclass.Views
         {
             InitializeComponent();
             this._currentUser = currentUser;
+            cls = new RoomController();
+
+            gridRoom.DataSource = cls.liRoom(_currentUser.userId);
+
+            setStatus(true);
         }
         private void setStatus(bool enable)
         {
@@ -40,17 +45,12 @@ namespace Miraclass.Views
         }
         private void gridRoom_Load(object sender, EventArgs e)
         {
-            cls = new RoomController();
-
-            gridRoom.DataSource = cls.liRoom(_currentUser.userId);
-
-            setStatus(true);
+            
         }
 
         private void cmdRefresh_Click(object sender, EventArgs e)
         {
-            cls = new RoomController();
-
+          
             gridRoom.DataSource = cls.liRoom(_currentUser.userId);
         }
 
@@ -81,6 +81,8 @@ namespace Miraclass.Views
                     newRoom.CreatedAt = DateTime.Now;
                     newRoom.RoomDesc = txtDesc.Text;
                     newRoom.hostId = _currentUser.userId;
+
+                    newRoom.password = txtPass.Text;
                     cls.AddRoom(newRoom);
                     MessageBox.Show("Add successfully");
 
@@ -109,6 +111,8 @@ namespace Miraclass.Views
                     newRoom.RoomName = txtName.Text;
                     newRoom.status = checkActive.Checked;
                     newRoom.RoomDesc = txtDesc.Text;
+                    if (!txtPass.Text.Equals("")) newRoom.password = txtPass.Text;
+                    else newRoom.password += txtPass.Text;
                     cls.UpdateRoom(newRoom);
                     MessageBox.Show("Edit successfully");
 

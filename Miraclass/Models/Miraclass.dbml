@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Miraclass" Class="MiraclassDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-KLLGML0\SQLEXPRESS;Initial Catalog=Miraclass;Persist Security Info=True;User ID=sa" SettingsObjectName="Miraclass.Properties.Settings" SettingsPropertyName="MiraclassConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-KLLGML0\SQLEXPRESS;Initial Catalog=Miraclass;Persist Security Info=True;User ID=sa" SettingsObjectName="Miraclass.Properties.Settings" SettingsPropertyName="MiraclassConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.S_User" Member="S_Users">
     <Type Name="S_User">
       <Column Name="userId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -12,6 +12,16 @@
       <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="isTeacher" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="S_User_P_Attendance" Member="P_Attendances" ThisKey="userId" OtherKey="userId" Type="P_Attendance" />
+      <Association Name="S_User_P_Present" Member="P_Presents" ThisKey="userId" OtherKey="ownerId" Type="P_Present" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P_Attendance" Member="P_Attendances">
+    <Type Name="P_Attendance">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="roomId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="S_User_P_Attendance" Member="S_User" ThisKey="userId" OtherKey="userId" Type="S_User" IsForeignKey="true" />
+      <Association Name="P_Room_P_Attendance" Member="P_Room" ThisKey="roomId" OtherKey="id" Type="P_Room" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.P_Room" Member="P_Rooms">
@@ -22,16 +32,40 @@
       <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="hostId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="P_Room_P_Attendance" Member="P_Attendances" ThisKey="id" OtherKey="roomId" Type="P_Attendance" />
+      <Association Name="P_Room_P_linkPresent" Member="P_linkPresents" ThisKey="id" OtherKey="roomId" Type="P_linkPresent" />
     </Type>
   </Table>
-  <Table Name="dbo.P_Attendance" Member="P_Attendances">
-    <Type Name="P_Attendance">
+  <Table Name="dbo.P_Present" Member="P_Presents">
+    <Type Name="P_Present">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="userId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="roomid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="cateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ownerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="P_Present_P_linkPresent" Member="P_linkPresents" ThisKey="id" OtherKey="presentId" Type="P_linkPresent" />
+      <Association Name="S_User_P_Present" Member="S_User" ThisKey="ownerId" OtherKey="userId" Type="S_User" IsForeignKey="true" />
+      <Association Name="P_data_P_Present" Member="P_data" ThisKey="id" OtherKey="id" Type="P_data" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P_data" Member="P_datas">
+    <Type Name="P_data">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="data" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="tempId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="P_data_P_Present" Member="P_Presents" ThisKey="id" OtherKey="id" Type="P_Present" Cardinality="One" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P_linkPresent" Member="P_linkPresents">
+    <Type Name="P_linkPresent">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="roomId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="P_Room_P_Attendance" Member="P_Room" ThisKey="roomId" OtherKey="id" Type="P_Room" IsForeignKey="true" />
-      <Association Name="S_User_P_Attendance" Member="S_User" ThisKey="userId" OtherKey="userId" Type="S_User" IsForeignKey="true" />
+      <Column Name="presentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="P_Present_P_linkPresent" Member="P_Present" ThisKey="presentId" OtherKey="id" Type="P_Present" IsForeignKey="true" />
+      <Association Name="P_Room_P_linkPresent" Member="P_Room" ThisKey="roomId" OtherKey="id" Type="P_Room" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

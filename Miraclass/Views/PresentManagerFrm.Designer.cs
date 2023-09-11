@@ -1,6 +1,6 @@
 ﻿namespace Miraclass.Views
 {
-    partial class RoomFrm
+    partial class PresentManagerFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoomFrm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PresentManagerFrm));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.cmdRefresh = new DevExpress.XtraEditors.SimpleButton();
             this.lb_title1 = new DevExpress.XtraEditors.LabelControl();
@@ -37,6 +37,9 @@
             this.cmdEdit = new DevExpress.XtraEditors.SimpleButton();
             this.cmdAdd = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.txtPath = new DevExpress.XtraEditors.TextEdit();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtDesc = new System.Windows.Forms.TextBox();
@@ -47,19 +50,20 @@
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.gridRoom = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.cell_id = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cell_name = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cell_desc = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cell_date = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cell_status = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cell_host = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.password = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.txtPass = new DevExpress.XtraEditors.TextEdit();
+            this.id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.name = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.content = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.description = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.roomId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.status = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CateId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ownerId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPath.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkActive.Properties)).BeginInit();
@@ -68,7 +72,6 @@
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -138,7 +141,7 @@
             this.cmdDelete.Size = new System.Drawing.Size(151, 43);
             this.cmdDelete.TabIndex = 11;
             this.cmdDelete.Text = "Delete";
-            this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click);
+            this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click_1);
             // 
             // cmdEdit
             // 
@@ -152,7 +155,7 @@
             this.cmdEdit.Size = new System.Drawing.Size(158, 43);
             this.cmdEdit.TabIndex = 10;
             this.cmdEdit.Text = "Edit";
-            this.cmdEdit.Click += new System.EventHandler(this.cmdEdit_Click);
+            this.cmdEdit.Click += new System.EventHandler(this.cmdEdit_Click_1);
             // 
             // cmdAdd
             // 
@@ -173,8 +176,9 @@
             this.panelControl2.Appearance.BackColor = System.Drawing.Color.Yellow;
             this.panelControl2.Appearance.Options.UseBackColor = true;
             this.panelControl2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Controls.Add(this.labelControl1);
-            this.panelControl2.Controls.Add(this.txtPass);
+            this.panelControl2.Controls.Add(this.txtPath);
             this.panelControl2.Controls.Add(this.panelControl4);
             this.panelControl2.Controls.Add(this.txtDesc);
             this.panelControl2.Controls.Add(this.labelControl2);
@@ -186,6 +190,35 @@
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(392, 698);
             this.panelControl2.TabIndex = 1;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(337, 412);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(35, 29);
+            this.simpleButton1.TabIndex = 11;
+            this.simpleButton1.Text = "...";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(23, 381);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(41, 26);
+            this.labelControl1.TabIndex = 10;
+            this.labelControl1.Text = "File:";
+            // 
+            // txtPath
+            // 
+            this.txtPath.Enabled = false;
+            this.txtPath.Location = new System.Drawing.Point(23, 413);
+            this.txtPath.Name = "txtPath";
+            this.txtPath.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPath.Properties.Appearance.Options.UseFont = true;
+            this.txtPath.Size = new System.Drawing.Size(349, 28);
+            this.txtPath.TabIndex = 9;
             // 
             // panelControl4
             // 
@@ -207,9 +240,9 @@
             this.labelControl3.Appearance.Options.UseForeColor = true;
             this.labelControl3.Location = new System.Drawing.Point(91, 16);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(217, 31);
+            this.labelControl3.Size = new System.Drawing.Size(235, 31);
             this.labelControl3.TabIndex = 2;
-            this.labelControl3.Text = "Room information";
+            this.labelControl3.Text = "Present information";
             // 
             // txtDesc
             // 
@@ -225,13 +258,13 @@
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Location = new System.Drawing.Point(25, 199);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(172, 26);
+            this.labelControl2.Size = new System.Drawing.Size(183, 26);
             this.labelControl2.TabIndex = 6;
-            this.labelControl2.Text = "Room description:";
+            this.labelControl2.Text = "Present description:";
             // 
             // checkActive
             // 
-            this.checkActive.Location = new System.Drawing.Point(25, 463);
+            this.checkActive.Location = new System.Drawing.Point(23, 476);
             this.checkActive.Name = "checkActive";
             this.checkActive.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkActive.Properties.Appearance.Options.UseFont = true;
@@ -245,9 +278,9 @@
             this.lbName.Appearance.Options.UseFont = true;
             this.lbName.Location = new System.Drawing.Point(25, 104);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(119, 26);
+            this.lbName.Size = new System.Drawing.Size(130, 26);
             this.lbName.TabIndex = 1;
-            this.lbName.Text = "Room name:";
+            this.lbName.Text = "Present name:";
             // 
             // txtName
             // 
@@ -281,106 +314,102 @@
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.cell_id,
-            this.cell_name,
-            this.cell_desc,
-            this.cell_date,
-            this.cell_status,
-            this.cell_host,
-            this.password});
+            this.id,
+            this.name,
+            this.content,
+            this.description,
+            this.roomId,
+            this.status,
+            this.CateId,
+            this.ownerId});
             this.gridView1.GridControl = this.gridRoom;
             this.gridView1.Name = "gridView1";
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged_1);
             // 
-            // cell_id
+            // id
             // 
-            this.cell_id.Caption = "ID";
-            this.cell_id.FieldName = "id";
-            this.cell_id.MinWidth = 25;
-            this.cell_id.Name = "cell_id";
-            this.cell_id.Visible = true;
-            this.cell_id.VisibleIndex = 0;
-            this.cell_id.Width = 94;
+            this.id.Caption = "Id";
+            this.id.CustomizationCaption = "Id";
+            this.id.FieldName = "id";
+            this.id.MinWidth = 25;
+            this.id.Name = "id";
+            this.id.Visible = true;
+            this.id.VisibleIndex = 0;
+            this.id.Width = 94;
             // 
-            // cell_name
+            // name
             // 
-            this.cell_name.Caption = "Name room";
-            this.cell_name.FieldName = "RoomName";
-            this.cell_name.MinWidth = 30;
-            this.cell_name.Name = "cell_name";
-            this.cell_name.Visible = true;
-            this.cell_name.VisibleIndex = 1;
-            this.cell_name.Width = 94;
+            this.name.Caption = "Name";
+            this.name.FieldName = "name";
+            this.name.MinWidth = 25;
+            this.name.Name = "name";
+            this.name.Visible = true;
+            this.name.VisibleIndex = 1;
+            this.name.Width = 94;
             // 
-            // cell_desc
+            // content
             // 
-            this.cell_desc.Caption = "Description";
-            this.cell_desc.FieldName = "RoomDesc";
-            this.cell_desc.MinWidth = 25;
-            this.cell_desc.Name = "cell_desc";
-            this.cell_desc.Visible = true;
-            this.cell_desc.VisibleIndex = 2;
-            this.cell_desc.Width = 94;
+            this.content.Caption = "Content";
+            this.content.FieldName = "content";
+            this.content.MinWidth = 25;
+            this.content.Name = "content";
+            this.content.Width = 94;
             // 
-            // cell_date
+            // description
             // 
-            this.cell_date.Caption = "Created Date";
-            this.cell_date.FieldName = "CreatedAt";
-            this.cell_date.MinWidth = 25;
-            this.cell_date.Name = "cell_date";
-            this.cell_date.Visible = true;
-            this.cell_date.VisibleIndex = 3;
-            this.cell_date.Width = 94;
+            this.description.Caption = "Description";
+            this.description.FieldName = "description";
+            this.description.MinWidth = 25;
+            this.description.Name = "description";
+            this.description.Visible = true;
+            this.description.VisibleIndex = 2;
+            this.description.Width = 94;
             // 
-            // cell_status
+            // roomId
             // 
-            this.cell_status.Caption = "Status";
-            this.cell_status.FieldName = "status";
-            this.cell_status.MinWidth = 25;
-            this.cell_status.Name = "cell_status";
-            this.cell_status.Visible = true;
-            this.cell_status.VisibleIndex = 4;
-            this.cell_status.Width = 94;
+            this.roomId.Caption = "room ID";
+            this.roomId.FieldName = "roomId";
+            this.roomId.MinWidth = 25;
+            this.roomId.Name = "roomId";
+            this.roomId.Visible = true;
+            this.roomId.VisibleIndex = 3;
+            this.roomId.Width = 94;
             // 
-            // cell_host
+            // status
             // 
-            this.cell_host.Caption = "Id Host";
-            this.cell_host.FieldName = "hostId";
-            this.cell_host.MinWidth = 25;
-            this.cell_host.Name = "cell_host";
-            this.cell_host.Visible = true;
-            this.cell_host.VisibleIndex = 5;
-            this.cell_host.Width = 94;
+            this.status.Caption = "status";
+            this.status.FieldName = "status";
+            this.status.MinWidth = 25;
+            this.status.Name = "status";
+            this.status.Visible = true;
+            this.status.VisibleIndex = 4;
+            this.status.Width = 94;
             // 
-            // password
+            // CateId
             // 
-            this.password.Caption = "Password";
-            this.password.FieldName = "password";
-            this.password.MinWidth = 25;
-            this.password.Name = "password";
-            this.password.Visible = true;
-            this.password.VisibleIndex = 6;
-            this.password.Width = 94;
+            this.CateId.Caption = "Category Id";
+            this.CateId.FieldName = "cateId";
+            this.CateId.MinWidth = 25;
+            this.CateId.Name = "CateId";
+            this.CateId.Visible = true;
+            this.CateId.VisibleIndex = 5;
+            this.CateId.Width = 94;
             // 
-            // labelControl1
+            // ownerId
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(23, 381);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(96, 26);
-            this.labelControl1.TabIndex = 10;
-            this.labelControl1.Text = "Password:";
+            this.ownerId.Caption = "ownerId";
+            this.ownerId.FieldName = "ownerId";
+            this.ownerId.MinWidth = 25;
+            this.ownerId.Name = "ownerId";
+            this.ownerId.Visible = true;
+            this.ownerId.VisibleIndex = 6;
+            this.ownerId.Width = 94;
             // 
-            // txtPass
+            // openFileDialog1
             // 
-            this.txtPass.Location = new System.Drawing.Point(23, 413);
-            this.txtPass.Name = "txtPass";
-            this.txtPass.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPass.Properties.Appearance.Options.UseFont = true;
-            this.txtPass.Size = new System.Drawing.Size(349, 28);
-            this.txtPass.TabIndex = 9;
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // RoomFrm
+            // PresentManagerFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -388,7 +417,7 @@
             this.Controls.Add(this.panelControl3);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
-            this.Name = "RoomFrm";
+            this.Name = "PresentManagerFrm";
             this.Text = "Add room";
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
@@ -396,6 +425,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPath.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
@@ -405,7 +435,6 @@
             this.panelControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridRoom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -431,13 +460,16 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.GridControl gridRoom;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn cell_id;
-        private DevExpress.XtraGrid.Columns.GridColumn cell_name;
-        private DevExpress.XtraGrid.Columns.GridColumn cell_desc;
-        private DevExpress.XtraGrid.Columns.GridColumn cell_date;
-        private DevExpress.XtraGrid.Columns.GridColumn cell_status;
-        private DevExpress.XtraGrid.Columns.GridColumn cell_host;
-        private DevExpress.XtraGrid.Columns.GridColumn password;
-        private DevExpress.XtraEditors.TextEdit txtPass;
+        private DevExpress.XtraEditors.TextEdit txtPath;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraGrid.Columns.GridColumn id;
+        private DevExpress.XtraGrid.Columns.GridColumn name;
+        private DevExpress.XtraGrid.Columns.GridColumn content;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private DevExpress.XtraGrid.Columns.GridColumn description;
+        private DevExpress.XtraGrid.Columns.GridColumn roomId;
+        private DevExpress.XtraGrid.Columns.GridColumn status;
+        private DevExpress.XtraGrid.Columns.GridColumn CateId;
+        private DevExpress.XtraGrid.Columns.GridColumn ownerId;
     }
 }
