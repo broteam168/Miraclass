@@ -35,6 +35,7 @@
       <Column Name="password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="P_Room_P_Attendance" Member="P_Attendances" ThisKey="id" OtherKey="roomId" Type="P_Attendance" />
       <Association Name="P_Room_P_linkPresent" Member="P_linkPresents" ThisKey="id" OtherKey="roomId" Type="P_linkPresent" />
+      <Association Name="P_Room_P_StatePresent" Member="P_StatePresents" ThisKey="id" OtherKey="roomId" Type="P_StatePresent" />
     </Type>
   </Table>
   <Table Name="dbo.P_Present" Member="P_Presents">
@@ -47,6 +48,7 @@
       <Column Name="cateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ownerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="P_Present_P_linkPresent" Member="P_linkPresents" ThisKey="id" OtherKey="presentId" Type="P_linkPresent" />
+      <Association Name="P_Present_P_StatePresent" Member="P_StatePresents" ThisKey="id" OtherKey="presentId" Type="P_StatePresent" />
       <Association Name="S_User_P_Present" Member="S_User" ThisKey="ownerId" OtherKey="userId" Type="S_User" IsForeignKey="true" />
       <Association Name="P_data_P_Present" Member="P_data" ThisKey="id" OtherKey="id" Type="P_data" IsForeignKey="true" />
     </Type>
@@ -66,6 +68,17 @@
       <Column Name="presentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="P_Present_P_linkPresent" Member="P_Present" ThisKey="presentId" OtherKey="id" Type="P_Present" IsForeignKey="true" />
       <Association Name="P_Room_P_linkPresent" Member="P_Room" ThisKey="roomId" OtherKey="id" Type="P_Room" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.P_StatePresent" Member="P_StatePresents">
+    <Type Name="P_StatePresent">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="presentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="roomId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="currentPage" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="P_Present_P_StatePresent" Member="P_Present" ThisKey="presentId" OtherKey="id" Type="P_Present" IsForeignKey="true" />
+      <Association Name="P_Room_P_StatePresent" Member="P_Room" ThisKey="roomId" OtherKey="id" Type="P_Room" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

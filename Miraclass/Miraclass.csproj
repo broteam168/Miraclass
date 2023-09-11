@@ -51,13 +51,17 @@
     <Reference Include="DevExpress.Data.Desktop.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Drawing.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v22.2.Drawing, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPdfViewer.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -74,6 +78,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AddPresentController.cs" />
     <Compile Include="Controllers\AddRoomController.cs" />
+    <Compile Include="Controllers\MainRoomControllercs.cs" />
     <Compile Include="Controllers\PresentManagerController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\ConfigController.cs" />
@@ -96,6 +101,18 @@
     </Compile>
     <Compile Include="Views\AddRoomFrm.Designer.cs">
       <DependentUpon>AddRoomFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChooseRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ChooseRoom.Designer.cs">
+      <DependentUpon>ChooseRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainRoomFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MainRoomFrm.Designer.cs">
+      <DependentUpon>MainRoomFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\PresentManagerFrm.cs">
       <SubType>Form</SubType>
@@ -142,6 +159,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AddRoomFrm.resx">
       <DependentUpon>AddRoomFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ChooseRoom.resx">
+      <DependentUpon>ChooseRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MainRoomFrm.resx">
+      <DependentUpon>MainRoomFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\PresentManagerFrm.resx">
       <DependentUpon>PresentManagerFrm.cs</DependentUpon>

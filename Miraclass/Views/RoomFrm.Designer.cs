@@ -37,11 +37,12 @@
             this.cmdEdit = new DevExpress.XtraEditors.SimpleButton();
             this.cmdAdd = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.txtPass = new DevExpress.XtraEditors.TextEdit();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtDesc = new System.Windows.Forms.TextBox();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.checkActive = new DevExpress.XtraEditors.CheckEdit();
             this.lbName = new DevExpress.XtraEditors.LabelControl();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
@@ -54,21 +55,18 @@
             this.cell_status = new DevExpress.XtraGrid.Columns.GridColumn();
             this.cell_host = new DevExpress.XtraGrid.Columns.GridColumn();
             this.password = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.txtPass = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkActive.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -178,7 +176,6 @@
             this.panelControl2.Controls.Add(this.panelControl4);
             this.panelControl2.Controls.Add(this.txtDesc);
             this.panelControl2.Controls.Add(this.labelControl2);
-            this.panelControl2.Controls.Add(this.checkActive);
             this.panelControl2.Controls.Add(this.lbName);
             this.panelControl2.Controls.Add(this.txtName);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Right;
@@ -186,6 +183,25 @@
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(392, 698);
             this.panelControl2.TabIndex = 1;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(23, 381);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(96, 26);
+            this.labelControl1.TabIndex = 10;
+            this.labelControl1.Text = "Password:";
+            // 
+            // txtPass
+            // 
+            this.txtPass.Location = new System.Drawing.Point(23, 413);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPass.Properties.Appearance.Options.UseFont = true;
+            this.txtPass.Size = new System.Drawing.Size(349, 28);
+            this.txtPass.TabIndex = 9;
             // 
             // panelControl4
             // 
@@ -228,16 +244,6 @@
             this.labelControl2.Size = new System.Drawing.Size(172, 26);
             this.labelControl2.TabIndex = 6;
             this.labelControl2.Text = "Room description:";
-            // 
-            // checkActive
-            // 
-            this.checkActive.Location = new System.Drawing.Point(25, 463);
-            this.checkActive.Name = "checkActive";
-            this.checkActive.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkActive.Properties.Appearance.Options.UseFont = true;
-            this.checkActive.Properties.Caption = "is Active?";
-            this.checkActive.Size = new System.Drawing.Size(127, 26);
-            this.checkActive.TabIndex = 4;
             // 
             // lbName
             // 
@@ -361,25 +367,6 @@
             this.password.VisibleIndex = 6;
             this.password.Width = 94;
             // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(23, 381);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(96, 26);
-            this.labelControl1.TabIndex = 10;
-            this.labelControl1.Text = "Password:";
-            // 
-            // txtPass
-            // 
-            this.txtPass.Location = new System.Drawing.Point(23, 413);
-            this.txtPass.Name = "txtPass";
-            this.txtPass.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPass.Properties.Appearance.Options.UseFont = true;
-            this.txtPass.Size = new System.Drawing.Size(349, 28);
-            this.txtPass.TabIndex = 9;
-            // 
             // RoomFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -396,16 +383,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkActive.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridRoom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPass.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -417,7 +403,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.LabelControl lbName;
         private DevExpress.XtraEditors.TextEdit txtName;
-        private DevExpress.XtraEditors.CheckEdit checkActive;
         private DevExpress.XtraEditors.PanelControl panelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private System.Windows.Forms.TextBox txtDesc;

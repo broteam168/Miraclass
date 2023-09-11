@@ -39,8 +39,7 @@ namespace Miraclass.Views
             cmdSave.Enabled = !enable;
             txtName.Enabled = !enable;
             txtDesc.Enabled = !enable;
-            checkActive.Enabled = !enable;
-
+         
             
         }
         private void gridRoom_Load(object sender, EventArgs e)
@@ -77,7 +76,7 @@ namespace Miraclass.Views
                 {
                     P_Room newRoom = new P_Room();
                     newRoom.RoomName = txtName.Text;
-                    newRoom.status = checkActive.Checked;
+                    newRoom.status = false;
                     newRoom.CreatedAt = DateTime.Now;
                     newRoom.RoomDesc = txtDesc.Text;
                     newRoom.hostId = _currentUser.userId;
@@ -109,7 +108,7 @@ namespace Miraclass.Views
                     P_Room newRoom = new P_Room();
                     newRoom.id = currentId;
                     newRoom.RoomName = txtName.Text;
-                    newRoom.status = checkActive.Checked;
+                    newRoom.status = false;
                     newRoom.RoomDesc = txtDesc.Text;
                     if (!txtPass.Text.Equals("")) newRoom.password = txtPass.Text;
                     else newRoom.password += txtPass.Text;
@@ -140,7 +139,7 @@ namespace Miraclass.Views
             currentId = int.Parse((gridView1.GetFocusedRowCellValue("id").ToString()));
             txtName.Text = (gridView1.GetFocusedRowCellValue("RoomName").ToString());
             if((gridView1.GetFocusedRowCellValue("RoomDesc") !=null)) txtDesc.Text = (gridView1.GetFocusedRowCellValue("RoomDesc").ToString())  ;
-            checkActive.Checked =  gridView1.GetFocusedRowCellValue("status").ToString() == "True" ? true : false;
+     //       checkActive.Checked =  gridView1.GetFocusedRowCellValue("status").ToString() == "True" ? true : false;
         }
 
         private void cmdEdit_Click(object sender, EventArgs e)
