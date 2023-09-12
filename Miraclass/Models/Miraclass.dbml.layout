@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.625, 8.5" name="Miraclass">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 13.25, 8.5" name="Miraclass">
   <DataContextMoniker Name="/MiraclassDataContext" />
   <nestedChildShapes>
     <classShape Id="2f3cdb64-84ce-4d73-b4a7-df395167505a" absoluteBounds="7.875, 5.125, 2, 2.5401025390625">
@@ -27,7 +27,7 @@
         <elementListCompartment Id="4af03a65-4d14-4b1b-84a5-13aa86cf2338" absoluteBounds="7.2650000000000006, 1.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(9.25 : 2.26524983723958); (10.375 : 2.26524983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(9.25 : 2.26524983723958); (10.375 : 2.26524983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/MiraclassDataContext/P_Room/P_Room_P_Attendance" />
       <nodes>
         <classShapeMoniker Id="0b22bcfa-8de3-4e6d-b0a1-3a16e8751fec" />
@@ -40,7 +40,7 @@
         <elementListCompartment Id="d4cd59d7-3606-4e28-9ee4-2e6ccd2b8d07" absoluteBounds="1.8900000000000006, 3.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(7.875 : 5.32774983723958); (3.875 : 5.32774983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(7.875 : 5.32774983723958); (3.875 : 5.32774983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/MiraclassDataContext/S_User/S_User_P_Present" />
       <nodes>
         <classShapeMoniker Id="2f3cdb64-84ce-4d73-b4a7-df395167505a" />
@@ -53,7 +53,7 @@
         <elementListCompartment Id="b242e74d-6886-4256-9000-68bb443240a2" absoluteBounds="4.8900000000000006, 6.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.875 : 6.44314697265625); (2.875 : 6.44314697265625); (2.875 : 5.53049967447917)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.875 : 6.44314697265625); (2.875 : 6.44314697265625); (2.875 : 5.53049967447917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/MiraclassDataContext/P_data/P_data_P_Present" />
       <nodes>
         <classShapeMoniker Id="ff16336e-f011-4b32-9e9f-0a9e7e2245d3" />
@@ -73,7 +73,7 @@
         <classShapeMoniker Id="9c5f3251-25eb-4185-a78a-10e597db67dc" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.25 : 1.25564697265625); (6.25 : 1.25564697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(7.25 : 1.25564697265625); (6.25 : 1.25564697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/MiraclassDataContext/P_Room/P_Room_P_linkPresent" />
       <nodes>
         <classShapeMoniker Id="0b22bcfa-8de3-4e6d-b0a1-3a16e8751fec" />
@@ -86,18 +86,44 @@
         <elementListCompartment Id="0314e211-903a-4fac-be93-247a1ca17be7" absoluteBounds="4.6400000000000006, 3.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.875 : 4.07294840494792); (4.625 : 4.07294840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.875 : 4.07294840494792); (4.625 : 4.07294840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/MiraclassDataContext/P_Present/P_Present_P_StatePresent" />
       <nodes>
         <classShapeMoniker Id="e35340fb-0025-4f17-872f-d2e54c1ae524" />
         <classShapeMoniker Id="06db63ea-5472-4b2c-8f19-596ffbeb8d87" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(7.25 : 2.36464680989583); (6.46875 : 2.36464680989583); (6.46875 : 3)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(7.25 : 2.36464680989583); (6.46875 : 2.36464680989583); (6.46875 : 3)]" manuallyRouted="true" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/MiraclassDataContext/P_Room/P_Room_P_StatePresent" />
       <nodes>
         <classShapeMoniker Id="0b22bcfa-8de3-4e6d-b0a1-3a16e8751fec" />
         <classShapeMoniker Id="06db63ea-5472-4b2c-8f19-596ffbeb8d87" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="fa5b3272-e8dd-486b-b9f4-a2b4099aa445" absoluteBounds="11, 6.25, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/MiraclassDataContext/Q_Answer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f1ab9f3c-dc18-4297-9420-7ccda4ff79ec" absoluteBounds="11.015, 6.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="77e29ca2-1648-49a8-8aff-004c11efa3c6" absoluteBounds="10.25, 3.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/MiraclassDataContext/Q_question" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5773410c-9554-4244-8b6d-6678639388c9" absoluteBounds="10.265, 3.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.703123 : 5.125); (8.703123 : 4.48159912109375); (9.51041666666667 : 4.48159912109375 : JumpStart); (9.67708333333333 : 4.48159912109375 : JumpEnd); (10.25 : 4.48159912109375)]" fixedFrom="Algorithm" fixedTo="NotFixed">
+      <AssociationMoniker Name="/MiraclassDataContext/S_User/S_User_Q_question" />
+      <nodes>
+        <classShapeMoniker Id="2f3cdb64-84ce-4d73-b4a7-df395167505a" />
+        <classShapeMoniker Id="77e29ca2-1648-49a8-8aff-004c11efa3c6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.625 : 5.4631982421875); (11.625 : 6.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MiraclassDataContext/Q_question/Q_question_Q_Answer" />
+      <nodes>
+        <classShapeMoniker Id="77e29ca2-1648-49a8-8aff-004c11efa3c6" />
+        <classShapeMoniker Id="fa5b3272-e8dd-486b-b9f4-a2b4099aa445" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

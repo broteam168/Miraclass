@@ -13,6 +13,7 @@
       <Column Name="isTeacher" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="S_User_P_Attendance" Member="P_Attendances" ThisKey="userId" OtherKey="userId" Type="P_Attendance" />
       <Association Name="S_User_P_Present" Member="P_Presents" ThisKey="userId" OtherKey="ownerId" Type="P_Present" />
+      <Association Name="S_User_Q_question" Member="Q_questions" ThisKey="userId" OtherKey="userId" Type="Q_question" />
     </Type>
   </Table>
   <Table Name="dbo.P_Attendance" Member="P_Attendances">
@@ -79,6 +80,27 @@
       <Column Name="status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="P_Present_P_StatePresent" Member="P_Present" ThisKey="presentId" OtherKey="id" Type="P_Present" IsForeignKey="true" />
       <Association Name="P_Room_P_StatePresent" Member="P_Room" ThisKey="roomId" OtherKey="id" Type="P_Room" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Q_Answer" Member="Q_Answers">
+    <Type Name="Q_Answer">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="questionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="content" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="userId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Q_question_Q_Answer" Member="Q_question" ThisKey="questionId" OtherKey="id" Type="Q_question" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Q_question" Member="Q_questions">
+    <Type Name="Q_question">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="content" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="currentPage" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="presentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="roomId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Q_question_Q_Answer" Member="Q_Answers" ThisKey="id" OtherKey="questionId" Type="Q_Answer" />
+      <Association Name="S_User_Q_question" Member="S_User" ThisKey="userId" OtherKey="userId" Type="S_User" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors.ColorPick.Picker;
+﻿using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.ColorPick.Picker;
 using Miraclass.Models;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace Miraclass.Controllers
         }
         public void startPresent(int presentId,int roomId,P_StatePresent state)
         {
-            List<P_StatePresent> tmp = db.P_StatePresents.Where(x => x.presentId == presentId && x.roomId == roomId).ToList();
+            List<P_StatePresent> tmp = db.P_StatePresents.Where(x =>  x.roomId == roomId).ToList();
             if (tmp != null)
             {
                 foreach (var p in tmp)
@@ -41,6 +42,32 @@ namespace Miraclass.Controllers
             db.P_StatePresents.InsertOnSubmit(state);
             db.SubmitChanges();
              
+        }
+        public void startRoom(int roomId)
+        {
+            P_Room tmp = db.P_Rooms.Where(x => x.id == roomId).FirstOrDefault();
+            if (tmp != null)
+            {
+                tmp.status = true;
+                db.SubmitChanges();
+            }
+        }
+        public void updatePresent(int presentId,int roomId,int number )
+        {
+            P_StatePresent tmp = db.P_StatePresents.Where(x => x.roomId == roomId && x.presentId == presentId).FirstOrDefault();
+            if (tmp != null)
+            {
+                tmp.currentPage = number;
+                db.SubmitChanges();
+            }
+        }
+        public List<S_User> listParticipants(int roomId)
+        {
+            return db.S_Users.Where(x => x.P_Attendances.Where(y => y.roomId == roomId).ToList().Count>0).ToList();
+
+        }
+        public List<Q_question> listQuestion(int roomId,int presentId) {
+            return db.Q_questions.Where(x => x.roomId == roomId && x.presentId == presentId).ToList();
         }
     }
 }

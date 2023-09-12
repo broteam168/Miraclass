@@ -51,6 +51,12 @@ namespace Miraclass.Models
     partial void InsertP_StatePresent(P_StatePresent instance);
     partial void UpdateP_StatePresent(P_StatePresent instance);
     partial void DeleteP_StatePresent(P_StatePresent instance);
+    partial void InsertQ_Answer(Q_Answer instance);
+    partial void UpdateQ_Answer(Q_Answer instance);
+    partial void DeleteQ_Answer(Q_Answer instance);
+    partial void InsertQ_question(Q_question instance);
+    partial void UpdateQ_question(Q_question instance);
+    partial void DeleteQ_question(Q_question instance);
     #endregion
 		
 		public MiraclassDataContext() : 
@@ -138,6 +144,22 @@ namespace Miraclass.Models
 				return this.GetTable<P_StatePresent>();
 			}
 		}
+		
+		public System.Data.Linq.Table<Q_Answer> Q_Answers
+		{
+			get
+			{
+				return this.GetTable<Q_Answer>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Q_question> Q_questions
+		{
+			get
+			{
+				return this.GetTable<Q_question>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.S_User")]
@@ -168,6 +190,8 @@ namespace Miraclass.Models
 		
 		private EntitySet<P_Present> _P_Presents;
 		
+		private EntitySet<Q_question> _Q_questions;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -196,6 +220,7 @@ namespace Miraclass.Models
 		{
 			this._P_Attendances = new EntitySet<P_Attendance>(new Action<P_Attendance>(this.attach_P_Attendances), new Action<P_Attendance>(this.detach_P_Attendances));
 			this._P_Presents = new EntitySet<P_Present>(new Action<P_Present>(this.attach_P_Presents), new Action<P_Present>(this.detach_P_Presents));
+			this._Q_questions = new EntitySet<Q_question>(new Action<Q_question>(this.attach_Q_questions), new Action<Q_question>(this.detach_Q_questions));
 			OnCreated();
 		}
 		
@@ -405,6 +430,19 @@ namespace Miraclass.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="S_User_Q_question", Storage="_Q_questions", ThisKey="userId", OtherKey="userId")]
+		public EntitySet<Q_question> Q_questions
+		{
+			get
+			{
+				return this._Q_questions;
+			}
+			set
+			{
+				this._Q_questions.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -444,6 +482,18 @@ namespace Miraclass.Models
 		}
 		
 		private void detach_P_Presents(P_Present entity)
+		{
+			this.SendPropertyChanging();
+			entity.S_User = null;
+		}
+		
+		private void attach_Q_questions(Q_question entity)
+		{
+			this.SendPropertyChanging();
+			entity.S_User = this;
+		}
+		
+		private void detach_Q_questions(Q_question entity)
 		{
 			this.SendPropertyChanging();
 			entity.S_User = null;
@@ -1847,6 +1897,432 @@ namespace Miraclass.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Q_Answer")]
+	public partial class Q_Answer : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _questionId;
+		
+		private string _content;
+		
+		private int _userId;
+		
+		private EntityRef<Q_question> _Q_question;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnquestionIdChanging(int value);
+    partial void OnquestionIdChanged();
+    partial void OncontentChanging(string value);
+    partial void OncontentChanged();
+    partial void OnuserIdChanging(int value);
+    partial void OnuserIdChanged();
+    #endregion
+		
+		public Q_Answer()
+		{
+			this._Q_question = default(EntityRef<Q_question>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_questionId", DbType="Int NOT NULL")]
+		public int questionId
+		{
+			get
+			{
+				return this._questionId;
+			}
+			set
+			{
+				if ((this._questionId != value))
+				{
+					if (this._Q_question.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnquestionIdChanging(value);
+					this.SendPropertyChanging();
+					this._questionId = value;
+					this.SendPropertyChanged("questionId");
+					this.OnquestionIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_content", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string content
+		{
+			get
+			{
+				return this._content;
+			}
+			set
+			{
+				if ((this._content != value))
+				{
+					this.OncontentChanging(value);
+					this.SendPropertyChanging();
+					this._content = value;
+					this.SendPropertyChanged("content");
+					this.OncontentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userId", DbType="Int NOT NULL")]
+		public int userId
+		{
+			get
+			{
+				return this._userId;
+			}
+			set
+			{
+				if ((this._userId != value))
+				{
+					this.OnuserIdChanging(value);
+					this.SendPropertyChanging();
+					this._userId = value;
+					this.SendPropertyChanged("userId");
+					this.OnuserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Q_question_Q_Answer", Storage="_Q_question", ThisKey="questionId", OtherKey="id", IsForeignKey=true)]
+		public Q_question Q_question
+		{
+			get
+			{
+				return this._Q_question.Entity;
+			}
+			set
+			{
+				Q_question previousValue = this._Q_question.Entity;
+				if (((previousValue != value) 
+							|| (this._Q_question.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Q_question.Entity = null;
+						previousValue.Q_Answers.Remove(this);
+					}
+					this._Q_question.Entity = value;
+					if ((value != null))
+					{
+						value.Q_Answers.Add(this);
+						this._questionId = value.id;
+					}
+					else
+					{
+						this._questionId = default(int);
+					}
+					this.SendPropertyChanged("Q_question");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Q_question")]
+	public partial class Q_question : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _userId;
+		
+		private string _content;
+		
+		private int _currentPage;
+		
+		private int _presentId;
+		
+		private int _roomId;
+		
+		private EntitySet<Q_Answer> _Q_Answers;
+		
+		private EntityRef<S_User> _S_User;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnuserIdChanging(int value);
+    partial void OnuserIdChanged();
+    partial void OncontentChanging(string value);
+    partial void OncontentChanged();
+    partial void OncurrentPageChanging(int value);
+    partial void OncurrentPageChanged();
+    partial void OnpresentIdChanging(int value);
+    partial void OnpresentIdChanged();
+    partial void OnroomIdChanging(int value);
+    partial void OnroomIdChanged();
+    #endregion
+		
+		public Q_question()
+		{
+			this._Q_Answers = new EntitySet<Q_Answer>(new Action<Q_Answer>(this.attach_Q_Answers), new Action<Q_Answer>(this.detach_Q_Answers));
+			this._S_User = default(EntityRef<S_User>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userId", DbType="Int NOT NULL")]
+		public int userId
+		{
+			get
+			{
+				return this._userId;
+			}
+			set
+			{
+				if ((this._userId != value))
+				{
+					if (this._S_User.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnuserIdChanging(value);
+					this.SendPropertyChanging();
+					this._userId = value;
+					this.SendPropertyChanged("userId");
+					this.OnuserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_content", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string content
+		{
+			get
+			{
+				return this._content;
+			}
+			set
+			{
+				if ((this._content != value))
+				{
+					this.OncontentChanging(value);
+					this.SendPropertyChanging();
+					this._content = value;
+					this.SendPropertyChanged("content");
+					this.OncontentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_currentPage", DbType="Int NOT NULL")]
+		public int currentPage
+		{
+			get
+			{
+				return this._currentPage;
+			}
+			set
+			{
+				if ((this._currentPage != value))
+				{
+					this.OncurrentPageChanging(value);
+					this.SendPropertyChanging();
+					this._currentPage = value;
+					this.SendPropertyChanged("currentPage");
+					this.OncurrentPageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_presentId", DbType="Int NOT NULL")]
+		public int presentId
+		{
+			get
+			{
+				return this._presentId;
+			}
+			set
+			{
+				if ((this._presentId != value))
+				{
+					this.OnpresentIdChanging(value);
+					this.SendPropertyChanging();
+					this._presentId = value;
+					this.SendPropertyChanged("presentId");
+					this.OnpresentIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_roomId", DbType="Int NOT NULL")]
+		public int roomId
+		{
+			get
+			{
+				return this._roomId;
+			}
+			set
+			{
+				if ((this._roomId != value))
+				{
+					this.OnroomIdChanging(value);
+					this.SendPropertyChanging();
+					this._roomId = value;
+					this.SendPropertyChanged("roomId");
+					this.OnroomIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Q_question_Q_Answer", Storage="_Q_Answers", ThisKey="id", OtherKey="questionId")]
+		public EntitySet<Q_Answer> Q_Answers
+		{
+			get
+			{
+				return this._Q_Answers;
+			}
+			set
+			{
+				this._Q_Answers.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="S_User_Q_question", Storage="_S_User", ThisKey="userId", OtherKey="userId", IsForeignKey=true)]
+		public S_User S_User
+		{
+			get
+			{
+				return this._S_User.Entity;
+			}
+			set
+			{
+				S_User previousValue = this._S_User.Entity;
+				if (((previousValue != value) 
+							|| (this._S_User.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._S_User.Entity = null;
+						previousValue.Q_questions.Remove(this);
+					}
+					this._S_User.Entity = value;
+					if ((value != null))
+					{
+						value.Q_questions.Add(this);
+						this._userId = value.userId;
+					}
+					else
+					{
+						this._userId = default(int);
+					}
+					this.SendPropertyChanged("S_User");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Q_Answers(Q_Answer entity)
+		{
+			this.SendPropertyChanging();
+			entity.Q_question = this;
+		}
+		
+		private void detach_Q_Answers(Q_Answer entity)
+		{
+			this.SendPropertyChanging();
+			entity.Q_question = null;
 		}
 	}
 }
