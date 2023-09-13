@@ -13,10 +13,10 @@ using System.Windows.Forms;
 
 namespace Miraclass.Views
 {
-    public partial class TeacherDashboard : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class StudentDashboard : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         private S_User _currentUser; 
-        public TeacherDashboard(S_User currentUser)
+        public StudentDashboard(S_User currentUser)
         {
             InitializeComponent();
             this._currentUser = currentUser;
@@ -90,20 +90,21 @@ namespace Miraclass.Views
                 
         }
 
-        private void TeacherDashboard_FormClosing(object sender, FormClosingEventArgs e)
+        private void barButtonItem1_ItemClick_1(object sender, ItemClickEventArgs e)
         {
-            try
+            enterRoomFrm frm = new enterRoomFrm(_currentUser);
+            frm.ShowDialog();
+            int id = frm.getRoomId();
+            if (id != 0)
             {
-                foreach (XtraForm f in MdiChildren)
+                MiraclassDataContext db = new MiraclassDataContext(Miraclass.Properties.Settings.Default.connect);
+                if (db.P_Rooms.Where(x => x.id == id).FirstOrDefault().status == true)
                 {
-                    f.Close();
+                    clientRoomFrm roomFrm = new clientRoomFrm(id, _currentUser);
+                    loadForm(roomFrm);
                 }
-              
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("errror" + ex.Message);
+                else MessageBox.Show("Cannot access to a deactived room");
+                db.Dispose();
             }
         }
     }

@@ -88,7 +88,7 @@
     <Compile Include="Controllers\AddPresentController.cs" />
     <Compile Include="Controllers\AddRoomController.cs" />
     <Compile Include="Controllers\answerController.cs" />
-    <Compile Include="Controllers\MainRoomControllercs.cs" />
+    <Compile Include="Controllers\MainRoomController.cs" />
     <Compile Include="Controllers\PresentManagerController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\ConfigController.cs" />
@@ -124,6 +124,36 @@
     <Compile Include="Views\ChooseRoom.Designer.cs">
       <DependentUpon>ChooseRoom.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\enterOldRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\enterOldRoom.Designer.cs">
+      <DependentUpon>enterOldRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\enterRoomFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\enterRoomFrm.Designer.cs">
+      <DependentUpon>enterRoomFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\inputContentFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\inputContentFrm.Designer.cs">
+      <DependentUpon>inputContentFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\inputRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\inputRoom.Designer.cs">
+      <DependentUpon>inputRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\clientRoomFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\clientRoomFrm.Designer.cs">
+      <DependentUpon>clientRoomFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainRoomFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +184,12 @@
     <Compile Include="Views\LoginFrm.Designer.cs">
       <DependentUpon>LoginFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\StudentDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\StudentDashboard.Designer.cs">
+      <DependentUpon>StudentDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\TeacherDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +218,21 @@
     <EmbeddedResource Include="Views\ChooseRoom.resx">
       <DependentUpon>ChooseRoom.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\enterOldRoom.resx">
+      <DependentUpon>enterOldRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\enterRoomFrm.resx">
+      <DependentUpon>enterRoomFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\inputContentFrm.resx">
+      <DependentUpon>inputContentFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\inputRoom.resx">
+      <DependentUpon>inputRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\clientRoomFrm.resx">
+      <DependentUpon>clientRoomFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\MainRoomFrm.resx">
       <DependentUpon>MainRoomFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -196,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LoginFrm.resx">
       <DependentUpon>LoginFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\StudentDashboard.resx">
+      <DependentUpon>StudentDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\TeacherDashboard.resx">
       <DependentUpon>TeacherDashboard.cs</DependentUpon>

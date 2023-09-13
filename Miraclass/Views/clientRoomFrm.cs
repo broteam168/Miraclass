@@ -23,14 +23,14 @@ using System.Windows.Forms;
 
 namespace Miraclass.Views
 {
-    public partial class MainRoomFrm : DevExpress.XtraEditors.XtraForm
+    public partial class clientRoomFrm : DevExpress.XtraEditors.XtraForm
     {
         private S_User _currentUser;
         private int _roomId;
 
 
         MainRoomController cls;
-        public MainRoomFrm(int roomId, S_User currentUser)
+        public clientRoomFrm(int roomId, S_User currentUser)
         {
             InitializeComponent();
 
@@ -43,7 +43,9 @@ namespace Miraclass.Views
             gridParticipations.DataSource = cls.listParticipants(_roomId);
             if (EnoughPermission()) autoData();
 
-            cls.startRoom(_roomId);
+            if (EnoughPermission()) autoData3();
+
+            if (EnoughPermission()) autoData2();
 
 
         }
@@ -56,17 +58,7 @@ namespace Miraclass.Views
         private int currentPage = 1;
         private void mainPdf_MouseDown(object sender, MouseEventArgs e)
         {
-            try
-            {
-                Point position = mainPdf.PointToClient(e.Location);
-                mainPdf.GetDocumentPosition(position);
-
-                if (currentPage != mainPdf.CurrentPageNumber)
-                {
-                    currentPage = mainPdf.CurrentPageNumber;
-                    cls.updatePresent(currentPresent, _roomId, currentPage);
-                }
-            }catch (Exception ex) { }
+           
         }
 
         private int currentPresent = 0;
@@ -204,14 +196,13 @@ namespace Miraclass.Views
         }
         public void refresh2()
         {
+            
             gridQA.DataSource = cls.listQuestion(_roomId, currentPresent);
             autoData2();
         }
         private void MainRoomFrm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            cls.closeRoom(_roomId);
-
-            string connstr = Miraclass.Properties.Settings.Default.connect;
+             string connstr = Miraclass.Properties.Settings.Default.connect;
 
             SqlDependency.Stop(connstr);
         }
@@ -234,10 +225,8 @@ namespace Miraclass.Views
                     temp.presentId = ((P_Present)cbPresent.GetSelectedDataRow()).id;
                     temp.roomId = _roomId;
                     temp.currentPage = 1;
-                    cls.startPresent(((P_Present)cbPresent.GetSelectedDataRow()).id, _roomId, temp);
-                    mainPdf.CurrentPageNumber = 1;
-                    if (EnoughPermission()) autoData2();
-
+                      mainPdf.CurrentPageNumber = 1;
+                   
                     currentPresent = ((P_Present)cbPresent.GetSelectedDataRow()).id;
                     gridQA.DataSource = cls.listQuestion(_roomId, currentPresent);
 
@@ -304,6 +293,160 @@ try
             }
         }
 
-      
+        private void dockPanel6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void simpleButton6_Click(object sender, EventArgs e)
+        {
+            if (simpleButton6.Text == "Continue live")
+            {
+                P_Present currentPresento = cls.getCurrentPresennt(_roomId);
+                if (currentPresento != null)
+                {
+                    if (currentPresento.id != currentPresent)
+                    {
+                        P_data tmp = cls.getData(currentPresento.id);
+                        mainPdf.LoadDocument(new MemoryStream(tmp.data.ToArray()));
+                        tmp = null;
+
+                       currentPresent = currentPresento.id;
+                       }
+                      P_StatePresent temp = cls.getCurrentPage(currentPresento.id, _roomId);
+                    currentPage = temp.currentPage;
+                    mainPdf.CurrentPageNumber = currentPage;
+                    //  MessageBox.Show(currentPresent.ToString());
+                    gridQA.DataSource = cls.listQuestion(_roomId, currentPresent);
+
+
+                    simpleButton6.Text = "Stop live";
+                }
+                else
+                {
+                    MessageBox.Show("No presentation is presenting");
+                }
+            }
+            else
+            {
+                simpleButton6.Text = "Continue live";
+            }
+        }
+        private SqlConnection connection3;
+        private SqlCommand command3;
+        private DataSet myDataSet3;
+        public void autoData3()
+        {
+            string ssql;
+            command3 = null;
+            string connstr = Miraclass.Properties.Settings.Default.connect;
+
+            ssql = "select id,currentPage from dbo.P_StatePresent  where roomId=" + _roomId + ";";
+
+            // SqlDependency.Stop(connstr);
+            // SqlDependency.Start(connstr);
+            if (connection3 == null)
+                connection3 = new SqlConnection(connstr);
+            if (command3 == null)
+                command3 = new SqlCommand(ssql, connection3);
+            if (myDataSet3 == null)
+                myDataSet3 = new DataSet();
+            GetAdvtData3();
+        }
+        private void GetAdvtData3()
+        {
+            myDataSet3.Clear();
+            command3.Notification = null;
+            SqlDependency dependency = new SqlDependency(command3);
+            dependency.OnChange += new OnChangeEventHandler(dependency_OnChange3);
+
+            using (SqlDataAdapter adapter = new SqlDataAdapter(command3))
+            {
+                adapter.Fill(myDataSet3, "Advt");
+            }
+        }
+        delegate void UIDelegate3();
+        private void dependency_OnChange3(object sender, SqlNotificationEventArgs e)
+        {
+            try
+            {
+                UIDelegate uidel = new UIDelegate(refresh3);
+                this.Invoke(uidel, null);
+                SqlDependency dependency = (SqlDependency)sender;
+                dependency.OnChange -= dependency_OnChange3;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("zzz");
+            }
+        }
+        public void refresh3()
+        {
+           if (!simpleButton6.Text .Equals( "Continue live"))
+            {
+                //MessageBox.Show("tesst");
+         
+                P_Present currentPresento = cls.getCurrentPresennt(_roomId);
+                if (currentPresento != null)
+                {
+                   /// MessageBox.Show(cls.getCurrentPage(currentPresento.id, _roomId).currentPage.ToString());
+
+                    if (currentPresento.id != currentPresent)
+                    {
+                        P_data tmp = cls.getData(currentPresento.id);
+                        mainPdf.LoadDocument(new MemoryStream(tmp.data.ToArray()));
+                        tmp = null;
+
+                        currentPresent = currentPresento.id;
+                        gridQA.DataSource = cls.listQuestion(_roomId, currentPresent);
+
+                    }
+                    mainPdf.CurrentPageNumber = cls.getCurrentPage(currentPresento.id, _roomId).currentPage;
+
+                }
+                else
+                {
+
+                }
+                
+            }else
+            {
+               
+            }
+            autoData3();
+        }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+            if(currentPresent == 0)
+            {
+                MessageBox.Show("No file is here?");
+
+            }
+            else
+            {
+                try
+                {
+                    folderBrowserDialog1.ShowDialog();
+                    P_data tmp = cls.getData(currentPresent);
+                    //MemoryStream temp =  new MemoryStream(tmp.data.ToArray()));
+                    using (FileStream file = new FileStream(folderBrowserDialog1.SelectedPath + "\\Save" + currentPresent + ".pdf", FileMode.Create, System.IO.FileAccess.Write))
+                    {
+                        file.Write(tmp.data.ToArray(), 0, tmp.data.ToArray().Length);
+
+                    }
+                    MessageBox.Show("Save successfully");
+                }catch(Exception)
+                {
+                    MessageBox.Show("Save failed");
+                }
+            }
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            cls.removeParticipant(_currentUser.userId, _roomId);
+            this.Close();
+        }
     }
 }

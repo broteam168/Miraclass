@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Miraclass.Controllers
 {
-    internal class MainRoomControllercs
+    internal class MainRoomController
     {
         private MiraclassDataContext db;
 
-         public MainRoomControllercs()
+         public MainRoomController()
         {
 
             db = new MiraclassDataContext(Miraclass.Properties.Settings.Default.connect);
@@ -35,9 +35,9 @@ namespace Miraclass.Controllers
             {
                 foreach (var p in tmp)
                 {
-                    db.P_StatePresents.DeleteOnSubmit(p);
+                    db.P_StatePresents.DeleteOnSubmit(p);db.SubmitChanges();
                 }
-                db.SubmitChanges();
+                
             }
             db.P_StatePresents.InsertOnSubmit(state);
             db.SubmitChanges();
@@ -69,5 +69,44 @@ namespace Miraclass.Controllers
         public List<Q_question> listQuestion(int roomId,int presentId) {
             return db.Q_questions.Where(x => x.roomId == roomId && x.presentId == presentId).ToList();
         }
+        public void addQuestion(Q_question question)
+        {
+            db.Q_questions.InsertOnSubmit(question);
+            db.SubmitChanges();
+        }
+        public void closeRoom(int id)
+        {
+            P_Room tmp = db.P_Rooms.Where(x => x.id == id).FirstOrDefault();
+            tmp.status = false; 
+            db.SubmitChanges();
+        }
+        public bool checkRoom(int roomId,string password)
+        {
+            if (password.Equals("")) 
+                return db.P_Rooms.Where(x=>x.id == roomId ).ToList().Count>0;
+            return db.P_Rooms.Where(x => x.id == roomId && x.password == password).ToList().Count>0;
+        }
+        public P_Present getCurrentPresennt(int roomId)
+        {
+
+            return db.P_Presents.Where(x => x.P_StatePresents.Where(y => y.roomId == roomId).ToList().Count>0).FirstOrDefault();
+        }
+        public P_StatePresent getCurrentPage(int present,int roomId)
+        {
+            //  db.Refresh();
+            db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.P_StatePresents);
+            return db.P_StatePresents.Where(x=>x.presentId == present && x.roomId == roomId).FirstOrDefault();    
+        }
+        public void removeParticipant(int userId,int roomId)
+        {
+            db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.P_Attendances);
+            P_Attendance temp = db.P_Attendances.Where(x=>x.userId == userId && x.roomId == roomId).FirstOrDefault();
+            if(temp!= null)
+            {
+                db.P_Attendances.DeleteOnSubmit(temp);
+                db.SubmitChanges();
+            }
+        }
+
     }
 }

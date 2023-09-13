@@ -1,6 +1,6 @@
 ﻿namespace Miraclass.Views
 {
-    partial class MainRoomFrm
+    partial class clientRoomFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainRoomFrm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(clientRoomFrm));
             this.autoHideContainer1 = new DevExpress.XtraBars.Docking.AutoHideContainer();
             this.dockManager2 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.hideContainerRight = new DevExpress.XtraBars.Docking.AutoHideContainer();
@@ -50,6 +50,8 @@
             this.autoHideContainer2 = new DevExpress.XtraBars.Docking.AutoHideContainer();
             this.dockPanel6 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel6_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.cbPresent = new DevExpress.XtraEditors.GridLookUpEdit();
@@ -69,6 +71,7 @@
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager2)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.dockPanel2.SuspendLayout();
@@ -293,7 +296,7 @@
             this.dockPanel6.Controls.Add(this.dockPanel6_Container);
             this.dockPanel6.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel6.ID = new System.Guid("e45ad8b0-f410-447e-a5f8-705f59e739ef");
-            this.dockPanel6.Location = new System.Drawing.Point(-237, 0);
+            this.dockPanel6.Location = new System.Drawing.Point(0, 0);
             this.dockPanel6.Name = "dockPanel6";
             this.dockPanel6.OriginalSize = new System.Drawing.Size(237, 200);
             this.dockPanel6.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Left;
@@ -301,9 +304,12 @@
             this.dockPanel6.Size = new System.Drawing.Size(237, 674);
             this.dockPanel6.Text = "Choose present";
             this.dockPanel6.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
+            this.dockPanel6.Click += new System.EventHandler(this.dockPanel6_Click);
             // 
             // dockPanel6_Container
             // 
+            this.dockPanel6_Container.Controls.Add(this.simpleButton5);
+            this.dockPanel6_Container.Controls.Add(this.simpleButton6);
             this.dockPanel6_Container.Controls.Add(this.simpleButton3);
             this.dockPanel6_Container.Controls.Add(this.simpleButton1);
             this.dockPanel6_Container.Controls.Add(this.cbPresent);
@@ -313,13 +319,32 @@
             this.dockPanel6_Container.Size = new System.Drawing.Size(225, 624);
             this.dockPanel6_Container.TabIndex = 0;
             // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Location = new System.Drawing.Point(3, 314);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(217, 39);
+            this.simpleButton5.TabIndex = 16;
+            this.simpleButton5.Text = "Download";
+            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
+            // simpleButton6
+            // 
+            this.simpleButton6.Location = new System.Drawing.Point(3, 229);
+            this.simpleButton6.Name = "simpleButton6";
+            this.simpleButton6.Size = new System.Drawing.Size(217, 46);
+            this.simpleButton6.TabIndex = 16;
+            this.simpleButton6.Text = "Continue live";
+            this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
+            // 
             // simpleButton3
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(3, 231);
+            this.simpleButton3.Location = new System.Drawing.Point(3, 370);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(217, 42);
             this.simpleButton3.TabIndex = 20;
-            this.simpleButton3.Text = "End present";
+            this.simpleButton3.Text = "Leave room";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // simpleButton1
             // 
@@ -329,7 +354,7 @@
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(217, 44);
             this.simpleButton1.TabIndex = 20;
-            this.simpleButton1.Text = "Start present";
+            this.simpleButton1.Text = "Start view";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click_1);
             // 
             // cbPresent
@@ -497,7 +522,7 @@
             this.simpleButton2.TabIndex = 20;
             this.simpleButton2.Text = "Start present";
             // 
-            // MainRoomFrm
+            // clientRoomFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -508,7 +533,7 @@
             this.Controls.Add(this.hideContainerLeft);
             this.Controls.Add(this.autoHideContainer2);
             this.Controls.Add(this.hideContainerRight);
-            this.Name = "MainRoomFrm";
+            this.Name = "clientRoomFrm";
             this.Text = "MainRoom";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainRoomFrm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dockManager2)).EndInit();
@@ -579,5 +604,8 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.SimpleButton simpleButton6;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

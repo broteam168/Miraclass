@@ -61,6 +61,21 @@ namespace Miraclass.Controllers
             }
             
         }
-      
+        public List<P_Room> listRoomStudent(int id)
+        {
+            return db.P_Rooms.Where(x=>x.status == true && x.P_Attendances.Where(y=>y.userId == id).ToList().Count>0).ToList();
+        }    
+        public void addAttendance(P_Attendance attendance)
+        {
+            List<P_Attendance> tmp = db.P_Attendances.Where(x => x.roomId == attendance.roomId && x.userId == attendance.userId).ToList();
+            foreach (var item in tmp)
+            {
+                db.P_Attendances.DeleteOnSubmit(item);
+                db.SubmitChanges();
+            }
+
+            db.P_Attendances.InsertOnSubmit(attendance);
+            db.SubmitChanges();
+        }
     }
 }

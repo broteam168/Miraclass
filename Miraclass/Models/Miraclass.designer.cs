@@ -57,6 +57,9 @@ namespace Miraclass.Models
     partial void InsertQ_question(Q_question instance);
     partial void UpdateQ_question(Q_question instance);
     partial void DeleteQ_question(Q_question instance);
+    partial void InsertP_request(P_request instance);
+    partial void UpdateP_request(P_request instance);
+    partial void DeleteP_request(P_request instance);
     #endregion
 		
 		public MiraclassDataContext() : 
@@ -158,6 +161,14 @@ namespace Miraclass.Models
 			get
 			{
 				return this.GetTable<Q_question>();
+			}
+		}
+		
+		public System.Data.Linq.Table<P_request> P_requests
+		{
+			get
+			{
+				return this.GetTable<P_request>();
 			}
 		}
 	}
@@ -2323,6 +2334,164 @@ namespace Miraclass.Models
 		{
 			this.SendPropertyChanging();
 			entity.Q_question = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.P_request")]
+	public partial class P_request : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id;
+		
+		private int _userId;
+		
+		private int _roomId;
+		
+		private string _request;
+		
+		private bool _status;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnuserIdChanging(int value);
+    partial void OnuserIdChanged();
+    partial void OnroomIdChanging(int value);
+    partial void OnroomIdChanged();
+    partial void OnrequestChanging(string value);
+    partial void OnrequestChanged();
+    partial void OnstatusChanging(bool value);
+    partial void OnstatusChanged();
+    #endregion
+		
+		public P_request()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userId", DbType="Int NOT NULL")]
+		public int userId
+		{
+			get
+			{
+				return this._userId;
+			}
+			set
+			{
+				if ((this._userId != value))
+				{
+					this.OnuserIdChanging(value);
+					this.SendPropertyChanging();
+					this._userId = value;
+					this.SendPropertyChanged("userId");
+					this.OnuserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_roomId", DbType="Int NOT NULL")]
+		public int roomId
+		{
+			get
+			{
+				return this._roomId;
+			}
+			set
+			{
+				if ((this._roomId != value))
+				{
+					this.OnroomIdChanging(value);
+					this.SendPropertyChanging();
+					this._roomId = value;
+					this.SendPropertyChanged("roomId");
+					this.OnroomIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_request", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string request
+		{
+			get
+			{
+				return this._request;
+			}
+			set
+			{
+				if ((this._request != value))
+				{
+					this.OnrequestChanging(value);
+					this.SendPropertyChanging();
+					this._request = value;
+					this.SendPropertyChanged("request");
+					this.OnrequestChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="Bit NOT NULL")]
+		public bool status
+		{
+			get
+			{
+				return this._status;
+			}
+			set
+			{
+				if ((this._status != value))
+				{
+					this.OnstatusChanging(value);
+					this.SendPropertyChanging();
+					this._status = value;
+					this.SendPropertyChanged("status");
+					this.OnstatusChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }
