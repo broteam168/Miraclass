@@ -162,6 +162,7 @@
             this.gridQA.TabIndex = 0;
             this.gridQA.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gridQA.DoubleClick += new System.EventHandler(this.gridQA_DoubleClick);
             // 
             // gridView1
             // 
@@ -170,6 +171,10 @@
             this.content});
             this.gridView1.GridControl = this.gridQA;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AutoSelectAllInEditor = false;
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsBehavior.ReadOnly = true;
+            this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
             // 
             // id
             // 
@@ -228,6 +233,8 @@
             this.userName});
             this.gridView2.GridControl = this.gridParticipations;
             this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsBehavior.AutoSelectAllInEditor = false;
+            this.gridView2.OptionsBehavior.Editable = false;
             // 
             // c_id
             // 

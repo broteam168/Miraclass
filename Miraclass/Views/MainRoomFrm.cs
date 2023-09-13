@@ -1,6 +1,9 @@
 ﻿using DevExpress.Pdf;
+using DevExpress.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.TextEditController.Win32;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraPdfViewer;
 using DevExpress.XtraSpellChecker.Parser;
 using Miraclass.Controllers;
@@ -242,6 +245,33 @@ namespace Miraclass.Views
             {
                 MessageBox.Show("Please choose present to present");
             }
+        }
+
+        private void gridQA_DoubleClick(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void gridView1_DoubleClick(object sender, EventArgs e)
+        {
+try
+            {
+                DXMouseEventArgs ea = e as DXMouseEventArgs;
+                GridView view = sender as GridView;
+                GridHitInfo info = view.CalcHitInfo(ea.Location);
+                if (info.InRow || info.InRowCell)
+                {
+                    try
+                    {
+                        answerFrmcs frm = new answerFrmcs(int.Parse(gridView1.GetRowCellValue(info.RowHandle,"id").ToString()),_currentUser.userId);
+                        frm.Show();
+                    }
+                    catch (Exception) {
+                        Console.WriteLine("test");
+                    }
+                }
+            }
+            catch(Exception ex) { }
         }
     }
 }
