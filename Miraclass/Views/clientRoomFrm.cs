@@ -501,6 +501,7 @@ try
                 tmp.page = currentPage;
                 cls.addNote(tmp);
                 MessageBox.Show("Add successfully");
+                gridControl1.note
             }
             else
             {
