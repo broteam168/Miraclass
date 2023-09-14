@@ -107,6 +107,36 @@ namespace Miraclass.Controllers
                 db.SubmitChanges();
             }
         }
-
+        public void addSavePresent(N_savePresent obj)
+        {
+            List<N_savePresent> temp = db.N_savePresents.Where(x => x.userId == obj.userId && x.presentId == obj.presentId).ToList();
+            if(temp.Count>0)
+            {
+                foreach (var item in temp)
+                {
+                    db.N_savePresents.DeleteOnSubmit(item);
+                    db.SubmitChanges();
+                }
+            }
+            db.N_savePresents.InsertOnSubmit(obj);
+            db.SubmitChanges();
+        }
+        public bool checkSavePresent(int userId,int presentId)
+        {
+            return db.N_savePresents.Where(x => x.userId == userId && x.presentId == presentId).ToList().Count > 0;
+        }
+        public void addNote(N_Note note)
+        {
+            db.N_Notes.InsertOnSubmit(note);
+            db.SubmitChanges();
+        }
+        public List<N_Note> listNote(int userId,int presentId,int page)
+        {
+            return db.N_Notes.Where(x => x.userId == userId && x.presentId == presentId && x.page == page).ToList();
+        }
+        public List<N_Note> listNote(int userId, int presentId)
+        {
+            return db.N_Notes.Where(x => x.userId == userId && x.presentId == presentId ).ToList();
+        }
     }
 }

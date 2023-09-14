@@ -107,5 +107,11 @@ namespace Miraclass.Views
                 db.Dispose();
             }
         }
+
+        private void barButtonItem2_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+            NoteFrm frm = new NoteFrm(_currentUser);
+            loadForm(frm);
+        }
     }
 }

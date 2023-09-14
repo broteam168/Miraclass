@@ -20,6 +20,9 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraExport.Xls;
+using DevExpress.XtraBars;
+using System.Data.Linq;
 
 namespace Miraclass.Views
 {
@@ -229,7 +232,7 @@ namespace Miraclass.Views
                    
                     currentPresent = ((P_Present)cbPresent.GetSelectedDataRow()).id;
                     gridQA.DataSource = cls.listQuestion(_roomId, currentPresent);
-
+                    refreshNote();
                 }
                 catch (Exception ex)
                 {
@@ -319,7 +322,7 @@ try
                     //  MessageBox.Show(currentPresent.ToString());
                     gridQA.DataSource = cls.listQuestion(_roomId, currentPresent);
 
-
+                    refreshNote();
                     simpleButton6.Text = "Stop live";
                 }
                 else
@@ -402,7 +405,7 @@ try
 
                     }
                     mainPdf.CurrentPageNumber = cls.getCurrentPage(currentPresento.id, _roomId).currentPage;
-
+                    refreshNote();
                 }
                 else
                 {
@@ -415,7 +418,10 @@ try
             }
             autoData3();
         }
-
+        private void refreshNote()
+        {
+            gridControl1.DataSource = cls.listNote(_currentUser.userId, currentPresent);
+        }
         private void simpleButton5_Click(object sender, EventArgs e)
         {
             if(currentPresent == 0)
@@ -447,6 +453,59 @@ try
         {
             cls.removeParticipant(_currentUser.userId, _roomId);
             this.Close();
+        }
+
+        private void simpleButton7_Click(object sender, EventArgs e)
+        {
+            if (currentPresent != 0)
+            {
+                N_savePresent tmp = new N_savePresent();
+                tmp.userId = _currentUser.userId;
+                tmp.presentId = currentPresent; 
+                cls.addSavePresent(tmp);
+                MessageBox.Show("Save document");
+            }
+            else MessageBox.Show("No present is here");
+        }
+
+        private void mainPdf_PopupMenuShowing(object sender, PdfPopupMenuShowingEventArgs e)
+        {
+            BarButtonItem browseBarButton = new BarButtonItem();
+            browseBarButton.Caption = "Add note";
+            BarButtonItem viewBarButton = new BarButtonItem();
+            viewBarButton.Caption = "View note on this page";
+
+            e.ItemLinks.Clear();
+            
+            e.ItemLinks.Add(browseBarButton, true);
+            e.ItemLinks.Add(viewBarButton, true);
+
+            browseBarButton.ItemClick += BrowseBarButton_ItemClick;
+            viewBarButton.ItemClick += viewBarButton_ItemClick;
+        }
+        private void viewBarButton_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ViewNoteStudent frm = new ViewNoteStudent(currentPresent, _currentUser.userId, currentPage);
+            frm.ShowDialog();
+        }
+            private void BrowseBarButton_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if(currentPresent!=0 && cls.checkSavePresent(_currentUser.userId,currentPresent))
+            {
+                addNote frm = new addNote();
+                frm.ShowDialog();
+                N_Note tmp = new N_Note();
+                tmp.userId = _currentUser.userId;
+                tmp.presentId=currentPresent;
+                tmp.content = frm.getContent();
+                tmp.page = currentPage;
+                cls.addNote(tmp);
+                MessageBox.Show("Add successfully");
+            }
+            else
+            {
+                MessageBox.Show("Please save document before adding a note");
+            }
         }
     }
 }

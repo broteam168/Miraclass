@@ -50,6 +50,7 @@
             this.autoHideContainer2 = new DevExpress.XtraBars.Docking.AutoHideContainer();
             this.dockPanel6 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel6_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
@@ -72,6 +73,11 @@
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.dockPanel7 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel7_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.c_content = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager2)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.dockPanel2.SuspendLayout();
@@ -93,6 +99,10 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
+            this.dockPanel7.SuspendLayout();
+            this.dockPanel7_Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // autoHideContainer1
@@ -131,6 +141,7 @@
             this.hideContainerRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.hideContainerRight.Controls.Add(this.dockPanel2);
             this.hideContainerRight.Controls.Add(this.dockPanel3);
+            this.hideContainerRight.Controls.Add(this.dockPanel7);
             this.hideContainerRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.hideContainerRight.Location = new System.Drawing.Point(1780, 0);
             this.hideContainerRight.Name = "hideContainerRight";
@@ -308,6 +319,7 @@
             // 
             // dockPanel6_Container
             // 
+            this.dockPanel6_Container.Controls.Add(this.simpleButton7);
             this.dockPanel6_Container.Controls.Add(this.simpleButton5);
             this.dockPanel6_Container.Controls.Add(this.simpleButton6);
             this.dockPanel6_Container.Controls.Add(this.simpleButton3);
@@ -319,9 +331,18 @@
             this.dockPanel6_Container.Size = new System.Drawing.Size(225, 624);
             this.dockPanel6_Container.TabIndex = 0;
             // 
+            // simpleButton7
+            // 
+            this.simpleButton7.Location = new System.Drawing.Point(0, 275);
+            this.simpleButton7.Name = "simpleButton7";
+            this.simpleButton7.Size = new System.Drawing.Size(217, 43);
+            this.simpleButton7.TabIndex = 16;
+            this.simpleButton7.Text = "Save document";
+            this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click);
+            // 
             // simpleButton5
             // 
-            this.simpleButton5.Location = new System.Drawing.Point(3, 314);
+            this.simpleButton5.Location = new System.Drawing.Point(3, 363);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(217, 39);
             this.simpleButton5.TabIndex = 16;
@@ -330,7 +351,7 @@
             // 
             // simpleButton6
             // 
-            this.simpleButton6.Location = new System.Drawing.Point(3, 229);
+            this.simpleButton6.Location = new System.Drawing.Point(3, 23);
             this.simpleButton6.Name = "simpleButton6";
             this.simpleButton6.Size = new System.Drawing.Size(217, 46);
             this.simpleButton6.TabIndex = 16;
@@ -339,7 +360,9 @@
             // 
             // simpleButton3
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(3, 370);
+            this.simpleButton3.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.simpleButton3.Appearance.Options.UseBackColor = true;
+            this.simpleButton3.Location = new System.Drawing.Point(3, 419);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(217, 42);
             this.simpleButton3.TabIndex = 20;
@@ -350,7 +373,7 @@
             // 
             this.simpleButton1.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Primary;
             this.simpleButton1.Appearance.Options.UseBackColor = true;
-            this.simpleButton1.Location = new System.Drawing.Point(3, 152);
+            this.simpleButton1.Location = new System.Drawing.Point(0, 208);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(217, 44);
             this.simpleButton1.TabIndex = 20;
@@ -359,7 +382,7 @@
             // 
             // cbPresent
             // 
-            this.cbPresent.Location = new System.Drawing.Point(3, 67);
+            this.cbPresent.Location = new System.Drawing.Point(0, 123);
             this.cbPresent.Name = "cbPresent";
             this.cbPresent.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPresent.Properties.Appearance.Options.UseFont = true;
@@ -380,7 +403,7 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(3, 40);
+            this.labelControl1.Location = new System.Drawing.Point(0, 96);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(121, 21);
             this.labelControl1.TabIndex = 20;
@@ -475,6 +498,7 @@
             this.mainPdf.NavigationPaneWidth = 356;
             this.mainPdf.Size = new System.Drawing.Size(1724, 612);
             this.mainPdf.TabIndex = 10;
+            this.mainPdf.PopupMenuShowing += new DevExpress.XtraPdfViewer.PdfPopupMenuShowingEventHandler(this.mainPdf_PopupMenuShowing);
             this.mainPdf.Load += new System.EventHandler(this.mainPdf_Load);
             this.mainPdf.Click += new System.EventHandler(this.mainPdf_Click);
             this.mainPdf.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainPdf_MouseDown);
@@ -522,6 +546,56 @@
             this.simpleButton2.TabIndex = 20;
             this.simpleButton2.Text = "Start present";
             // 
+            // dockPanel7
+            // 
+            this.dockPanel7.Controls.Add(this.dockPanel7_Container);
+            this.dockPanel7.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
+            this.dockPanel7.ID = new System.Guid("0effe519-5267-48cc-a697-3e33a1ee6ca0");
+            this.dockPanel7.Location = new System.Drawing.Point(0, 0);
+            this.dockPanel7.Name = "dockPanel7";
+            this.dockPanel7.OriginalSize = new System.Drawing.Size(200, 200);
+            this.dockPanel7.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Right;
+            this.dockPanel7.SavedIndex = 0;
+            this.dockPanel7.Size = new System.Drawing.Size(200, 674);
+            this.dockPanel7.Text = "My note";
+            this.dockPanel7.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
+            // 
+            // dockPanel7_Container
+            // 
+            this.dockPanel7_Container.Controls.Add(this.gridControl1);
+            this.dockPanel7_Container.Location = new System.Drawing.Point(7, 45);
+            this.dockPanel7_Container.Name = "dockPanel7_Container";
+            this.dockPanel7_Container.Size = new System.Drawing.Size(188, 624);
+            this.dockPanel7_Container.TabIndex = 0;
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
+            this.gridControl1.MainView = this.gridView3;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(188, 624);
+            this.gridControl1.TabIndex = 0;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView3});
+            // 
+            // gridView3
+            // 
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.c_content});
+            this.gridView3.GridControl = this.gridControl1;
+            this.gridView3.Name = "gridView3";
+            // 
+            // c_content
+            // 
+            this.c_content.Caption = "content";
+            this.c_content.FieldName = "content";
+            this.c_content.MinWidth = 25;
+            this.c_content.Name = "c_content";
+            this.c_content.Visible = true;
+            this.c_content.VisibleIndex = 0;
+            this.c_content.Width = 94;
+            // 
             // clientRoomFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -560,6 +634,10 @@
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.dockPanel1.ResumeLayout(false);
+            this.dockPanel7.ResumeLayout(false);
+            this.dockPanel7_Container.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -607,5 +685,11 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
         private DevExpress.XtraEditors.SimpleButton simpleButton6;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton7;
+        private DevExpress.XtraBars.Docking.DockPanel dockPanel7;
+        private DevExpress.XtraBars.Docking.ControlContainer dockPanel7_Container;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraGrid.Columns.GridColumn c_content;
     }
 }

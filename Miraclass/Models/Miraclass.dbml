@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Miraclass" Class="MiraclassDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-KLLGML0\SQLEXPRESS;Initial Catalog=Miraclass;Persist Security Info=True;User ID=sa" SettingsObjectName="Miraclass.Properties.Settings" SettingsPropertyName="MiraclassConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-KLLGML0\SQLEXPRESS;Initial Catalog=Miraclass;Persist Security Info=True;User ID=sa" SettingsObjectName="Miraclass.Properties.Settings" SettingsPropertyName="MiraclassConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.S_User" Member="S_Users">
     <Type Name="S_User">
       <Column Name="userId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -14,6 +14,8 @@
       <Association Name="S_User_P_Attendance" Member="P_Attendances" ThisKey="userId" OtherKey="userId" Type="P_Attendance" />
       <Association Name="S_User_P_Present" Member="P_Presents" ThisKey="userId" OtherKey="ownerId" Type="P_Present" />
       <Association Name="S_User_Q_question" Member="Q_questions" ThisKey="userId" OtherKey="userId" Type="Q_question" />
+      <Association Name="S_User_N_savePresent" Member="N_savePresents" ThisKey="userId" OtherKey="userId" Type="N_savePresent" />
+      <Association Name="S_User_N_Note" Member="N_Notes" ThisKey="userId" OtherKey="userId" Type="N_Note" />
     </Type>
   </Table>
   <Table Name="dbo.P_Attendance" Member="P_Attendances">
@@ -50,6 +52,8 @@
       <Column Name="ownerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="P_Present_P_linkPresent" Member="P_linkPresents" ThisKey="id" OtherKey="presentId" Type="P_linkPresent" />
       <Association Name="P_Present_P_StatePresent" Member="P_StatePresents" ThisKey="id" OtherKey="presentId" Type="P_StatePresent" />
+      <Association Name="P_Present_N_savePresent" Member="N_savePresents" ThisKey="id" OtherKey="presentId" Type="N_savePresent" />
+      <Association Name="P_Present_N_Note" Member="N_Notes" ThisKey="id" OtherKey="presentId" Type="N_Note" />
       <Association Name="S_User_P_Present" Member="S_User" ThisKey="ownerId" OtherKey="userId" Type="S_User" IsForeignKey="true" />
       <Association Name="P_data_P_Present" Member="P_data" ThisKey="id" OtherKey="id" Type="P_data" IsForeignKey="true" />
     </Type>
@@ -110,6 +114,26 @@
       <Column Name="roomId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="request" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.N_savePresent" Member="N_savePresents">
+    <Type Name="N_savePresent">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="presentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="P_Present_N_savePresent" Member="P_Present" ThisKey="presentId" OtherKey="id" Type="P_Present" IsForeignKey="true" />
+      <Association Name="S_User_N_savePresent" Member="S_User" ThisKey="userId" OtherKey="userId" Type="S_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.N_Note" Member="N_Notes">
+    <Type Name="N_Note">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="content" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="userId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="presentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="page" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="P_Present_N_Note" Member="P_Present" ThisKey="presentId" OtherKey="id" Type="P_Present" IsForeignKey="true" />
+      <Association Name="S_User_N_Note" Member="S_User" ThisKey="userId" OtherKey="userId" Type="S_User" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
