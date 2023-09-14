@@ -64,11 +64,16 @@ namespace Miraclass.Controllers
         {
             try
             {
-                P_Present temp = db.P_Presents.Where(x => x.id == id).FirstOrDefault();
-                db.P_Presents.DeleteOnSubmit(temp);
-                P_data temp2 = db.P_datas.Where(x => x.id == id).FirstOrDefault();
-                db.P_datas.DeleteOnSubmit(temp2);
-                db.SubmitChanges();
+                P_linkPresent tt = db.P_linkPresents.Where(x=>x.presentId == id).FirstOrDefault();
+                if (tt != null)
+                {
+                    P_Present temp = db.P_Presents.Where(x => x.id == id).FirstOrDefault();
+                    db.P_Presents.DeleteOnSubmit(temp);
+                    P_data temp2 = db.P_datas.Where(x => x.id == id).FirstOrDefault();
+                    db.P_datas.DeleteOnSubmit(temp2);
+                    db.SubmitChanges();
+                }
+                else MessageBox.Show("Delete not success");
             }catch (Exception ex) { }
         }
 

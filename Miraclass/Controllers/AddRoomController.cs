@@ -37,7 +37,8 @@ namespace Miraclass.Controllers
         }
         public void deleteUserRoom(int id)
         {
-            P_Attendance temp = db.P_Attendances.Where(p => p.id == p.id).FirstOrDefault();
+             db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.P_Attendances);
+            P_Attendance temp = db.P_Attendances.Where(p => p.id ==id).FirstOrDefault();
             db.P_Attendances.DeleteOnSubmit(temp);
             db.SubmitChanges();
         }

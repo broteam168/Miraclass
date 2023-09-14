@@ -39,7 +39,7 @@ namespace Miraclass.Views
             cmdSave.Enabled = !enable;
             txtName.Enabled = !enable;
             txtDesc.Enabled = !enable;
-         
+            txtPass.Enabled = !enable;
             
         }
         private void gridRoom_Load(object sender, EventArgs e)

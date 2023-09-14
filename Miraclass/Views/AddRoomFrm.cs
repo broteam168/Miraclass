@@ -134,7 +134,8 @@ namespace Miraclass.Views
             try
             {
                 if(gridView2.GetFocusedRowCellValue("id")!=null)
-                currentUserId = int.Parse((gridView2.GetFocusedRowCellValue("id").ToString()));
+                currentUserId = int.Parse((gridView2.GetFocusedRowCellValue("id").ToString()));      
+          
              }
             catch(Exception ex) { }
             }

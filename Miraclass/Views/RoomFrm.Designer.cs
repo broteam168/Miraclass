@@ -296,6 +296,9 @@
             this.password});
             this.gridView1.GridControl = this.gridRoom;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AutoSelectAllInEditor = false;
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
             // cell_id
             // 
