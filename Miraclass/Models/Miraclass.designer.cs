@@ -66,6 +66,12 @@ namespace Miraclass.Models
     partial void InsertN_Note(N_Note instance);
     partial void UpdateN_Note(N_Note instance);
     partial void DeleteN_Note(N_Note instance);
+    partial void InsertS_Group(S_Group instance);
+    partial void UpdateS_Group(S_Group instance);
+    partial void DeleteS_Group(S_Group instance);
+    partial void InsertS_Menu(S_Menu instance);
+    partial void UpdateS_Menu(S_Menu instance);
+    partial void DeleteS_Menu(S_Menu instance);
     #endregion
 		
 		public MiraclassDataContext() : 
@@ -191,6 +197,22 @@ namespace Miraclass.Models
 			get
 			{
 				return this.GetTable<N_Note>();
+			}
+		}
+		
+		public System.Data.Linq.Table<S_Group> S_Groups
+		{
+			get
+			{
+				return this.GetTable<S_Group>();
+			}
+		}
+		
+		public System.Data.Linq.Table<S_Menu> S_Menus
+		{
+			get
+			{
+				return this.GetTable<S_Menu>();
 			}
 		}
 	}
@@ -3036,6 +3058,322 @@ namespace Miraclass.Models
 						this._userId = default(int);
 					}
 					this.SendPropertyChanged("S_User");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.S_Group")]
+	public partial class S_Group : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _GroupId;
+		
+		private string _GroupName;
+		
+		private string _GroupDesc;
+		
+		private string _Permission;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnGroupIdChanging(int value);
+    partial void OnGroupIdChanged();
+    partial void OnGroupNameChanging(string value);
+    partial void OnGroupNameChanged();
+    partial void OnGroupDescChanging(string value);
+    partial void OnGroupDescChanged();
+    partial void OnPermissionChanging(string value);
+    partial void OnPermissionChanged();
+    #endregion
+		
+		public S_Group()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int GroupId
+		{
+			get
+			{
+				return this._GroupId;
+			}
+			set
+			{
+				if ((this._GroupId != value))
+				{
+					this.OnGroupIdChanging(value);
+					this.SendPropertyChanging();
+					this._GroupId = value;
+					this.SendPropertyChanged("GroupId");
+					this.OnGroupIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string GroupName
+		{
+			get
+			{
+				return this._GroupName;
+			}
+			set
+			{
+				if ((this._GroupName != value))
+				{
+					this.OnGroupNameChanging(value);
+					this.SendPropertyChanging();
+					this._GroupName = value;
+					this.SendPropertyChanged("GroupName");
+					this.OnGroupNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GroupDesc", DbType="NVarChar(50)")]
+		public string GroupDesc
+		{
+			get
+			{
+				return this._GroupDesc;
+			}
+			set
+			{
+				if ((this._GroupDesc != value))
+				{
+					this.OnGroupDescChanging(value);
+					this.SendPropertyChanging();
+					this._GroupDesc = value;
+					this.SendPropertyChanged("GroupDesc");
+					this.OnGroupDescChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Permission", DbType="NVarChar(50)")]
+		public string Permission
+		{
+			get
+			{
+				return this._Permission;
+			}
+			set
+			{
+				if ((this._Permission != value))
+				{
+					this.OnPermissionChanging(value);
+					this.SendPropertyChanging();
+					this._Permission = value;
+					this.SendPropertyChanged("Permission");
+					this.OnPermissionChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.S_Menu")]
+	public partial class S_Menu : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MenuId;
+		
+		private System.Nullable<int> _MenuLevel;
+		
+		private string _MenuName;
+		
+		private string _MenuButton;
+		
+		private int _ParentId;
+		
+		private System.Nullable<int> _MenuOrder;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMenuIdChanging(int value);
+    partial void OnMenuIdChanged();
+    partial void OnMenuLevelChanging(System.Nullable<int> value);
+    partial void OnMenuLevelChanged();
+    partial void OnMenuNameChanging(string value);
+    partial void OnMenuNameChanged();
+    partial void OnMenuButtonChanging(string value);
+    partial void OnMenuButtonChanged();
+    partial void OnParentIdChanging(int value);
+    partial void OnParentIdChanged();
+    partial void OnMenuOrderChanging(System.Nullable<int> value);
+    partial void OnMenuOrderChanged();
+    #endregion
+		
+		public S_Menu()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MenuId
+		{
+			get
+			{
+				return this._MenuId;
+			}
+			set
+			{
+				if ((this._MenuId != value))
+				{
+					this.OnMenuIdChanging(value);
+					this.SendPropertyChanging();
+					this._MenuId = value;
+					this.SendPropertyChanged("MenuId");
+					this.OnMenuIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuLevel", DbType="Int")]
+		public System.Nullable<int> MenuLevel
+		{
+			get
+			{
+				return this._MenuLevel;
+			}
+			set
+			{
+				if ((this._MenuLevel != value))
+				{
+					this.OnMenuLevelChanging(value);
+					this.SendPropertyChanging();
+					this._MenuLevel = value;
+					this.SendPropertyChanged("MenuLevel");
+					this.OnMenuLevelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuName", DbType="NVarChar(50)")]
+		public string MenuName
+		{
+			get
+			{
+				return this._MenuName;
+			}
+			set
+			{
+				if ((this._MenuName != value))
+				{
+					this.OnMenuNameChanging(value);
+					this.SendPropertyChanging();
+					this._MenuName = value;
+					this.SendPropertyChanged("MenuName");
+					this.OnMenuNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuButton", DbType="NVarChar(50)")]
+		public string MenuButton
+		{
+			get
+			{
+				return this._MenuButton;
+			}
+			set
+			{
+				if ((this._MenuButton != value))
+				{
+					this.OnMenuButtonChanging(value);
+					this.SendPropertyChanging();
+					this._MenuButton = value;
+					this.SendPropertyChanged("MenuButton");
+					this.OnMenuButtonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ParentId", DbType="Int NOT NULL")]
+		public int ParentId
+		{
+			get
+			{
+				return this._ParentId;
+			}
+			set
+			{
+				if ((this._ParentId != value))
+				{
+					this.OnParentIdChanging(value);
+					this.SendPropertyChanging();
+					this._ParentId = value;
+					this.SendPropertyChanged("ParentId");
+					this.OnParentIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MenuOrder", DbType="Int")]
+		public System.Nullable<int> MenuOrder
+		{
+			get
+			{
+				return this._MenuOrder;
+			}
+			set
+			{
+				if ((this._MenuOrder != value))
+				{
+					this.OnMenuOrderChanging(value);
+					this.SendPropertyChanging();
+					this._MenuOrder = value;
+					this.SendPropertyChanged("MenuOrder");
+					this.OnMenuOrderChanged();
 				}
 			}
 		}

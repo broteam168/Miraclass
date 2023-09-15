@@ -85,9 +85,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddPresentController.cs" />
     <Compile Include="Controllers\AddRoomController.cs" />
     <Compile Include="Controllers\answerController.cs" />
+    <Compile Include="Controllers\ChangePasswordController.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\MainRoomController.cs" />
     <Compile Include="Controllers\NoteController.cs" />
     <Compile Include="Controllers\PresentManagerController.cs" />
@@ -167,6 +170,12 @@
     <Compile Include="Views\MainRoomFrm.Designer.cs">
       <DependentUpon>MainRoomFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\passwordFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\passwordFrm.Designer.cs">
+      <DependentUpon>passwordFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\PresentManagerFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +187,18 @@
     </Compile>
     <Compile Include="Views\NoteFrm.Designer.cs">
       <DependentUpon>NoteFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AccountFrm.Designer.cs">
+      <DependentUpon>AccountFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\userGroupFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\userGroupFrm.Designer.cs">
+      <DependentUpon>userGroupFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\RoomFrm.cs">
       <SubType>Form</SubType>
@@ -258,11 +279,20 @@
     <EmbeddedResource Include="Views\MainRoomFrm.resx">
       <DependentUpon>MainRoomFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\passwordFrm.resx">
+      <DependentUpon>passwordFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\PresentManagerFrm.resx">
       <DependentUpon>PresentManagerFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\NoteFrm.resx">
       <DependentUpon>NoteFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AccountFrm.resx">
+      <DependentUpon>AccountFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\userGroupFrm.resx">
+      <DependentUpon>userGroupFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\RoomFrm.resx">
       <DependentUpon>RoomFrm.cs</DependentUpon>

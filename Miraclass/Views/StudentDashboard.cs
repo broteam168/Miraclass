@@ -113,5 +113,21 @@ namespace Miraclass.Views
             NoteFrm frm = new NoteFrm(_currentUser);
             loadForm(frm);
         }
+
+        private void barButtonItem3_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+            passwordFrm frm = new passwordFrm(this._currentUser);
+            frm.ShowDialog();
+            if (frm.getStatus())
+            {
+                MessageBox.Show("Please login again before continue using");
+                this.Close();
+            }
+        }
+
+        private void barButtonItem4_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

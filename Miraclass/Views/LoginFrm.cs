@@ -70,16 +70,22 @@ namespace Miraclass.Views
                 {
                     this.Hide();
                     TeacherDashboard frm = new TeacherDashboard(currentUser);
-                    frm.Show();
+                    frm.ShowDialog();
+                    this.Show();
 
                 }
                 else
                 {
                     this.Hide();
                     StudentDashboard frm = new StudentDashboard(currentUser);
-                    frm.Show();
+                    frm.ShowDialog();
+                    this.Show();
                 } 
-                    
+                if(!isRemember)
+                {
+                    txtUser.Text = "";
+                    txtPass.Text = "";
+                }    
             
             }
         }

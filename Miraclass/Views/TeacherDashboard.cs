@@ -106,5 +106,21 @@ namespace Miraclass.Views
                 MessageBox.Show("errror" + ex.Message);
             }
         }
+
+        private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void barButtonItem7_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            passwordFrm frm = new passwordFrm(this._currentUser);
+            frm.ShowDialog();
+            if(frm.getStatus())
+            {
+                MessageBox.Show("Please login again before continue using");
+                this.Close();
+            }    
+        }
     }
 }

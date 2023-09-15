@@ -2,31 +2,29 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Miraclass.Controllers
 {
-    public class LoginController
+    internal class ChangePasswordController
     {
         private MiraclassDataContext db;
-        public LoginController()
+        public ChangePasswordController()
         {
             db = new MiraclassDataContext(Miraclass.Properties.Settings.Default.connect);
-            // get connectiton from saved string
         }
-        public S_User getUser(string username, string password)
+        public void updatePassword(int id, string password)
         {
-            db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.S_Users);
-            return db.S_Users.Where(p => p.userName.Equals(username.Trim()) &&p.userPassword.Equals(EncodeMD5(password).Trim())).SingleOrDefault();
+            S_User tmp = db.S_Users.Where(x => x.userId == id).FirstOrDefault();
+            tmp.userPassword = EncodeMD5(password);
+            db.SubmitChanges();
         }
-        private string EncodeMD5(string pass)
+        public string EncodeMD5(string pass)
         {
             MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-            byte[] bs=   System.Text.Encoding.UTF8.GetBytes(pass);
+            byte[] bs = System.Text.Encoding.UTF8.GetBytes(pass);
 
             bs = md5.ComputeHash(bs);
 

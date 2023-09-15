@@ -490,19 +490,19 @@ try
         }
             private void BrowseBarButton_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if(currentPresent!=0 && cls.checkSavePresent(_currentUser.userId,currentPresent))
+            if (currentPresent != 0 && cls.checkSavePresent(_currentUser.userId, currentPresent))
             {
                 addNote frm = new addNote();
                 frm.ShowDialog();
                 N_Note tmp = new N_Note();
                 tmp.userId = _currentUser.userId;
-                tmp.presentId=currentPresent;
+                tmp.presentId = currentPresent;
                 tmp.content = frm.getContent();
                 tmp.page = currentPage;
                 cls.addNote(tmp);
                 MessageBox.Show("Add successfully");
-                gridControl1.note
             }
+
             else
             {
                 MessageBox.Show("Please save document before adding a note");
