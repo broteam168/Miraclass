@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(userGroupFrm));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.cmdCancel = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.cmdRefresh = new DevExpress.XtraEditors.SimpleButton();
@@ -55,6 +56,8 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txtName = new DevExpress.XtraEditors.TextEdit();
             this.treePermission = new DevExpress.XtraTreeList.TreeList();
+            this.MenuId = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.MenuText = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
@@ -83,6 +86,7 @@
             this.panelControl1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.panelControl1.Appearance.Options.UseBackColor = true;
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.cmdCancel);
             this.panelControl1.Controls.Add(this.panelControl4);
             this.panelControl1.Controls.Add(this.panelControl5);
             this.panelControl1.Controls.Add(this.cmdRefresh);
@@ -96,6 +100,20 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1808, 62);
             this.panelControl1.TabIndex = 0;
+            // 
+            // cmdCancel
+            // 
+            this.cmdCancel.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Primary;
+            this.cmdCancel.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdCancel.Appearance.Options.UseBackColor = true;
+            this.cmdCancel.Appearance.Options.UseFont = true;
+            this.cmdCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("cmdCancel.ImageOptions.Image")));
+            this.cmdCancel.Location = new System.Drawing.Point(1623, 7);
+            this.cmdCancel.Name = "cmdCancel";
+            this.cmdCancel.Size = new System.Drawing.Size(158, 43);
+            this.cmdCancel.TabIndex = 13;
+            this.cmdCancel.Text = "Cancel";
+            this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
             // panelControl4
             // 
@@ -141,11 +159,12 @@
             this.cmdSave.Appearance.Options.UseBackColor = true;
             this.cmdSave.Appearance.Options.UseFont = true;
             this.cmdSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("cmdSave.ImageOptions.Image")));
-            this.cmdSave.Location = new System.Drawing.Point(1623, 12);
+            this.cmdSave.Location = new System.Drawing.Point(1443, 7);
             this.cmdSave.Name = "cmdSave";
             this.cmdSave.Size = new System.Drawing.Size(158, 43);
             this.cmdSave.TabIndex = 12;
             this.cmdSave.Text = "Save";
+            this.cmdSave.Click += new System.EventHandler(this.cmdSave_Click);
             // 
             // cmdDelete
             // 
@@ -154,7 +173,7 @@
             this.cmdDelete.Appearance.Options.UseBackColor = true;
             this.cmdDelete.Appearance.Options.UseFont = true;
             this.cmdDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("cmdDelete.ImageOptions.Image")));
-            this.cmdDelete.Location = new System.Drawing.Point(1441, 12);
+            this.cmdDelete.Location = new System.Drawing.Point(1261, 7);
             this.cmdDelete.Name = "cmdDelete";
             this.cmdDelete.Size = new System.Drawing.Size(151, 43);
             this.cmdDelete.TabIndex = 11;
@@ -167,11 +186,12 @@
             this.cmdEdit.Appearance.Options.UseBackColor = true;
             this.cmdEdit.Appearance.Options.UseFont = true;
             this.cmdEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("cmdEdit.ImageOptions.Image")));
-            this.cmdEdit.Location = new System.Drawing.Point(1251, 12);
+            this.cmdEdit.Location = new System.Drawing.Point(1071, 7);
             this.cmdEdit.Name = "cmdEdit";
             this.cmdEdit.Size = new System.Drawing.Size(158, 43);
             this.cmdEdit.TabIndex = 10;
             this.cmdEdit.Text = "Edit";
+            this.cmdEdit.Click += new System.EventHandler(this.cmdEdit_Click);
             // 
             // cmdAdd
             // 
@@ -180,11 +200,12 @@
             this.cmdAdd.Appearance.Options.UseBackColor = true;
             this.cmdAdd.Appearance.Options.UseFont = true;
             this.cmdAdd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("cmdAdd.ImageOptions.Image")));
-            this.cmdAdd.Location = new System.Drawing.Point(1060, 12);
+            this.cmdAdd.Location = new System.Drawing.Point(880, 7);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(158, 43);
             this.cmdAdd.TabIndex = 9;
             this.cmdAdd.Text = "Add";
+            this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
             // 
             // panelControl3
             // 
@@ -223,6 +244,9 @@
             // 
             this.gridView1.GridControl = this.gridGroup;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.AutoSelectAllInEditor = false;
+            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
             // panelControl2
             // 
@@ -272,6 +296,7 @@
             this.checkEdit2.Properties.Caption = "Reverse selection";
             this.checkEdit2.Size = new System.Drawing.Size(158, 25);
             this.checkEdit2.TabIndex = 1;
+            this.checkEdit2.CheckedChanged += new System.EventHandler(this.checkEdit2_CheckedChanged);
             // 
             // checkEdit1
             // 
@@ -282,6 +307,7 @@
             this.checkEdit1.Properties.Caption = "Select all";
             this.checkEdit1.Size = new System.Drawing.Size(94, 25);
             this.checkEdit1.TabIndex = 0;
+            this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
             // 
             // labelControl3
             // 
@@ -302,6 +328,7 @@
             this.linkCollapse.Size = new System.Drawing.Size(68, 18);
             this.linkCollapse.TabIndex = 6;
             this.linkCollapse.Text = "+ Collapse";
+            this.linkCollapse.Click += new System.EventHandler(this.linkCollapse_Click);
             // 
             // linkExpand
             // 
@@ -312,6 +339,7 @@
             this.linkExpand.Size = new System.Drawing.Size(64, 18);
             this.linkExpand.TabIndex = 5;
             this.linkExpand.Text = "+ Expand";
+            this.linkExpand.Click += new System.EventHandler(this.linkExpand_Click);
             // 
             // txtDesc
             // 
@@ -353,10 +381,32 @@
             // 
             // treePermission
             // 
+            this.treePermission.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.MenuId,
+            this.MenuText});
             this.treePermission.Location = new System.Drawing.Point(2, 253);
             this.treePermission.Name = "treePermission";
+            this.treePermission.OptionsBehavior.AutoSelectAllInEditor = false;
+            this.treePermission.OptionsBehavior.Editable = false;
+            this.treePermission.OptionsView.CheckBoxStyle = DevExpress.XtraTreeList.DefaultNodeCheckBoxStyle.Check;
             this.treePermission.Size = new System.Drawing.Size(1002, 445);
             this.treePermission.TabIndex = 0;
+            this.treePermission.AfterCheckNode += new DevExpress.XtraTreeList.NodeEventHandler(this.treePermission_AfterCheckNode);
+            this.treePermission.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.treePermission_FocusedNodeChanged);
+            // 
+            // MenuId
+            // 
+            this.MenuId.Caption = "treeListColumn1";
+            this.MenuId.FieldName = "MenuId";
+            this.MenuId.Name = "MenuId";
+            // 
+            // MenuText
+            // 
+            this.MenuText.Caption = "Function";
+            this.MenuText.FieldName = "MenuText";
+            this.MenuText.Name = "MenuText";
+            this.MenuText.Visible = true;
+            this.MenuText.VisibleIndex = 0;
             // 
             // userGroupFrm
             // 
@@ -424,5 +474,8 @@
         private DevExpress.XtraEditors.CheckEdit checkEdit2;
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn MenuId;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn MenuText;
+        private DevExpress.XtraEditors.SimpleButton cmdCancel;
     }
 }

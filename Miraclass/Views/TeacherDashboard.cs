@@ -122,5 +122,11 @@ namespace Miraclass.Views
                 this.Close();
             }    
         }
+
+        private void barButtonItem1_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+            userGroupFrm frm = new userGroupFrm(this._currentUser);
+            loadForm(frm);
+        }
     }
 }
