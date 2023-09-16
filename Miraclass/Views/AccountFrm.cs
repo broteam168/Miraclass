@@ -19,14 +19,21 @@ namespace Miraclass.Views
     {
         private S_User _currentUser;
 
-        RoomController cls;
+        private UserControler cls;
         public AccountFrm(S_User currentUser)
         {
             InitializeComponent();
             this._currentUser = currentUser;  
-            cls = new RoomController();
+          
+        }
 
-            gridRoom.DataSource = cls.liRoom(_currentUser.userId);
+        private void AccountFrm_Load(object sender, EventArgs e)
+        {
+            cls = new UserControler();
+
+            gridUser.DataSource = cls.list();
+
+            cbGroup.Properties.DataSource = cls.listGroup();
 
             setStatus(true);
         }
@@ -35,157 +42,113 @@ namespace Miraclass.Views
             cmdAdd.Enabled = enable;
             cmdEdit.Enabled = enable;
             cmdDelete.Enabled = enable;
+            cmdRemovePass.Enabled = enable;
 
             cmdSave.Enabled = !enable;
-            txtName.Enabled = !enable;
-            txtDesc.Enabled = !enable;
-            txtPass.Enabled = !enable;
-            
-        }
-        private void gridRoom_Load(object sender, EventArgs e)
-        {
-            
-        }
+            cmdCancel.Enabled = !enable;
+            txtUser.Enabled = !enable;
+            txtPhone.Enabled = !enable;
+            txtFullName.Enabled = !enable;
 
-        private void cmdRefresh_Click(object sender, EventArgs e)
-        {
-          
-            gridRoom.DataSource = cls.liRoom(_currentUser.userId);
+            checkActive.Enabled = !enable;
+            checkTeacher.Enabled = !enable;
+            cbGroup.Enabled = !enable;
+            gridUser.Enabled = enable;
         }
-
-        private string cmd = "";
+        private string action = "";
         private void cmdAdd_Click(object sender, EventArgs e)
         {
+            action = "ADD";
             setStatus(false);
-            cmd = "add";
-           
+
+            txtFullName.Text = "";
+            txtUser.Text = "";
+            txtPhone.Text = "";
+
+        }
+        private int _id;
+        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            try
+            {
+                _id = int.Parse(gridView1.GetFocusedRowCellValue("userId").ToString());
+                txtUser.Text = gridView1.GetFocusedRowCellValue("userName").ToString();
+                txtFullName.Text = gridView1.GetFocusedRowCellValue("userFullName").ToString();
+                txtPhone.Text = gridView1.GetFocusedRowCellValue("Phone").ToString();
+               
+                checkActive.Checked = gridView1.GetFocusedRowCellValue("isActive").ToString() == "True";
+                checkTeacher.Checked = gridView1.GetFocusedRowCellValue("isTeacher").ToString() == "True";
+
+                cbGroup.EditValue = int.Parse(gridView1.GetFocusedRowCellValue("userGroup").ToString());
+            }
+            catch (Exception)
+            {
+
+               
+            }
+        }
+
+        private void cmdCancel_Click(object sender, EventArgs e)
+        {
+            setStatus(true);
+        }
+
+        private void cmdRemovePass_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cls.clearPass(_id);
+                MessageBox.Show("Reset password successfully. Now password is same as name");
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void cmdSave_Click(object sender, EventArgs e)
         {
+            if (txtFullName.Text.Equals("") || txtUser.Text.Equals("") || txtPhone.Text.Equals("") || cbGroup.GetSelectedDataRow() == null)
+            {
+                MessageBox.Show("Please enter all fields","Warning");
+                setStatus(true);
+                return;
+            }
+
+            S_User obj = new S_User();
+            obj.userName = txtUser.Text;
+            obj.userFullName = txtFullName.Text;
+            obj.Phone = txtPhone.Text;
+            obj.isActive = checkActive.Checked;
+            obj.isTeacher = checkTeacher.Checked;
+            obj.userGroup = int.Parse(cbGroup.EditValue.ToString());
+            if(action == "EDIT")
+            {
+                obj.userId = _id;
+                cls.update(obj);
+            }    
+            else if(!cls.checkExists(obj.userName))
+            {
+                obj.userPassword = cls.EncodeMD5(obj.userName);
+                cls.add(obj);
+            }    
+            else
+            {
+                MessageBox.Show("The username existed!!!");
+                txtUser.Focus();
+                return;
+            }
+            MessageBox.Show("Update successfully");
+            gridUser.DataSource = cls.list();
             setStatus(true);
 
-            if (cmd == "add")
-            {
-                if (txtName.Text.Equals("") || txtDesc.Text.Equals(""))
-                {
-                    MessageBox.Show("Please enter all information", "Notification");
-                    return;
-                }
-                try
-                {
-                    P_Room newRoom = new P_Room();
-                    newRoom.RoomName = txtName.Text;
-                    newRoom.status = false;
-                    newRoom.CreatedAt = DateTime.Now;
-                    newRoom.RoomDesc = txtDesc.Text;
-                    newRoom.hostId = _currentUser.userId;
-
-                    newRoom.password = txtPass.Text;
-                    cls.AddRoom(newRoom);
-                    MessageBox.Show("Add successfully");
-
-                    cls = new RoomController();
-
-                    gridRoom.DataSource = cls.liRoom(_currentUser.userId);
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Add failed");
-
-                }
-            }
-            else if(cmd == "edit")
-            {
-                if (txtName.Text.Equals("") || txtDesc.Text.Equals(""))
-                {
-                    MessageBox.Show("Please enter all information", "Notification");
-                    return;
-                }
-                try
-                {
-                    P_Room newRoom = new P_Room();
-                    newRoom.id = currentId;
-                    newRoom.RoomName = txtName.Text;
-                    newRoom.status = false;
-                    newRoom.RoomDesc = txtDesc.Text;
-                    if (!txtPass.Text.Equals("")) newRoom.password = txtPass.Text;
-                    else newRoom.password += txtPass.Text;
-                    cls.UpdateRoom(newRoom);
-                    MessageBox.Show("Edit successfully");
-
-                    cls = new RoomController();
-
-                    gridRoom.DataSource = cls.liRoom(_currentUser.userId);
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Add failed" +ex.Message);
-
-                }
-            }    
-        }
-
-        private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
-        {
-            
-            
-        }
-        private int currentId = 0;
-        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        {
-            currentId = int.Parse((gridView1.GetFocusedRowCellValue("id").ToString()));
-            txtName.Text = (gridView1.GetFocusedRowCellValue("RoomName").ToString());
-            if((gridView1.GetFocusedRowCellValue("RoomDesc") !=null)) txtDesc.Text = (gridView1.GetFocusedRowCellValue("RoomDesc").ToString())  ;
-     //       checkActive.Checked =  gridView1.GetFocusedRowCellValue("status").ToString() == "True" ? true : false;
         }
 
         private void cmdEdit_Click(object sender, EventArgs e)
         {
+            action = "EDIT";
             setStatus(false);
-            cmd = "edit";
-        }
-
-        private void cmdDelete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                cls.deleteRoom(currentId);
-                MessageBox.Show("Delete successfully", "Notifications");   cls = new RoomController();
-
-                gridRoom.DataSource = cls.liRoom(_currentUser.userId);
-
-            }catch(Exception ex)
-            {
-             
-            }
-        }
-
-        private void panelControl2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lb_title1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelControl3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelControl1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPass_EditValueChanged(object sender, EventArgs e)
-        {
-
+            txtUser.Enabled = false;
         }
 
         private void panelControl1_Paint(object sender, PaintEventArgs e)
@@ -193,39 +156,18 @@ namespace Miraclass.Views
 
         }
 
-        private void txtDesc_TextChanged(object sender, EventArgs e)
+        private void cmdDelete_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void labelControl2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbName_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtName_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelControl3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panelControl4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void gridRoom_Click(object sender, EventArgs e)
-        {
-
+            try
+            {
+                cls.delete(_id);
+                gridUser.DataSource = cls.list();
+                MessageBox.Show("Delete success");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error occur");
+            }
         }
     }
 }

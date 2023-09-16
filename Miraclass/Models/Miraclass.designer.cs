@@ -251,6 +251,8 @@ namespace Miraclass.Models
 		
 		private EntitySet<N_Note> _N_Notes;
 		
+		private EntityRef<S_Group> _S_Group;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -282,6 +284,7 @@ namespace Miraclass.Models
 			this._Q_questions = new EntitySet<Q_question>(new Action<Q_question>(this.attach_Q_questions), new Action<Q_question>(this.detach_Q_questions));
 			this._N_savePresents = new EntitySet<N_savePresent>(new Action<N_savePresent>(this.attach_N_savePresents), new Action<N_savePresent>(this.detach_N_savePresents));
 			this._N_Notes = new EntitySet<N_Note>(new Action<N_Note>(this.attach_N_Notes), new Action<N_Note>(this.detach_N_Notes));
+			this._S_Group = default(EntityRef<S_Group>);
 			OnCreated();
 		}
 		
@@ -356,6 +359,10 @@ namespace Miraclass.Models
 			{
 				if ((this._userGroup != value))
 				{
+					if (this._S_Group.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnuserGroupChanging(value);
 					this.SendPropertyChanging();
 					this._userGroup = value;
@@ -527,6 +534,40 @@ namespace Miraclass.Models
 			set
 			{
 				this._N_Notes.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="S_Group_S_User", Storage="_S_Group", ThisKey="userGroup", OtherKey="GroupId", IsForeignKey=true)]
+		public S_Group S_Group
+		{
+			get
+			{
+				return this._S_Group.Entity;
+			}
+			set
+			{
+				S_Group previousValue = this._S_Group.Entity;
+				if (((previousValue != value) 
+							|| (this._S_Group.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._S_Group.Entity = null;
+						previousValue.S_Users.Remove(this);
+					}
+					this._S_Group.Entity = value;
+					if ((value != null))
+					{
+						value.S_Users.Add(this);
+						this._userGroup = value.GroupId;
+					}
+					else
+					{
+						this._userGroup = default(int);
+					}
+					this.SendPropertyChanged("S_Group");
+				}
 			}
 		}
 		
@@ -3097,6 +3138,8 @@ namespace Miraclass.Models
 		
 		private string _Permission;
 		
+		private EntitySet<S_User> _S_Users;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3113,6 +3156,7 @@ namespace Miraclass.Models
 		
 		public S_Group()
 		{
+			this._S_Users = new EntitySet<S_User>(new Action<S_User>(this.attach_S_Users), new Action<S_User>(this.detach_S_Users));
 			OnCreated();
 		}
 		
@@ -3196,6 +3240,19 @@ namespace Miraclass.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="S_Group_S_User", Storage="_S_Users", ThisKey="GroupId", OtherKey="userGroup")]
+		public EntitySet<S_User> S_Users
+		{
+			get
+			{
+				return this._S_Users;
+			}
+			set
+			{
+				this._S_Users.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -3214,6 +3271,18 @@ namespace Miraclass.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_S_Users(S_User entity)
+		{
+			this.SendPropertyChanging();
+			entity.S_Group = this;
+		}
+		
+		private void detach_S_Users(S_User entity)
+		{
+			this.SendPropertyChanging();
+			entity.S_Group = null;
 		}
 	}
 	

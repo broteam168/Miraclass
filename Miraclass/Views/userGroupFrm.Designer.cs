@@ -43,6 +43,10 @@
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.gridGroup = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.groupId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.GroupName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.GroupDesc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Permission = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.panelControl6 = new DevExpress.XtraEditors.PanelControl();
@@ -139,6 +143,7 @@
             this.cmdRefresh.PaintStyle = DevExpress.XtraEditors.Controls.PaintStyles.Light;
             this.cmdRefresh.Size = new System.Drawing.Size(41, 38);
             this.cmdRefresh.TabIndex = 3;
+            this.cmdRefresh.Click += new System.EventHandler(this.cmdRefresh_Click);
             // 
             // lb_title1
             // 
@@ -178,6 +183,7 @@
             this.cmdDelete.Size = new System.Drawing.Size(151, 43);
             this.cmdDelete.TabIndex = 11;
             this.cmdDelete.Text = "Delete";
+            this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click);
             // 
             // cmdEdit
             // 
@@ -242,11 +248,56 @@
             // 
             // gridView1
             // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.groupId,
+            this.GroupName,
+            this.GroupDesc,
+            this.Permission});
             this.gridView1.GridControl = this.gridGroup;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AutoSelectAllInEditor = false;
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
+            // 
+            // groupId
+            // 
+            this.groupId.Caption = "groupId";
+            this.groupId.FieldName = "GroupId";
+            this.groupId.MinWidth = 25;
+            this.groupId.Name = "groupId";
+            this.groupId.Visible = true;
+            this.groupId.VisibleIndex = 0;
+            this.groupId.Width = 94;
+            // 
+            // GroupName
+            // 
+            this.GroupName.Caption = "Group name";
+            this.GroupName.FieldName = "GroupName";
+            this.GroupName.MinWidth = 25;
+            this.GroupName.Name = "GroupName";
+            this.GroupName.Visible = true;
+            this.GroupName.VisibleIndex = 1;
+            this.GroupName.Width = 94;
+            // 
+            // GroupDesc
+            // 
+            this.GroupDesc.Caption = "Description";
+            this.GroupDesc.FieldName = "GroupDesc";
+            this.GroupDesc.MinWidth = 25;
+            this.GroupDesc.Name = "GroupDesc";
+            this.GroupDesc.Visible = true;
+            this.GroupDesc.VisibleIndex = 2;
+            this.GroupDesc.Width = 94;
+            // 
+            // Permission
+            // 
+            this.Permission.Caption = "Permission";
+            this.Permission.FieldName = "Permission";
+            this.Permission.MinWidth = 25;
+            this.Permission.Name = "Permission";
+            this.Permission.Visible = true;
+            this.Permission.VisibleIndex = 3;
+            this.Permission.Width = 94;
             // 
             // panelControl2
             // 
@@ -417,7 +468,7 @@
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Name = "userGroupFrm";
-            this.Text = "Add room";
+            this.Text = "Manage group";
             this.Load += new System.EventHandler(this.userGroupFrm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
@@ -477,5 +528,9 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn MenuId;
         private DevExpress.XtraTreeList.Columns.TreeListColumn MenuText;
         private DevExpress.XtraEditors.SimpleButton cmdCancel;
+        private DevExpress.XtraGrid.Columns.GridColumn groupId;
+        private DevExpress.XtraGrid.Columns.GridColumn GroupName;
+        private DevExpress.XtraGrid.Columns.GridColumn GroupDesc;
+        private DevExpress.XtraGrid.Columns.GridColumn Permission;
     }
 }

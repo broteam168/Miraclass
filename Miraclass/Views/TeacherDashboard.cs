@@ -128,5 +128,11 @@ namespace Miraclass.Views
             userGroupFrm frm = new userGroupFrm(this._currentUser);
             loadForm(frm);
         }
+
+        private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            AccountFrm frm = new AccountFrm(this._currentUser);
+            loadForm(frm);
+        }
     }
 }

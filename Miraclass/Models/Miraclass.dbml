@@ -16,6 +16,7 @@
       <Association Name="S_User_Q_question" Member="Q_questions" ThisKey="userId" OtherKey="userId" Type="Q_question" />
       <Association Name="S_User_N_savePresent" Member="N_savePresents" ThisKey="userId" OtherKey="userId" Type="N_savePresent" />
       <Association Name="S_User_N_Note" Member="N_Notes" ThisKey="userId" OtherKey="userId" Type="N_Note" />
+      <Association Name="S_Group_S_User" Member="S_Group" ThisKey="userGroup" OtherKey="GroupId" Type="S_Group" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.P_Attendance" Member="P_Attendances">
@@ -142,6 +143,7 @@
       <Column Name="GroupName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="GroupDesc" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Permission" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="S_Group_S_User" Member="S_Users" ThisKey="GroupId" OtherKey="userGroup" Type="S_User" />
     </Type>
   </Table>
   <Table Name="dbo.S_Menu" Member="S_Menus">

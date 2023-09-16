@@ -220,6 +220,9 @@ namespace Miraclass.Views
             if(txtName.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Please enter enough information");
+                setStatus(true);
+
+
                 return;
             }
             S_Group obj = new S_Group();
@@ -244,6 +247,25 @@ namespace Miraclass.Views
         {
             _Action = "EDIT";
             setStatus(false);
+        }
+
+        private void cmdRefresh_Click(object sender, EventArgs e)
+        {
+            gridGroup.DataSource = cls.list();
+
+        }
+
+        private void cmdDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure deleting this data?", "Confirmation", MessageBoxButtons.YesNo);
+            if(result == DialogResult.Yes)
+            {
+                cls.delete(_id);
+                MessageBox.Show("Successfully");
+                gridGroup.DataSource = cls.list();
+                setStatus(true);
+            }
+           // setStatus(true);
         }
     }
 }
