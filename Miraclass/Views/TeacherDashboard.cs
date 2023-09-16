@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using Miraclass.Libs;
 using Miraclass.Models;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,25 @@ namespace Miraclass.Views
         {
             InitializeComponent();
             this._currentUser = currentUser;
+            setPermission("");
+        }
+        public void setPermission(string MenuStr)
+        {
+            try
+            {
+                FunctionMain fn = new FunctionMain();
+                List<string> list = fn.getMenuByUser(_currentUser.userGroup,"mn",-1);
+                foreach (string item in list)
+                {
+                    System.Console.WriteLine(item);
+                    BarItem ctl = ribbon.Manager.Items[item];
+                    ctl.Enabled = true;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
         }
         private void loadForm(XtraForm frm)
         {

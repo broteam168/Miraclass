@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Miraclass.Libs;
 
 namespace Miraclass.Views
 {
@@ -20,6 +21,7 @@ namespace Miraclass.Views
         private S_User _currentUser;
 
         RoomController cls;
+        bool t, s, x;
         public RoomFrm(S_User currentUser)
         {
             InitializeComponent();
@@ -28,14 +30,42 @@ namespace Miraclass.Views
 
             gridRoom.DataSource = cls.liRoom(_currentUser.userId);
 
-            setStatus(true);
+           
+            FunctionMain funnction = new FunctionMain();
+            List<string> menus = funnction.getMenuByUser(_currentUser.userGroup,"cmd", 2);
+            foreach (string item in menus)
+            {
+
+                SimpleButton ctl = this.Controls.Find(item, true).FirstOrDefault() as SimpleButton;
+                ctl.Enabled = true;
+            }
+           
+            t = cmdAdd.Enabled;
+            s = cmdEdit.Enabled;
+            x = cmdDelete.Enabled;
+
+             setStatus(true);
+
+
         }
         private void setStatus(bool enable)
         {
-            cmdAdd.Enabled = enable;
-            cmdEdit.Enabled = enable;
-            cmdDelete.Enabled = enable;
+            if (enable)
+            {
+                if (t)
+                    cmdAdd.Enabled = enable;
+                if (s)
+                    cmdEdit.Enabled = enable;
+                if (x)
+                    cmdDelete.Enabled = enable;
 
+            }
+            else
+            {
+                cmdAdd.Enabled = enable;
+                cmdEdit.Enabled = enable;
+                cmdDelete.Enabled = enable;
+            }
             cmdSave.Enabled = !enable;
             txtName.Enabled = !enable;
             txtDesc.Enabled = !enable;

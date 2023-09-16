@@ -177,6 +177,7 @@
             this.cmdDelete.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdDelete.Appearance.Options.UseBackColor = true;
             this.cmdDelete.Appearance.Options.UseFont = true;
+            this.cmdDelete.Enabled = false;
             this.cmdDelete.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("cmdDelete.ImageOptions.Image")));
             this.cmdDelete.Location = new System.Drawing.Point(1261, 7);
             this.cmdDelete.Name = "cmdDelete";
@@ -191,6 +192,7 @@
             this.cmdEdit.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdEdit.Appearance.Options.UseBackColor = true;
             this.cmdEdit.Appearance.Options.UseFont = true;
+            this.cmdEdit.Enabled = false;
             this.cmdEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("cmdEdit.ImageOptions.Image")));
             this.cmdEdit.Location = new System.Drawing.Point(1071, 7);
             this.cmdEdit.Name = "cmdEdit";
@@ -205,6 +207,7 @@
             this.cmdAdd.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdAdd.Appearance.Options.UseBackColor = true;
             this.cmdAdd.Appearance.Options.UseFont = true;
+            this.cmdAdd.Enabled = false;
             this.cmdAdd.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("cmdAdd.ImageOptions.Image")));
             this.cmdAdd.Location = new System.Drawing.Point(880, 7);
             this.cmdAdd.Name = "cmdAdd";

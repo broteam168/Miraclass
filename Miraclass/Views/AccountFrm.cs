@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Miraclass.Libs;
 
 namespace Miraclass.Views
 {
@@ -23,10 +24,10 @@ namespace Miraclass.Views
         public AccountFrm(S_User currentUser)
         {
             InitializeComponent();
-            this._currentUser = currentUser;  
-          
-        }
+            this._currentUser = currentUser;
 
+        }
+        private bool t, s, x, r;
         private void AccountFrm_Load(object sender, EventArgs e)
         {
             cls = new UserControler();
@@ -35,14 +36,42 @@ namespace Miraclass.Views
 
             cbGroup.Properties.DataSource = cls.listGroup();
 
+            FunctionMain funnction = new FunctionMain();
+            List<string> menus = funnction.getMenuByUser(_currentUser.userGroup, "cmd", 21);
+            foreach (string item in menus)
+            {
+
+                SimpleButton ctl = this.Controls.Find(item, true).FirstOrDefault() as SimpleButton;
+                ctl.Enabled = true;
+            }
+
+            t = cmdAdd.Enabled;
+            s = cmdEdit.Enabled;
+            x = cmdDelete.Enabled;
+            r = cmdRemovePass.Enabled;
             setStatus(true);
         }
         private void setStatus(bool enable)
         {
-            cmdAdd.Enabled = enable;
-            cmdEdit.Enabled = enable;
-            cmdDelete.Enabled = enable;
-            cmdRemovePass.Enabled = enable;
+            if (enable)
+            {
+                if (t)
+                    cmdAdd.Enabled = enable;
+                if (s)
+                    cmdEdit.Enabled = enable;
+                if (x)
+                    cmdDelete.Enabled = enable;
+                if(r) 
+                    cmdRemovePass.Enabled = enable;
+            }
+            else
+            {
+                cmdAdd.Enabled = enable;
+                cmdEdit.Enabled = enable;
+                cmdDelete.Enabled = enable;
+                cmdRemovePass.Enabled = enable;
+            }
+            
 
             cmdSave.Enabled = !enable;
             cmdCancel.Enabled = !enable;

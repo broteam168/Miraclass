@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Data.SqlClient;
 using System.IO;
+using Miraclass.Libs;
 
 namespace Miraclass.Views
 {
@@ -34,14 +35,40 @@ namespace Miraclass.Views
             cls = new PresentManagerController();
 
             gridRoom.DataSource = cls.listPresent(_currentUser.userId);
+            FunctionMain funnction = new FunctionMain();
+            List<string> menus = funnction.getMenuByUser(_currentUser.userGroup, "cmd", 13);
+            foreach (string item in menus)
+            {
+
+                SimpleButton ctl = this.Controls.Find(item, true).FirstOrDefault() as SimpleButton;
+                ctl.Enabled = true;
+            }
+
+            t = cmdAdd.Enabled;
+            s = cmdEdit.Enabled;
+            x = cmdDelete.Enabled;
 
             setStatus(true);
         }
+        private bool t, s, x;
         private void setStatus(bool enable)
         {
-            cmdAdd.Enabled = enable;
-            cmdEdit.Enabled = enable;
-            cmdDelete.Enabled = enable;
+            if (enable)
+            {
+                if (t)
+                    cmdAdd.Enabled = enable;
+                if (s)
+                    cmdEdit.Enabled = enable;
+                if (x)
+                    cmdDelete.Enabled = enable;
+
+            }
+            else
+            {
+                cmdAdd.Enabled = enable;
+                cmdEdit.Enabled = enable;
+                cmdDelete.Enabled = enable;
+            }
 
             cmdSave.Enabled = !enable;
             txtName.Enabled = !enable;

@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using EMS.Controlers;
 using DevExpress.XtraTreeList;
 using DevExpress.XtraTreeList.Nodes;
+using Miraclass.Libs;
 
 namespace Miraclass.Views
 {
@@ -36,13 +37,41 @@ namespace Miraclass.Views
 
             gridGroup.DataSource = cls.list();
             createMenu(treePermission);
+            FunctionMain funnction = new FunctionMain();
+            List<string> menus = funnction.getMenuByUser(_currentUser.userGroup, "cmd", 27);
+            foreach (string item in menus)
+            {
+
+                SimpleButton ctl = this.Controls.Find(item, true).FirstOrDefault() as SimpleButton;
+                ctl.Enabled = true;
+            }
+
+            t = cmdAdd.Enabled;
+            s = cmdEdit.Enabled;
+            x = cmdDelete.Enabled;
             setStatus(true);
+            gridView1.FocusedRowHandle = 1;
         }
+        private bool t, s, x;
         private void setStatus(bool enable)
         {
-            cmdAdd.Enabled = enable;
-            cmdEdit.Enabled = enable;
-            cmdDelete.Enabled = enable;
+            if (enable)
+            {
+                if (t)
+                    cmdAdd.Enabled = enable;
+                if (s)
+                    cmdEdit.Enabled = enable;
+                if (x)
+                    cmdDelete.Enabled = enable;
+               
+            }
+            else
+            {
+                cmdAdd.Enabled = enable;
+                cmdEdit.Enabled = enable;
+                cmdDelete.Enabled = enable;
+               
+            }
 
             cmdSave.Enabled = !enable;
             cmdCancel.Enabled = !enable;

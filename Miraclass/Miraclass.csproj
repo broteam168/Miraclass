@@ -98,6 +98,7 @@
     <Compile Include="Controllers\ConfigController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Libs\FunctionMain.cs" />
     <Compile Include="Models\Miraclass.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

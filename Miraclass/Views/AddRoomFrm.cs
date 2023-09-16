@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Miraclass.Libs;
 
 namespace Miraclass.Views
 {
@@ -34,7 +35,17 @@ namespace Miraclass.Views
 
             gridParticipation.DataSource = cls.liAttendance(currentId);
 
+            FunctionMain funnction = new FunctionMain();
+            List<string> menus = funnction.getMenuByUser(_currentUser.userGroup, "cmd", 8);
+            foreach (string item in menus)
+            {
+
+                SimpleButton ctl = this.Controls.Find(item, true).FirstOrDefault() as SimpleButton;
+                ctl.Enabled = true;
+            }
+
             
+
         }
 
         private void cmdRefresh_Click(object sender, EventArgs e)

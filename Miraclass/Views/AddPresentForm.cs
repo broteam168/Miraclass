@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
+using Miraclass.Libs;
 
 namespace Miraclass.Views
 {
@@ -35,7 +36,15 @@ namespace Miraclass.Views
 
             gridControl1.DataSource = cls.liPresent(currentId);
 
-            
+            FunctionMain funnction = new FunctionMain();
+            List<string> menus = funnction.getMenuByUser(_currentUser.userGroup, "cmd", 17);
+            foreach (string item in menus)
+            {
+
+                SimpleButton ctl = this.Controls.Find(item, true).FirstOrDefault() as SimpleButton;
+                ctl.Enabled = true;
+            }
+
         }
 
         private void cmdRefresh_Click(object sender, EventArgs e)
