@@ -121,6 +121,7 @@ namespace Miraclass.Views
                             file = reader.ReadBytes((int)stream.Length);
                         }
                     }
+                    _obj.description = txtPath.Text.Split('.')[1];
                     P_data _obj2 = new P_data();
                     _obj2.data = file;
                     cls.AddPresent(_obj,_obj2);
