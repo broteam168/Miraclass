@@ -43,11 +43,6 @@
             this.content = new DevExpress.XtraGrid.Columns.GridColumn();
             this.dockPanel3 = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer2 = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.gridParticipations = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.c_id = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.userName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.autoHideContainer2 = new DevExpress.XtraBars.Docking.AutoHideContainer();
             this.dockPanel6 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel6_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
@@ -70,6 +65,9 @@
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.txtLog = new System.Windows.Forms.TextBox();
+            this.txtServer = new DevExpress.XtraEditors.TextEdit();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager2)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.dockPanel2.SuspendLayout();
@@ -78,9 +76,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.dockPanel3.SuspendLayout();
             this.controlContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridParticipations)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            this.autoHideContainer2.SuspendLayout();
             this.dockPanel6.SuspendLayout();
             this.dockPanel6_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
@@ -90,6 +85,7 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtServer.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // autoHideContainer1
@@ -103,12 +99,13 @@
             // dockManager2
             // 
             this.dockManager2.AutoHideContainers.AddRange(new DevExpress.XtraBars.Docking.AutoHideContainer[] {
-            this.hideContainerRight,
-            this.autoHideContainer2});
+            this.hideContainerRight});
             this.dockManager2.Form = this;
             this.dockManager2.HiddenPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
             this.dockPanel4,
             this.dockPanel5});
+            this.dockManager2.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
+            this.dockPanel6});
             this.dockManager2.TopZIndexControls.AddRange(new string[] {
             "DevExpress.XtraBars.BarDockControl",
             "DevExpress.XtraBars.StandaloneBarDockControl",
@@ -233,77 +230,27 @@
             // 
             // controlContainer2
             // 
-            this.controlContainer2.Controls.Add(this.gridParticipations);
+            this.controlContainer2.Controls.Add(this.listBox1);
             this.controlContainer2.Location = new System.Drawing.Point(7, 45);
             this.controlContainer2.Name = "controlContainer2";
             this.controlContainer2.Size = new System.Drawing.Size(188, 624);
             this.controlContainer2.TabIndex = 0;
-            // 
-            // gridParticipations
-            // 
-            this.gridParticipations.Location = new System.Drawing.Point(-1, -1);
-            this.gridParticipations.MainView = this.gridView2;
-            this.gridParticipations.Name = "gridParticipations";
-            this.gridParticipations.Size = new System.Drawing.Size(190, 630);
-            this.gridParticipations.TabIndex = 1;
-            this.gridParticipations.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
-            // 
-            // gridView2
-            // 
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.c_id,
-            this.userName});
-            this.gridView2.GridControl = this.gridParticipations;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsBehavior.AutoSelectAllInEditor = false;
-            this.gridView2.OptionsBehavior.Editable = false;
-            // 
-            // c_id
-            // 
-            this.c_id.Caption = "id";
-            this.c_id.FieldName = "id";
-            this.c_id.MinWidth = 25;
-            this.c_id.Name = "c_id";
-            this.c_id.Visible = true;
-            this.c_id.VisibleIndex = 0;
-            this.c_id.Width = 94;
-            // 
-            // userName
-            // 
-            this.userName.Caption = "Name";
-            this.userName.FieldName = "userName";
-            this.userName.MinWidth = 25;
-            this.userName.Name = "userName";
-            this.userName.Visible = true;
-            this.userName.VisibleIndex = 1;
-            this.userName.Width = 94;
-            // 
-            // autoHideContainer2
-            // 
-            this.autoHideContainer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.autoHideContainer2.Controls.Add(this.dockPanel6);
-            this.autoHideContainer2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.autoHideContainer2.Location = new System.Drawing.Point(0, 0);
-            this.autoHideContainer2.Name = "autoHideContainer2";
-            this.autoHideContainer2.Size = new System.Drawing.Size(28, 674);
             // 
             // dockPanel6
             // 
             this.dockPanel6.Controls.Add(this.dockPanel6_Container);
             this.dockPanel6.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel6.ID = new System.Guid("e45ad8b0-f410-447e-a5f8-705f59e739ef");
-            this.dockPanel6.Location = new System.Drawing.Point(0, 0);
+            this.dockPanel6.Location = new System.Drawing.Point(28, 0);
             this.dockPanel6.Name = "dockPanel6";
             this.dockPanel6.OriginalSize = new System.Drawing.Size(237, 200);
-            this.dockPanel6.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.dockPanel6.SavedIndex = 1;
             this.dockPanel6.Size = new System.Drawing.Size(237, 674);
             this.dockPanel6.Text = "Choose present";
-            this.dockPanel6.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
             // 
             // dockPanel6_Container
             // 
+            this.dockPanel6_Container.Controls.Add(this.txtServer);
+            this.dockPanel6_Container.Controls.Add(this.txtLog);
             this.dockPanel6_Container.Controls.Add(this.simpleButton5);
             this.dockPanel6_Container.Controls.Add(this.textEdit1);
             this.dockPanel6_Container.Controls.Add(this.simpleButton3);
@@ -316,7 +263,7 @@
             // 
             // simpleButton5
             // 
-            this.simpleButton5.Location = new System.Drawing.Point(197, 81);
+            this.simpleButton5.Location = new System.Drawing.Point(197, 58);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(23, 28);
             this.simpleButton5.TabIndex = 16;
@@ -325,7 +272,7 @@
             // textEdit1
             // 
             this.textEdit1.Enabled = false;
-            this.textEdit1.Location = new System.Drawing.Point(3, 81);
+            this.textEdit1.Location = new System.Drawing.Point(5, 58);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textEdit1.Properties.Appearance.Options.UseFont = true;
@@ -334,7 +281,7 @@
             // 
             // simpleButton3
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(3, 231);
+            this.simpleButton3.Location = new System.Drawing.Point(3, 255);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(217, 42);
             this.simpleButton3.TabIndex = 20;
@@ -344,7 +291,7 @@
             // 
             this.simpleButton1.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Primary;
             this.simpleButton1.Appearance.Options.UseBackColor = true;
-            this.simpleButton1.Location = new System.Drawing.Point(3, 152);
+            this.simpleButton1.Location = new System.Drawing.Point(3, 115);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(217, 44);
             this.simpleButton1.TabIndex = 20;
@@ -355,7 +302,7 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(3, 40);
+            this.labelControl1.Location = new System.Drawing.Point(3, 17);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(121, 21);
             this.labelControl1.TabIndex = 20;
@@ -434,21 +381,21 @@
             this.panelControl1.Controls.Add(this.cmdRefresh);
             this.panelControl1.Controls.Add(this.lb_title1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl1.Location = new System.Drawing.Point(56, 0);
+            this.panelControl1.Location = new System.Drawing.Point(265, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1724, 62);
+            this.panelControl1.Size = new System.Drawing.Size(1515, 62);
             this.panelControl1.TabIndex = 9;
             // 
             // mainPdf
             // 
             this.mainPdf.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPdf.Location = new System.Drawing.Point(56, 62);
+            this.mainPdf.Location = new System.Drawing.Point(265, 62);
             this.mainPdf.Name = "mainPdf";
             this.mainPdf.NavigationPaneInitialSelectedPage = DevExpress.XtraPdfViewer.PdfNavigationPanePage.Thumbnails;
             this.mainPdf.NavigationPaneInitialVisibility = DevExpress.XtraPdfViewer.PdfNavigationPaneVisibility.Visible;
             this.mainPdf.NavigationPanePageVisibility = DevExpress.XtraPdfViewer.PdfNavigationPanePageVisibility.Thumbnails;
             this.mainPdf.NavigationPaneWidth = 356;
-            this.mainPdf.Size = new System.Drawing.Size(1724, 612);
+            this.mainPdf.Size = new System.Drawing.Size(1515, 612);
             this.mainPdf.TabIndex = 10;
             this.mainPdf.Load += new System.EventHandler(this.mainPdf_Load);
             this.mainPdf.Click += new System.EventHandler(this.mainPdf_Click);
@@ -465,7 +412,7 @@
             // 
             this.hideContainerLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.hideContainerLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.hideContainerLeft.Location = new System.Drawing.Point(28, 0);
+            this.hideContainerLeft.Location = new System.Drawing.Point(0, 0);
             this.hideContainerLeft.Name = "hideContainerLeft";
             this.hideContainerLeft.Size = new System.Drawing.Size(28, 674);
             // 
@@ -501,6 +448,34 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // txtLog
+            // 
+            this.txtLog.Location = new System.Drawing.Point(12, 303);
+            this.txtLog.Multiline = true;
+            this.txtLog.Name = "txtLog";
+            this.txtLog.Size = new System.Drawing.Size(199, 314);
+            this.txtLog.TabIndex = 15;
+            // 
+            // txtServer
+            // 
+            this.txtServer.Enabled = false;
+            this.txtServer.Location = new System.Drawing.Point(5, 181);
+            this.txtServer.Name = "txtServer";
+            this.txtServer.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServer.Properties.Appearance.Options.UseFont = true;
+            this.txtServer.Size = new System.Drawing.Size(217, 28);
+            this.txtServer.TabIndex = 21;
+            // 
+            // listBox1
+            // 
+            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(0, 0);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(188, 624);
+            this.listBox1.TabIndex = 0;
+            // 
             // OfflineFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -508,9 +483,9 @@
             this.ClientSize = new System.Drawing.Size(1808, 674);
             this.Controls.Add(this.mainPdf);
             this.Controls.Add(this.panelControl1);
+            this.Controls.Add(this.dockPanel6);
             this.Controls.Add(this.dockPanel1);
             this.Controls.Add(this.hideContainerLeft);
-            this.Controls.Add(this.autoHideContainer2);
             this.Controls.Add(this.hideContainerRight);
             this.Name = "OfflineFrm";
             this.Text = "MainRoom";
@@ -524,9 +499,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.dockPanel3.ResumeLayout(false);
             this.controlContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridParticipations)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            this.autoHideContainer2.ResumeLayout(false);
             this.dockPanel6.ResumeLayout(false);
             this.dockPanel6_Container.ResumeLayout(false);
             this.dockPanel6_Container.PerformLayout();
@@ -538,6 +510,7 @@
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.dockPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtServer.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -567,11 +540,6 @@
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel4_Container;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel3;
         private DevExpress.XtraBars.Docking.ControlContainer controlContainer2;
-        private DevExpress.XtraGrid.GridControl gridParticipations;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-        private DevExpress.XtraGrid.Columns.GridColumn c_id;
-        private DevExpress.XtraGrid.Columns.GridColumn userName;
-        private DevExpress.XtraBars.Docking.AutoHideContainer autoHideContainer2;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel6;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel6_Container;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
@@ -583,5 +551,8 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.TextBox txtLog;
+        private DevExpress.XtraEditors.TextEdit txtServer;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

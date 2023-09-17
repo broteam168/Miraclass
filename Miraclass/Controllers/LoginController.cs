@@ -18,7 +18,7 @@ namespace Miraclass.Controllers
             db = new MiraclassDataContext(Miraclass.Properties.Settings.Default.connect);
             // get connectiton from saved string
         }
-        public S_User z(string username, string password)
+        public S_User getUser(string username, string password)
         {
             db.Refresh(System.Data.Linq.RefreshMode.OverwriteCurrentValues, db.S_Users);
             return db.S_Users.Where(p => p.userName.Trim().Equals(username.Trim()) &&p.userPassword.Trim().Equals(EncodeMD5(password).Trim())).SingleOrDefault();
