@@ -47,6 +47,11 @@
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.c_id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.userName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.dockPanel7 = new DevExpress.XtraBars.Docking.DockPanel();
+            this.dockPanel7_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.c_content = new DevExpress.XtraGrid.Columns.GridColumn();
             this.autoHideContainer2 = new DevExpress.XtraBars.Docking.AutoHideContainer();
             this.dockPanel6 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel6_Container = new DevExpress.XtraBars.Docking.ControlContainer();
@@ -73,11 +78,6 @@
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.dockPanel7 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.dockPanel7_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.c_content = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager2)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.dockPanel2.SuspendLayout();
@@ -88,6 +88,10 @@
             this.controlContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridParticipations)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            this.dockPanel7.SuspendLayout();
+            this.dockPanel7_Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.autoHideContainer2.SuspendLayout();
             this.dockPanel6.SuspendLayout();
             this.dockPanel6_Container.SuspendLayout();
@@ -99,10 +103,6 @@
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
-            this.dockPanel7.SuspendLayout();
-            this.dockPanel7_Container.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // autoHideContainer1
@@ -292,6 +292,56 @@
             this.userName.Visible = true;
             this.userName.VisibleIndex = 1;
             this.userName.Width = 94;
+            // 
+            // dockPanel7
+            // 
+            this.dockPanel7.Controls.Add(this.dockPanel7_Container);
+            this.dockPanel7.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
+            this.dockPanel7.ID = new System.Guid("0effe519-5267-48cc-a697-3e33a1ee6ca0");
+            this.dockPanel7.Location = new System.Drawing.Point(0, 0);
+            this.dockPanel7.Name = "dockPanel7";
+            this.dockPanel7.OriginalSize = new System.Drawing.Size(200, 200);
+            this.dockPanel7.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Right;
+            this.dockPanel7.SavedIndex = 0;
+            this.dockPanel7.Size = new System.Drawing.Size(200, 674);
+            this.dockPanel7.Text = "My note";
+            this.dockPanel7.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
+            // 
+            // dockPanel7_Container
+            // 
+            this.dockPanel7_Container.Controls.Add(this.gridControl1);
+            this.dockPanel7_Container.Location = new System.Drawing.Point(7, 45);
+            this.dockPanel7_Container.Name = "dockPanel7_Container";
+            this.dockPanel7_Container.Size = new System.Drawing.Size(188, 624);
+            this.dockPanel7_Container.TabIndex = 0;
+            // 
+            // gridControl1
+            // 
+            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl1.Location = new System.Drawing.Point(0, 0);
+            this.gridControl1.MainView = this.gridView3;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(188, 624);
+            this.gridControl1.TabIndex = 0;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView3});
+            // 
+            // gridView3
+            // 
+            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.c_content});
+            this.gridView3.GridControl = this.gridControl1;
+            this.gridView3.Name = "gridView3";
+            // 
+            // c_content
+            // 
+            this.c_content.Caption = "content";
+            this.c_content.FieldName = "content";
+            this.c_content.MinWidth = 25;
+            this.c_content.Name = "c_content";
+            this.c_content.Visible = true;
+            this.c_content.VisibleIndex = 0;
+            this.c_content.Width = 94;
             // 
             // autoHideContainer2
             // 
@@ -546,56 +596,6 @@
             this.simpleButton2.TabIndex = 20;
             this.simpleButton2.Text = "Start present";
             // 
-            // dockPanel7
-            // 
-            this.dockPanel7.Controls.Add(this.dockPanel7_Container);
-            this.dockPanel7.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
-            this.dockPanel7.ID = new System.Guid("0effe519-5267-48cc-a697-3e33a1ee6ca0");
-            this.dockPanel7.Location = new System.Drawing.Point(0, 0);
-            this.dockPanel7.Name = "dockPanel7";
-            this.dockPanel7.OriginalSize = new System.Drawing.Size(200, 200);
-            this.dockPanel7.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Right;
-            this.dockPanel7.SavedIndex = 0;
-            this.dockPanel7.Size = new System.Drawing.Size(200, 674);
-            this.dockPanel7.Text = "My note";
-            this.dockPanel7.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-            // 
-            // dockPanel7_Container
-            // 
-            this.dockPanel7_Container.Controls.Add(this.gridControl1);
-            this.dockPanel7_Container.Location = new System.Drawing.Point(7, 45);
-            this.dockPanel7_Container.Name = "dockPanel7_Container";
-            this.dockPanel7_Container.Size = new System.Drawing.Size(188, 624);
-            this.dockPanel7_Container.TabIndex = 0;
-            // 
-            // gridControl1
-            // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(0, 0);
-            this.gridControl1.MainView = this.gridView3;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(188, 624);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView3});
-            // 
-            // gridView3
-            // 
-            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.c_content});
-            this.gridView3.GridControl = this.gridControl1;
-            this.gridView3.Name = "gridView3";
-            // 
-            // c_content
-            // 
-            this.c_content.Caption = "content";
-            this.c_content.FieldName = "content";
-            this.c_content.MinWidth = 25;
-            this.c_content.Name = "c_content";
-            this.c_content.Visible = true;
-            this.c_content.VisibleIndex = 0;
-            this.c_content.Width = 94;
-            // 
             // clientRoomFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -621,6 +621,10 @@
             this.controlContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridParticipations)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            this.dockPanel7.ResumeLayout(false);
+            this.dockPanel7_Container.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.autoHideContainer2.ResumeLayout(false);
             this.dockPanel6.ResumeLayout(false);
             this.dockPanel6_Container.ResumeLayout(false);
@@ -634,10 +638,6 @@
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.dockPanel1.ResumeLayout(false);
-            this.dockPanel7.ResumeLayout(false);
-            this.dockPanel7_Container.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
             this.ResumeLayout(false);
 
         }

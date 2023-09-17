@@ -26,7 +26,7 @@ namespace Miraclass.Controllers
         }
         public P_data getData(int presentId)
         {
-            return db.P_datas.Where(p=>p.P_Presents.id == presentId).FirstOrDefault();  
+            return db.P_datas.Where(p=>p.id == presentId).FirstOrDefault();  
         }
         public void startPresent(int presentId,int roomId,P_StatePresent state)
         {

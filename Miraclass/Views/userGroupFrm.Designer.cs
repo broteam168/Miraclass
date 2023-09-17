@@ -268,8 +268,6 @@
             this.groupId.FieldName = "GroupId";
             this.groupId.MinWidth = 25;
             this.groupId.Name = "groupId";
-            this.groupId.Visible = true;
-            this.groupId.VisibleIndex = 0;
             this.groupId.Width = 94;
             // 
             // GroupName
@@ -298,8 +296,6 @@
             this.Permission.FieldName = "Permission";
             this.Permission.MinWidth = 25;
             this.Permission.Name = "Permission";
-            this.Permission.Visible = true;
-            this.Permission.VisibleIndex = 3;
             this.Permission.Width = 94;
             // 
             // panelControl2
@@ -326,11 +322,12 @@
             this.groupControl2.Controls.Add(this.labelControl2);
             this.groupControl2.Controls.Add(this.txtName);
             this.groupControl2.GroupStyle = DevExpress.Utils.GroupStyle.Card;
-            this.groupControl2.Location = new System.Drawing.Point(2, 28);
+            this.groupControl2.Location = new System.Drawing.Point(3, 28);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(1002, 219);
             this.groupControl2.TabIndex = 5;
             this.groupControl2.Text = "Group information";
+            this.groupControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl2_Paint);
             // 
             // panelControl6
             // 

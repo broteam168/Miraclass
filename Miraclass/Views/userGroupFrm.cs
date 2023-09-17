@@ -278,6 +278,12 @@ namespace Miraclass.Views
             setStatus(false);
         }
 
+        private void groupControl2_Paint(object sender, PaintEventArgs e)
+        {
+
+
+        }
+
         private void cmdRefresh_Click(object sender, EventArgs e)
         {
             gridGroup.DataSource = cls.list();
