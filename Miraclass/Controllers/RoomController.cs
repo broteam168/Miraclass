@@ -20,7 +20,7 @@ namespace Miraclass.Controllers
         }
         public List<P_Room> liRoom(int id)
         {
-            return db.P_Rooms.Where(p=>p.hostId == id).ToList();
+            return db.P_Rooms.ToList();
         }
         public void AddRoom(P_Room _obj)
         {
