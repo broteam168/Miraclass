@@ -149,10 +149,9 @@
       <Column Name="status" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="hostId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="linkOffline" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Association Name="P_Room_P_Attendance" Member="P_Attendances" ThisKey="id" OtherKey="roomId" Type="P_Attendance" />
       <Association Name="P_Room_P_linkPresent" Member="P_linkPresents" ThisKey="id" OtherKey="roomId" Type="P_linkPresent" />
       <Association Name="P_Room_P_StatePresent" Member="P_StatePresents" ThisKey="id" OtherKey="roomId" Type="P_StatePresent" />
+      <Association Name="P_Room_P_Attendance" Member="P_Attendances" ThisKey="id" OtherKey="roomId" Type="P_Attendance" />
     </Type>
   </Table>
 </Database>

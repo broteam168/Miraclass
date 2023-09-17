@@ -166,6 +166,12 @@
     <Compile Include="Views\clientRoomFrm.Designer.cs">
       <DependentUpon>clientRoomFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\OfflineFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\OfflineFrm.Designer.cs">
+      <DependentUpon>OfflineFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainRoomFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\clientRoomFrm.resx">
       <DependentUpon>clientRoomFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\OfflineFrm.resx">
+      <DependentUpon>OfflineFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainRoomFrm.resx">
       <DependentUpon>MainRoomFrm.cs</DependentUpon>

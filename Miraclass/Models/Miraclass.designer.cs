@@ -3125,13 +3125,11 @@ namespace Miraclass.Models
 		
 		private string _password;
 		
-		private string _linkOffline;
-		
-		private EntitySet<P_Attendance> _P_Attendances;
-		
 		private EntitySet<P_linkPresent> _P_linkPresents;
 		
 		private EntitySet<P_StatePresent> _P_StatePresents;
+		
+		private EntitySet<P_Attendance> _P_Attendances;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -3151,15 +3149,13 @@ namespace Miraclass.Models
     partial void OnhostIdChanged();
     partial void OnpasswordChanging(string value);
     partial void OnpasswordChanged();
-    partial void OnlinkOfflineChanging(string value);
-    partial void OnlinkOfflineChanged();
     #endregion
 		
 		public P_Room()
 		{
-			this._P_Attendances = new EntitySet<P_Attendance>(new Action<P_Attendance>(this.attach_P_Attendances), new Action<P_Attendance>(this.detach_P_Attendances));
 			this._P_linkPresents = new EntitySet<P_linkPresent>(new Action<P_linkPresent>(this.attach_P_linkPresents), new Action<P_linkPresent>(this.detach_P_linkPresents));
 			this._P_StatePresents = new EntitySet<P_StatePresent>(new Action<P_StatePresent>(this.attach_P_StatePresents), new Action<P_StatePresent>(this.detach_P_StatePresents));
+			this._P_Attendances = new EntitySet<P_Attendance>(new Action<P_Attendance>(this.attach_P_Attendances), new Action<P_Attendance>(this.detach_P_Attendances));
 			OnCreated();
 		}
 		
@@ -3303,39 +3299,6 @@ namespace Miraclass.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_linkOffline", DbType="NVarChar(MAX)")]
-		public string linkOffline
-		{
-			get
-			{
-				return this._linkOffline;
-			}
-			set
-			{
-				if ((this._linkOffline != value))
-				{
-					this.OnlinkOfflineChanging(value);
-					this.SendPropertyChanging();
-					this._linkOffline = value;
-					this.SendPropertyChanged("linkOffline");
-					this.OnlinkOfflineChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="P_Room_P_Attendance", Storage="_P_Attendances", ThisKey="id", OtherKey="roomId")]
-		public EntitySet<P_Attendance> P_Attendances
-		{
-			get
-			{
-				return this._P_Attendances;
-			}
-			set
-			{
-				this._P_Attendances.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="P_Room_P_linkPresent", Storage="_P_linkPresents", ThisKey="id", OtherKey="roomId")]
 		public EntitySet<P_linkPresent> P_linkPresents
 		{
@@ -3362,6 +3325,19 @@ namespace Miraclass.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="P_Room_P_Attendance", Storage="_P_Attendances", ThisKey="id", OtherKey="roomId")]
+		public EntitySet<P_Attendance> P_Attendances
+		{
+			get
+			{
+				return this._P_Attendances;
+			}
+			set
+			{
+				this._P_Attendances.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -3380,18 +3356,6 @@ namespace Miraclass.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_P_Attendances(P_Attendance entity)
-		{
-			this.SendPropertyChanging();
-			entity.P_Room = this;
-		}
-		
-		private void detach_P_Attendances(P_Attendance entity)
-		{
-			this.SendPropertyChanging();
-			entity.P_Room = null;
 		}
 		
 		private void attach_P_linkPresents(P_linkPresent entity)
@@ -3413,6 +3377,18 @@ namespace Miraclass.Models
 		}
 		
 		private void detach_P_StatePresents(P_StatePresent entity)
+		{
+			this.SendPropertyChanging();
+			entity.P_Room = null;
+		}
+		
+		private void attach_P_Attendances(P_Attendance entity)
+		{
+			this.SendPropertyChanging();
+			entity.P_Room = this;
+		}
+		
+		private void detach_P_Attendances(P_Attendance entity)
 		{
 			this.SendPropertyChanging();
 			entity.P_Room = null;
