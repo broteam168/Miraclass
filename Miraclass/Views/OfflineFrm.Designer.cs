@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainRoomFrm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OfflineFrm));
             this.autoHideContainer1 = new DevExpress.XtraBars.Docking.AutoHideContainer();
             this.dockManager2 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.hideContainerRight = new DevExpress.XtraBars.Docking.AutoHideContainer();
@@ -52,8 +52,6 @@
             this.dockPanel6_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.cbPresent = new DevExpress.XtraEditors.GridLookUpEdit();
-            this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.dockPanel4 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel4_Container = new DevExpress.XtraBars.Docking.ControlContainer();
@@ -69,6 +67,9 @@
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager2)).BeginInit();
             this.hideContainerRight.SuspendLayout();
             this.dockPanel2.SuspendLayout();
@@ -82,14 +83,13 @@
             this.autoHideContainer2.SuspendLayout();
             this.dockPanel6.SuspendLayout();
             this.dockPanel6_Container.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbPresent.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
             this.dockPanel4.SuspendLayout();
             this.dockPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // autoHideContainer1
@@ -293,7 +293,7 @@
             this.dockPanel6.Controls.Add(this.dockPanel6_Container);
             this.dockPanel6.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel6.ID = new System.Guid("e45ad8b0-f410-447e-a5f8-705f59e739ef");
-            this.dockPanel6.Location = new System.Drawing.Point(-237, 0);
+            this.dockPanel6.Location = new System.Drawing.Point(0, 0);
             this.dockPanel6.Name = "dockPanel6";
             this.dockPanel6.OriginalSize = new System.Drawing.Size(237, 200);
             this.dockPanel6.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Left;
@@ -304,9 +304,10 @@
             // 
             // dockPanel6_Container
             // 
+            this.dockPanel6_Container.Controls.Add(this.simpleButton5);
+            this.dockPanel6_Container.Controls.Add(this.textEdit1);
             this.dockPanel6_Container.Controls.Add(this.simpleButton3);
             this.dockPanel6_Container.Controls.Add(this.simpleButton1);
-            this.dockPanel6_Container.Controls.Add(this.cbPresent);
             this.dockPanel6_Container.Controls.Add(this.labelControl1);
             this.dockPanel6_Container.Location = new System.Drawing.Point(5, 45);
             this.dockPanel6_Container.Name = "dockPanel6_Container";
@@ -331,25 +332,6 @@
             this.simpleButton1.TabIndex = 20;
             this.simpleButton1.Text = "Start present";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click_1);
-            // 
-            // cbPresent
-            // 
-            this.cbPresent.Location = new System.Drawing.Point(3, 67);
-            this.cbPresent.Name = "cbPresent";
-            this.cbPresent.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbPresent.Properties.Appearance.Options.UseFont = true;
-            this.cbPresent.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbPresent.Properties.PopupView = this.gridLookUpEdit1View;
-            this.cbPresent.Size = new System.Drawing.Size(217, 30);
-            this.cbPresent.TabIndex = 20;
-            // 
-            // gridLookUpEdit1View
-            // 
-            this.gridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gridLookUpEdit1View.Name = "gridLookUpEdit1View";
-            this.gridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.gridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
             // labelControl1
             // 
@@ -497,7 +479,29 @@
             this.simpleButton2.TabIndex = 20;
             this.simpleButton2.Text = "Start present";
             // 
-            // MainRoomFrm
+            // textEdit1
+            // 
+            this.textEdit1.Enabled = false;
+            this.textEdit1.Location = new System.Drawing.Point(3, 81);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textEdit1.Properties.Appearance.Options.UseFont = true;
+            this.textEdit1.Size = new System.Drawing.Size(217, 28);
+            this.textEdit1.TabIndex = 16;
+            // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Location = new System.Drawing.Point(197, 81);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(23, 28);
+            this.simpleButton5.TabIndex = 16;
+            this.simpleButton5.Text = "...";
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // OfflineFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -508,7 +512,7 @@
             this.Controls.Add(this.hideContainerLeft);
             this.Controls.Add(this.autoHideContainer2);
             this.Controls.Add(this.hideContainerRight);
-            this.Name = "MainRoomFrm";
+            this.Name = "OfflineFrm";
             this.Text = "MainRoom";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainRoomFrm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dockManager2)).EndInit();
@@ -526,8 +530,6 @@
             this.dockPanel6.ResumeLayout(false);
             this.dockPanel6_Container.ResumeLayout(false);
             this.dockPanel6_Container.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbPresent.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
             this.dockPanel4.ResumeLayout(false);
             this.dockPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -535,6 +537,7 @@
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.dockPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -573,11 +576,12 @@
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel6_Container;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.GridLookUpEdit cbPresent;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridLookUpEdit1View;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

@@ -97,14 +97,14 @@ namespace Miraclass.Views
         {
             ChooseRoom frm = new ChooseRoom(_currentUser);
             frm.ShowDialog();
-            int result =  frm.GetRoom();
-            if(result == -1)
+            P_Room result =  frm.GetRoom();
+            if (result == null || result.status == true)
             {
-               
+                MessageBox.Show("Cannot start room");
             }
             else
             {
-                MainRoomFrm frmL = new MainRoomFrm(result,this._currentUser);
+                MainRoomFrm frmL = new MainRoomFrm(result.id,this._currentUser);
                 loadForm(frmL);
             } 
                 
@@ -153,6 +153,22 @@ namespace Miraclass.Views
         {
             AccountFrm frm = new AccountFrm(this._currentUser);
             loadForm(frm);
+        }
+
+        private void mnOffline_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ChooseRoom frm = new ChooseRoom(_currentUser);
+            frm.ShowDialog();
+            P_Room result = frm.GetRoom();
+            if (result == null || result.status == true)
+            {
+                MessageBox.Show("Cannot start room");
+            }
+            else
+            {
+                OfflineFrm frmL = new OfflineFrm(result.id, this._currentUser);
+                loadForm(frmL);
+            }
         }
     }
 }

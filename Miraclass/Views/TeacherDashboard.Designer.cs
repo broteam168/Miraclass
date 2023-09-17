@@ -46,14 +46,15 @@
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManagerMain = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.mnOffline = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManagerMain)).BeginInit();
             this.SuspendLayout();
@@ -74,10 +75,11 @@
             this.barButtonItem6,
             this.barButtonItem7,
             this.mnAccount,
-            this.mnGroup});
+            this.mnGroup,
+            this.mnOffline});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.ribbon.MaxItemId = 11;
+            this.ribbon.MaxItemId = 12;
             this.ribbon.Name = "ribbon";
             this.ribbon.OptionsMenuMinWidth = 519;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -111,8 +113,8 @@
             this.mnAddStudent.Caption = "Add student to room";
             this.mnAddStudent.Enabled = false;
             this.mnAddStudent.Id = 3;
-            this.mnAddStudent.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.Image")));
-            this.mnAddStudent.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+            this.mnAddStudent.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("mnAddStudent.ImageOptions.Image")));
+            this.mnAddStudent.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("mnAddStudent.ImageOptions.LargeImage")));
             this.mnAddStudent.Name = "mnAddStudent";
             this.mnAddStudent.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
@@ -121,8 +123,8 @@
             this.mnPresent.Caption = "Present";
             this.mnPresent.Enabled = false;
             this.mnPresent.Id = 4;
-            this.mnPresent.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
-            this.mnPresent.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
+            this.mnPresent.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("mnPresent.ImageOptions.Image")));
+            this.mnPresent.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("mnPresent.ImageOptions.LargeImage")));
             this.mnPresent.Name = "mnPresent";
             this.mnPresent.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
@@ -131,8 +133,8 @@
             this.mnAddPresent.Caption = "Add present to room";
             this.mnAddPresent.Enabled = false;
             this.mnAddPresent.Id = 5;
-            this.mnAddPresent.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.Image")));
-            this.mnAddPresent.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.ImageOptions.LargeImage")));
+            this.mnAddPresent.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("mnAddPresent.ImageOptions.Image")));
+            this.mnAddPresent.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("mnAddPresent.ImageOptions.LargeImage")));
             this.mnAddPresent.Name = "mnAddPresent";
             this.mnAddPresent.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
@@ -141,8 +143,8 @@
             this.mnStartRoom.Caption = "Start room";
             this.mnStartRoom.Enabled = false;
             this.mnStartRoom.Id = 6;
-            this.mnStartRoom.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
-            this.mnStartRoom.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
+            this.mnStartRoom.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("mnStartRoom.ImageOptions.Image")));
+            this.mnStartRoom.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("mnStartRoom.ImageOptions.LargeImage")));
             this.mnStartRoom.Name = "mnStartRoom";
             this.mnStartRoom.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
@@ -169,8 +171,8 @@
             this.mnAccount.Caption = "Manage Account";
             this.mnAccount.Enabled = false;
             this.mnAccount.Id = 9;
-            this.mnAccount.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem8.ImageOptions.Image")));
-            this.mnAccount.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem8.ImageOptions.LargeImage")));
+            this.mnAccount.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("mnAccount.ImageOptions.Image")));
+            this.mnAccount.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("mnAccount.ImageOptions.LargeImage")));
             this.mnAccount.Name = "mnAccount";
             this.mnAccount.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
             // 
@@ -179,8 +181,8 @@
             this.mnGroup.Caption = "Manage group";
             this.mnGroup.Enabled = false;
             this.mnGroup.Id = 10;
-            this.mnGroup.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.mnGroup.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.mnGroup.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("mnGroup.ImageOptions.Image")));
+            this.mnGroup.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("mnGroup.ImageOptions.LargeImage")));
             this.mnGroup.Name = "mnGroup";
             this.mnGroup.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick_1);
             // 
@@ -210,6 +212,7 @@
             // ribbonPageGroup5
             // 
             this.ribbonPageGroup5.ItemLinks.Add(this.mnStartRoom);
+            this.ribbonPageGroup5.ItemLinks.Add(this.mnOffline);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             this.ribbonPageGroup5.Text = "Start room";
             // 
@@ -221,19 +224,19 @@
             this.ribbonPage3.Name = "ribbonPage3";
             this.ribbonPage3.Text = "User";
             // 
-            // ribbonPageGroup6
-            // 
-            this.ribbonPageGroup6.ItemLinks.Add(this.barButtonItem7);
-            this.ribbonPageGroup6.ItemLinks.Add(this.barButtonItem6);
-            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
-            this.ribbonPageGroup6.Text = "My account";
-            // 
             // ribbonPageGroup7
             // 
             this.ribbonPageGroup7.ItemLinks.Add(this.mnAccount);
             this.ribbonPageGroup7.ItemLinks.Add(this.mnGroup);
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
             this.ribbonPageGroup7.Text = "Manager Account";
+            // 
+            // ribbonPageGroup6
+            // 
+            this.ribbonPageGroup6.ItemLinks.Add(this.barButtonItem7);
+            this.ribbonPageGroup6.ItemLinks.Add(this.barButtonItem6);
+            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
+            this.ribbonPageGroup6.Text = "My account";
             // 
             // ribbonPage2
             // 
@@ -269,6 +272,15 @@
             // 
             this.ribbonPage4.Name = "ribbonPage4";
             this.ribbonPage4.Text = "ribbonPage4";
+            // 
+            // mnOffline
+            // 
+            this.mnOffline.Caption = "Offline room";
+            this.mnOffline.Id = 11;
+            this.mnOffline.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("mnOffline.ImageOptions.Image")));
+            this.mnOffline.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("mnOffline.ImageOptions.LargeImage")));
+            this.mnOffline.Name = "mnOffline";
+            this.mnOffline.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnOffline_ItemClick);
             // 
             // TeacherDashboard
             // 
@@ -323,5 +335,6 @@
         private DevExpress.XtraBars.BarButtonItem mnAccount;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
         private DevExpress.XtraBars.BarButtonItem mnGroup;
+        private DevExpress.XtraBars.BarButtonItem mnOffline;
     }
 }

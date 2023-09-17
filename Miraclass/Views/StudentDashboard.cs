@@ -73,22 +73,7 @@ namespace Miraclass.Views
             loadForm(frm);
         }
 
-        private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            ChooseRoom frm = new ChooseRoom(_currentUser);
-            frm.ShowDialog();
-            int result =  frm.GetRoom();
-            if(result == -1)
-            {
-               
-            }
-            else
-            {
-                MainRoomFrm frmL = new MainRoomFrm(result,this._currentUser);
-                loadForm(frmL);
-            } 
-                
-        }
+      
 
         private void barButtonItem1_ItemClick_1(object sender, ItemClickEventArgs e)
         {

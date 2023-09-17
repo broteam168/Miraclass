@@ -24,9 +24,9 @@ namespace Miraclass.Views
 
             gridLookUpEdit1.Properties.DataSource = cls.liRoom(currentUser.userId);
         }
-        public int GetRoom()
+        public P_Room GetRoom()
         {
-            if (gridLookUpEdit1.GetSelectedDataRow() != null) return ((P_Room)gridLookUpEdit1.GetSelectedDataRow()).id; else return -1;
+            if (gridLookUpEdit1.GetSelectedDataRow() != null) return ((P_Room)gridLookUpEdit1.GetSelectedDataRow()); else return null;
         }
         private void simpleButton1_Click(object sender, EventArgs e)
         {

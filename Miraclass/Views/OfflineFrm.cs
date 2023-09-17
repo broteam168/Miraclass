@@ -36,7 +36,6 @@ namespace Miraclass.Views
 
             cls = new MainRoomController();
 
-            cbPresent.Properties.DataSource = cls.listPresent(roomId);
             
             _roomId = roomId;
             this._currentUser = currentUser;
@@ -74,22 +73,7 @@ namespace Miraclass.Views
         private SqlCommand command;
         private DataSet myDataSet;
 
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-          
-                
-        }
-
        
-        private void endRoom()
-        {
-           
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-           
-
-        }
         private bool EnoughPermission()
         {
             SqlClientPermission perm = new SqlClientPermission(System.Security.Permissions.PermissionState.Unrestricted);
@@ -223,34 +207,7 @@ namespace Miraclass.Views
 
         private void simpleButton1_Click_1(object sender, EventArgs e)
         {
-            if (cbPresent.GetSelectedDataRow() != null)
-            {
-                try
-                {
-                    P_data tmp = cls.getData(((P_Present)cbPresent.GetSelectedDataRow()).id);
-                    mainPdf.LoadDocument(new MemoryStream(tmp.data.ToArray()));
-                    tmp = null;
-                    P_StatePresent temp = new P_StatePresent();
-                    temp.presentId = ((P_Present)cbPresent.GetSelectedDataRow()).id;
-                    temp.roomId = _roomId;
-                    temp.currentPage = 1;
-                    cls.startPresent(((P_Present)cbPresent.GetSelectedDataRow()).id, _roomId, temp);
-                    mainPdf.CurrentPageNumber = 1;
-                    if (EnoughPermission()) autoData2();
-
-                    currentPresent = ((P_Present)cbPresent.GetSelectedDataRow()).id;
-                    gridQA.DataSource = cls.listQuestion(_roomId, currentPresent);
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("error: " + ex.Message);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please choose present to present");
-            }
+            
         }
 
         private void gridQA_DoubleClick(object sender, EventArgs e)

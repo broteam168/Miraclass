@@ -42,6 +42,7 @@ namespace Miraclass.Views
             this._currentUser = currentUser;
             gridParticipations.DataSource = cls.listParticipants(_roomId);
             if (EnoughPermission()) autoData();
+            if (EnoughPermission()) autoData2();
 
             cls.startRoom(_roomId);
 
@@ -236,8 +237,7 @@ namespace Miraclass.Views
                     temp.currentPage = 1;
                     cls.startPresent(((P_Present)cbPresent.GetSelectedDataRow()).id, _roomId, temp);
                     mainPdf.CurrentPageNumber = 1;
-                    if (EnoughPermission()) autoData2();
-
+                    
                     currentPresent = ((P_Present)cbPresent.GetSelectedDataRow()).id;
                     gridQA.DataSource = cls.listQuestion(_roomId, currentPresent);
 
