@@ -54,7 +54,6 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xtraTabbedMdiManagerMain = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.mnOffline = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManagerMain)).BeginInit();
             this.SuspendLayout();
@@ -75,8 +74,7 @@
             this.barButtonItem6,
             this.barButtonItem7,
             this.mnAccount,
-            this.mnGroup,
-            this.mnOffline});
+            this.mnGroup});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.ribbon.MaxItemId = 12;
@@ -212,7 +210,6 @@
             // ribbonPageGroup5
             // 
             this.ribbonPageGroup5.ItemLinks.Add(this.mnStartRoom);
-            this.ribbonPageGroup5.ItemLinks.Add(this.mnOffline);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             this.ribbonPageGroup5.Text = "Start room";
             // 
@@ -273,15 +270,6 @@
             this.ribbonPage4.Name = "ribbonPage4";
             this.ribbonPage4.Text = "ribbonPage4";
             // 
-            // mnOffline
-            // 
-            this.mnOffline.Caption = "Offline room";
-            this.mnOffline.Id = 11;
-            this.mnOffline.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("mnOffline.ImageOptions.Image")));
-            this.mnOffline.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("mnOffline.ImageOptions.LargeImage")));
-            this.mnOffline.Name = "mnOffline";
-            this.mnOffline.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.mnOffline_ItemClick);
-            // 
             // TeacherDashboard
             // 
             this.Appearance.Options.UseFont = true;
@@ -335,6 +323,5 @@
         private DevExpress.XtraBars.BarButtonItem mnAccount;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
         private DevExpress.XtraBars.BarButtonItem mnGroup;
-        private DevExpress.XtraBars.BarButtonItem mnOffline;
     }
 }

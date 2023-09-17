@@ -50,6 +50,8 @@
             this.autoHideContainer2 = new DevExpress.XtraBars.Docking.AutoHideContainer();
             this.dockPanel6 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel6_Container = new DevExpress.XtraBars.Docking.ControlContainer();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -67,8 +69,6 @@
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager2)).BeginInit();
             this.hideContainerRight.SuspendLayout();
@@ -83,13 +83,13 @@
             this.autoHideContainer2.SuspendLayout();
             this.dockPanel6.SuspendLayout();
             this.dockPanel6_Container.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.dockPanel4.SuspendLayout();
             this.dockPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.dockPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // autoHideContainer1
@@ -314,6 +314,24 @@
             this.dockPanel6_Container.Size = new System.Drawing.Size(225, 624);
             this.dockPanel6_Container.TabIndex = 0;
             // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Location = new System.Drawing.Point(197, 81);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(23, 28);
+            this.simpleButton5.TabIndex = 16;
+            this.simpleButton5.Text = "...";
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.Enabled = false;
+            this.textEdit1.Location = new System.Drawing.Point(3, 81);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textEdit1.Properties.Appearance.Options.UseFont = true;
+            this.textEdit1.Size = new System.Drawing.Size(217, 28);
+            this.textEdit1.TabIndex = 16;
+            // 
             // simpleButton3
             // 
             this.simpleButton3.Location = new System.Drawing.Point(3, 231);
@@ -479,24 +497,6 @@
             this.simpleButton2.TabIndex = 20;
             this.simpleButton2.Text = "Start present";
             // 
-            // textEdit1
-            // 
-            this.textEdit1.Enabled = false;
-            this.textEdit1.Location = new System.Drawing.Point(3, 81);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textEdit1.Properties.Appearance.Options.UseFont = true;
-            this.textEdit1.Size = new System.Drawing.Size(217, 28);
-            this.textEdit1.TabIndex = 16;
-            // 
-            // simpleButton5
-            // 
-            this.simpleButton5.Location = new System.Drawing.Point(197, 81);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(23, 28);
-            this.simpleButton5.TabIndex = 16;
-            this.simpleButton5.Text = "...";
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -530,6 +530,7 @@
             this.dockPanel6.ResumeLayout(false);
             this.dockPanel6_Container.ResumeLayout(false);
             this.dockPanel6_Container.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.dockPanel4.ResumeLayout(false);
             this.dockPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -537,7 +538,6 @@
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.dockPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

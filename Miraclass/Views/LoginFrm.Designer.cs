@@ -46,6 +46,7 @@ namespace Miraclass.Views
             this.cmdExit = new DevExpress.XtraEditors.SimpleButton();
             this.cmdConfig = new DevExpress.XtraEditors.SimpleButton();
             this.cmdLogin = new DevExpress.XtraEditors.SimpleButton();
+            this.hyperlinkLabelControl1 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -129,7 +130,7 @@ namespace Miraclass.Views
             // 
             // checkEdit1
             // 
-            this.checkEdit1.Location = new System.Drawing.Point(75, 194);
+            this.checkEdit1.Location = new System.Drawing.Point(76, 187);
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkEdit1.Properties.Appearance.ForeColor = System.Drawing.Color.DarkCyan;
@@ -171,7 +172,7 @@ namespace Miraclass.Views
             this.txtUser.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUser.Properties.Appearance.Options.UseFont = true;
             this.txtUser.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.txtUser.Size = new System.Drawing.Size(451, 42);
+            this.txtUser.Size = new System.Drawing.Size(451, 32);
             this.txtUser.TabIndex = 2;
             // 
             // txtPass
@@ -184,7 +185,7 @@ namespace Miraclass.Views
             this.txtPass.Properties.Appearance.Options.UseFont = true;
             this.txtPass.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
             this.txtPass.Properties.PasswordChar = '*';
-            this.txtPass.Size = new System.Drawing.Size(451, 42);
+            this.txtPass.Size = new System.Drawing.Size(451, 32);
             this.txtPass.TabIndex = 1;
             // 
             // panelControl1
@@ -194,6 +195,7 @@ namespace Miraclass.Views
             this.panelControl1.Appearance.Options.UseBackColor = true;
             this.panelControl1.Appearance.Options.UseBorderColor = true;
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.panelControl1.Controls.Add(this.hyperlinkLabelControl1);
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.cmdExit);
             this.panelControl1.Controls.Add(this.cmdConfig);
@@ -255,6 +257,15 @@ namespace Miraclass.Views
             this.cmdLogin.Text = "Login";
             this.cmdLogin.Click += new System.EventHandler(this.cmdLogin_Click);
             // 
+            // hyperlinkLabelControl1
+            // 
+            this.hyperlinkLabelControl1.Location = new System.Drawing.Point(272, 71);
+            this.hyperlinkLabelControl1.Name = "hyperlinkLabelControl1";
+            this.hyperlinkLabelControl1.Size = new System.Drawing.Size(62, 16);
+            this.hyperlinkLabelControl1.TabIndex = 6;
+            this.hyperlinkLabelControl1.Text = "Offline tool";
+            this.hyperlinkLabelControl1.Click += new System.EventHandler(this.hyperlinkLabelControl1_Click);
+            // 
             // LoginFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -302,5 +313,6 @@ namespace Miraclass.Views
         private DevExpress.XtraEditors.SimpleButton cmdExit;
         private DevExpress.XtraEditors.SimpleButton cmdConfig;
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
+        private DevExpress.XtraEditors.HyperlinkLabelControl hyperlinkLabelControl1;
     }
 }

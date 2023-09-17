@@ -94,5 +94,13 @@ namespace Miraclass.Views
         {
             isRemember = checkEdit1.Checked;
         }
+
+        private void hyperlinkLabelControl1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            OfflineFrm frm = new OfflineFrm();
+            frm.ShowDialog();
+            this.Show();
+        }
     }
 }

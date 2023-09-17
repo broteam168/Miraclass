@@ -155,20 +155,6 @@ namespace Miraclass.Views
             loadForm(frm);
         }
 
-        private void mnOffline_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            ChooseRoom frm = new ChooseRoom(_currentUser);
-            frm.ShowDialog();
-            P_Room result = frm.GetRoom();
-            if (result == null || result.status == true)
-            {
-                MessageBox.Show("Cannot start room");
-            }
-            else
-            {
-                OfflineFrm frmL = new OfflineFrm(result.id, this._currentUser);
-                loadForm(frmL);
-            }
-        }
+      
     }
 }

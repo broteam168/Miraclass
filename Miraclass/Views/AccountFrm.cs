@@ -145,7 +145,7 @@ namespace Miraclass.Views
             }
 
             S_User obj = new S_User();
-            obj.userName = txtUser.Text;
+            obj.userName = txtUser.Text.Trim();
             obj.userFullName = txtFullName.Text;
             obj.Phone = txtPhone.Text;
             obj.isActive = checkActive.Checked;
